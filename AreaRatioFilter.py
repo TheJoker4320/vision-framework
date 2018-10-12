@@ -4,9 +4,10 @@ from IFilter import IFilter
 
 class AreaRatioFilter(IFilter):
 
-    def __init__(self, min_area_ratio):
+    def __init__(self, min_area_ratio, max_area_ratio):
         self.min_area_ratio = min_area_ratio
-
+        self.max_area_ratio = max_area_ratio
+        
     def filter(self, conts):
         lst = []
         for cont in conts:
@@ -17,6 +18,6 @@ class AreaRatioFilter(IFilter):
             rect_area = w * h
             area = cv2.contourArea(cnt)
 
-            if float(rect_area) / area >= min_area_ratio:
+            if  max_area_ratio >= float(rect_area) / area >= min_area_ratio:
                 lst.append(cont)
         return lst
