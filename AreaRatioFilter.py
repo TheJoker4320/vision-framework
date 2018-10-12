@@ -1,5 +1,6 @@
 import cv2
 from IFilter import IFilter
+import utils
 
 
 class AreaRatioFilter(IFilter):
@@ -13,11 +14,11 @@ class AreaRatioFilter(IFilter):
         for cont in conts:
             rect = cv2.minAreaRect(cont)
             p0, p1, p2, p3 = cv2.boxPoints(rect)
-            h = self.distance(p0, p1)
-            w = self.distance(p1, p2)
+            h = utils.distance(p0, p1)
+            w = utils.distance(p1, p2)
             rect_area = w * h
             area = cv2.contourArea(cnt)
 
-            if  self.max_area_ratio >= float(rect_area) / area >= self.min_area_ratio:
+            if self.max_area_ratio >= float(rect_area) / area >= self.min_area_ratio:
                 lst.append(cont)
         return lst
