@@ -18,6 +18,6 @@ class AreaRatioFilter(IFilter):
             rect_area = w * h
             area = cv2.contourArea(cnt)
 
-            if  max_area_ratio >= float(rect_area) / area >= min_area_ratio:
+            if  self.max_area_ratio >= float(rect_area) / area >= self.min_area_ratio:
                 lst.append(cont)
         return lst
