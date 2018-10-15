@@ -5,5 +5,10 @@ class IModifier(object):
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def modify(self, pic):
-        raise NotImplementedError
+    def modify(self, picture):
+        """
+
+        :rtype: picture
+        :param picture:
+        :type picture:
+        """
