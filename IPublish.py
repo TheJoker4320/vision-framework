@@ -6,5 +6,5 @@ class IPublish(object):
 
     """ an abstract function that gets a dictionary and sends it to the robot """
     @abstractmethod
-    def publish(self, dict):
+    def publish(self, data_dict):
         pass
