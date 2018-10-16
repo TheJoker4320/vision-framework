@@ -6,4 +6,4 @@ class ICalculation(object):
     """ an abstract function that gets a contours and sends a dictionary """
     @abstractmethod
     def calc(self, cnt):
-        raise NotImplementedError
+        pass
