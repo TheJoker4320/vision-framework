@@ -2,9 +2,10 @@ from IFilter import IFilter
 import cv2
 import utils
 
+""" filters the contours by minimum and maximum values of ration between the length and width """
+
 
 class AspectRatioFilter(IFilter):
-
     def __init__(self, min_ratio, max_ratio):
         self.min_ratio = min_ratio
         self.max_ratio = max_ratio
@@ -16,7 +17,7 @@ class AspectRatioFilter(IFilter):
             p0, p1, p2, p3 = cv2.boxPoints(rect)
             h = utils.distance(p0, p1)
             w = utils.distance(p1, p2)
-            ratio = float(max(h, w))/min(h, w)
+            ratio = float(max(h, w)) / min(h, w)
 
             if self.min_ratio <= ratio <= self.max_ratio:
                 lst.append(cont)
