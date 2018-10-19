@@ -1,11 +1,9 @@
 from IModifier import IModifier
 import cv2
 
-
+ """ Masks the mask image with the original image by using bitwise and """
 class MaskModifier(IModifier):
-    """
-    masks the mask image with the original image by using bitwise and
-    """
+
     def __init__(self, mask):
         self.mask = mask
 
