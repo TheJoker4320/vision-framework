@@ -3,7 +3,6 @@ import cv2
 
 """Filters the shape by the number of edges and epsilon"""
 
-
 class ShapeFilter(IFilter):
     def __init__(self, edges, epsilon):
         self.edges = edges
