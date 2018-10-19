@@ -2,7 +2,7 @@ import cv2
 from IFilter import IFilter
 import utils
 
-"""Gets a list of countours and filters it by area ratio """
+"""Gets the countours and filters them by area ratio range """
 class AreaRatioFilter(IFilter):
 
     def __init__(self, min_area_ratio, max_area_ratio):
