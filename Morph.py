@@ -2,6 +2,7 @@ from IModifier import IModifier
 import cv2
 
 """Gets a frame and applies morphology to it """
+
 class Morph(IModifier):
 
     def __init__(self, morph_open=None, morph_close=None, use_open=None, use_close=None):
