@@ -1,12 +1,15 @@
 from IModifier import IModifier
 import cv2
 
-class ColorThreshold(IModifier):
-	def __init__ (self, low_HSV, high_HSV):
-		self.low_HSV = low_HSV
-		self.high_HSV = high_HSV
+"""Doing threshold color using HSV"""
 
-	def modify(self,pic):
-		hsv = cv2.cvtColor(pic, cv2.COLOR_BGR2HSV)
-        	hsv = cv2.inRange(hsv, low_HSV, high_HSV)
-		return hsv
+
+class ColorThreshold(IModifier):
+    def __init__(self, low_hsv, high_hsv):
+        self.low_hsv = low_hsv
+        self.high_hsv = high_hsv
+
+    def modify(self, pic):
+        hsv = cv2.cvtColor(pic, cv2.COLOR_BGR2HSV)
+        hsv = cv2.inRange(hsv, self.low_hsv, self.high_hsv)
+        return hsv
