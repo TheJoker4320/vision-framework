@@ -3,7 +3,6 @@ import cv2
 
 """Filters the contours according to the area range"""
 
-
 class AreaRangeFilter(IFilter):
 
     def __init__(self, min_area, max_area):
