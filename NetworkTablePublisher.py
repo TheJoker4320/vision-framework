@@ -8,6 +8,7 @@ class NetworkTablePublisher(IPublish):
         pass
 
     """Gets Data and sends it to the smart dashboard"""
+    
     def publish(self, data):
         table = NetworkTables.getTable('SmartDashboard')
         for key in data:
