@@ -2,7 +2,7 @@ from IFilter import IFilter
 import cv2
 import utils
 
-""" filters the contours by minimum and maximum values of ration between the length and width """
+""" Filters the contours by minimum and maximum values of ration between the length and width """
 
 
 class AspectRatioFilter(IFilter):
