@@ -1,12 +1,11 @@
 from ICalculation import ICalculation
-import cv2
 import math
 import utils
 
 
 class AngleCalculation(ICalculation):
     """
-    Calculate the x and y angels between the camara and the object in the image
+    Calculate the x and y angels between the camera and the object in the image
     """
 
     def __init__(self, image_width, horizontal_field_of_view, image_x_center, image_y_center):
@@ -15,10 +14,10 @@ class AngleCalculation(ICalculation):
         self.image_x_center = image_x_center
         self.image_y_center = image_y_center
 
-    def calc(self, cnt):
+    def calc(self, contour):
         dictionary = {}
-        x_center, y_center = find_center()
-        focal_length = calculate_focal_length(self.image_width, self.horizontal_field_of_view)
+        x_center, y_center = utils.find_center(contour)
+        focal_length = utils.calculate_focal_length(self.image_width, self.horizontal_field_of_view)
 
         x_angle = math.atan((x_center - self.image_x_center) / focal_length)
         x_angle = math.degrees(x_angle)
