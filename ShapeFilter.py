@@ -1,7 +1,7 @@
 from IFilter import IFilter
 import cv2
 
-"""filters the shape by the number of edges and epsilon"""
+"""Filters the shape by the number of edges and epsilon"""
 
 
 class ShapeFilter(IFilter):
