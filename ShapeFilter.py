@@ -8,9 +8,9 @@ class ShapeFilter(IFilter):
         self.edges = edges
         self.epsilon = epsilon
 
-    def filter(self, conts):
+    def filter(self, contours):
         lst = []
-        for cont in conts:
+        for cont in contours:
             epsilon_arc = self.epsilon * cv2.arcLength(cont, True)
             approx = cv2.approxPolyDP(cont, epsilon_arc, True)
             if len(approx) == self.edges:

@@ -9,7 +9,7 @@ class AspectRatioFilter(IFilter):
         self.min_ratio = min_ratio
         self.max_ratio = max_ratio
 
-    def filter(self, conts):
+    def filter(self, contours):
         lst = []
         for cont in conts:
             rect = cv2.minAreaRect(cont)
