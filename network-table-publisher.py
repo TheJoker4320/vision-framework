@@ -9,9 +9,8 @@ class NetworkTablePublisher(IPublish):
         pass
     
     def publish(self, data):
+        NetworkTables.initialize(server= '10.43.20.2')
         table = NetworkTables.getTable('SmartDashboard')
         for key in data:
             table.putNumber(key, data[key])
-            print 'sended', data[key]
-
 
