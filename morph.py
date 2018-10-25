@@ -5,7 +5,7 @@ import cv2
 
 class Morph(IModifier):
 
-    def __init__(self, morph_open=None, morph_close=None ):
+    def __init__(self, morph_open, morph_close):
         self.morph_open = morph_open
         self.morph_close = morph_close
 
