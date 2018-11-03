@@ -23,23 +23,23 @@ class PipelineFactory(object):
 
         for modifier_name in modifiers_dic:
             if modifier_name in PipelineFactory.registered_modifiers:
-                instanc = PipelineFactory.registered_modifiers[modifier_name](**modifiers_dic[modifier_name])
-                modifiers_list.append(instanc)
+                instance = PipelineFactory.registered_modifiers[modifier_name](**modifiers_dic[modifier_name])
+                modifiers_list.append(instance)
 
         for filter_name in filters_dic:
             if filter_name in PipelineFactory.registered_filters:
-                instanc = PipelineFactory.registered_filters[filter_name](**filters_dic[filter_name])
-                modifiers_list.append(instanc)
+                instance = PipelineFactory.registered_filters[filter_name](**filters_dic[filter_name])
+                modifiers_list.append(instance)
 
         for calc_name in calcs_dic:
             if calc_name in PipelineFactory.registered_calcs:
-                instanc = PipelineFactory.registered_calcs[calc_name](**calcs_dic[calc_name])
-                modifiers_list.append(instanc)
+                instance = PipelineFactory.registered_calcs[calc_name](**calcs_dic[calc_name])
+                modifiers_list.append(instance)
 
         for publish_name in publish_dic:
             if publish_name in PipelineFactory.registered_publish:
-                instanc = PipelineFactory.registered_publish[publish_name](**publish_dic[publish_name])
-                modifiers_list.append(instanc)
+                instance = PipelineFactory.registered_publish[publish_name](**publish_dic[publish_name])
+                modifiers_list.append(instance)
 
         new_pipeline = Pipeline(modifiers_list, filters_list, calcs_list, publish_list)
         return new_pipeline
