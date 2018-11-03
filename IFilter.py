@@ -8,8 +8,8 @@ class IFilter(object):
     def filter(self, contours):
         """
 
-        :rtype: contours
-        :param contours:
-        :type contours:
+        :rtype: List<contour>
+        :param contours: contours to go trough the filter
+        :type contours: List<contour>
         """
         pass

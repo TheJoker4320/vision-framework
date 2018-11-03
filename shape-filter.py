@@ -1,18 +1,29 @@
 from IFilter import IFilter
 import cv2
 
-"""Filters the shape by the number of edges and epsilon"""
 
 class ShapeFilter(IFilter):
-    def __init__(self, edges, epsilon):
-        self.edges = edges
+    """
+    responsible for  filtering contours by their approximate shape
+    check the approximate shape according to epsilon value
+    as epsilon is bigger the filtering is more flexible
+    """
+
+    def __init__(self, edges_count, epsilon):
+        self.edges_count = edges_count
         self.epsilon = epsilon
 
+    def __is_similar_shape(self, contour):
+        """
+
+        :param contour: the contour to
+        :type contour: the contour to check
+        :return: is the contour is approximately similiar to the type of shape (by number of edges)
+        :rtype: boolean
+        """
+        epsilon_arc = self.epsilon * cv2.arcLength(contour, True)
+        approximate_polygon = cv2.approxPolyDP(contour, epsilon_arc, True)
+        return len(approximate_polygon) == self.edges_count
+
     def filter(self, contours):
-        lst = []
-        for cont in contours:
-            epsilon_arc = self.epsilon * cv2.arcLength(cont, True)
-            approx = cv2.approxPolyDP(cont, epsilon_arc, True)
-            if len(approx) == self.edges:
-                lst.append(cont)
-        return lst
+        return [contour for contour in contours if self.__is_similar_shape(contour)]

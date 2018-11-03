@@ -3,8 +3,10 @@ from IFilter import IFilter
 
 
 class BiggestAreaFilter(IFilter):
-    def __init__(self):
-        pass
+    """
+    goes over all the contours and returrn the one with the biggest area
+    returned as a list with one element
+    """
 
     def filter(self, contours):
         return [max(contours, key=cv2.contourArea)]
