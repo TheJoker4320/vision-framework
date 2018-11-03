@@ -6,11 +6,10 @@ from networktables import NetworkTables
 
 class NetworkTablePublisher(IPublish):
     def __init__(self):
-        pass
-    
-    def publish(self, data):
         NetworkTables.initialize(server= '10.43.20.2')
-        table = NetworkTables.getTable('SmartDashboard')
+    
+    def publish(self, data , table_name):
+        table = NetworkTables.getTable(table_name)
         for key in data:
             table.putNumber(key, data[key])
 
