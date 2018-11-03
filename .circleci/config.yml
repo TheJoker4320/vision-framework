@@ -10,16 +10,24 @@ jobs:
       - checkout
 
       - run:
+        name: isntall virtualenv
+        command: pip install virtualenv
+        
+      - run:
+        name: isntall pylint
+        command: pip install pylint
+
+      - run:
           name: install dependencies
           command: |
-            python -m venv venv
-            . venv/bin/activate
+            virtualenv vision-framework
+            source vision-framework/bin/activate
             pip install -r requirements.txt
 
       - run:
           name: Run linting
           command: |
-            . venv/bin/activate
+            source vision-framework/bin/activate
             pylint ./
 
       - store_artifacts:
