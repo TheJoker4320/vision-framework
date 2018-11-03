@@ -8,25 +8,43 @@ class PipelineFactory(object):
     publish = {}
 
     """ Creates and returns a single pipeline"""
-    def create_pipeline(self):
-        new_pipeline = Pipeline(self.modifiers, self.filters, self.calcs, self.publish)
+
+    @staticmethod
+    def create_pipeline(proprties):
+        modifiers_list = proprties.get_modifiers(proprties)
+        filters_list = proprties.get_filters(proprties)
+        calcs_list = proprties.get_calcs(proprties)
+        publish_list = proprties.get_publish(proprties)
+        new_pipeline = Pipeline(modifiers_list, filters_list, calcs_list, publish_list)
         return new_pipeline
 
-    # wip
-    def get_modifiers(self, proprties):
-        self.modifiers = proprties['modifiers']
+    """ A function that returns the list with all the modifiers"""
 
-    # wip
-    def get_filters(self, proprties):
-        self.modifiers = proprties['filters']
+    @staticmethod
+    def get_modifiers(proprties):
+        modifiers_list = proprties['modifiers']
+        return modifiers_list
 
-    # wip
-    def get_calcs(self, proprties):
-        self.modifiers = proprties['calcs']
+    """ A function that returns the list with all the filters"""
 
-    # wip
-    def get_publish(self, proprties):
-        self.modifiers = proprties['publish']
+    @staticmethod
+    def get_filters(proprties):
+        filters_list = proprties['filters']
+        return filters_list
+
+    """ A function that returns the list with all the calculations"""
+
+    @staticmethod
+    def get_calcs(proprties):
+        calcs_list = proprties['calcs']
+        return calcs_list
+
+    """ A function that returns the list with all the publishers"""
+
+    @staticmethod
+    def get_publish(proprties):
+        publish_list = proprties['publish']
+        return publish_list
 
     """A class decorator that registers the modifier in the pipeline factory"""
 
@@ -51,3 +69,6 @@ class PipelineFactory(object):
     @staticmethod
     def register_publisher(publisher):
         PipelineFactory.modifiers[publisher.__name__] = publisher
+
+
+
