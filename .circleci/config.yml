@@ -1,0 +1,37 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/code
+    
+    docker:
+      - image: circleci/python:2.7-stretch
+    
+    steps:
+      - checkout
+
+      - run:
+          name: install virtualenv
+          command: pip install virtualenv
+
+      - run:
+          name: install dependencies
+          command: |
+            virtualenv vision-framework
+            source vision-framework/bin/activate
+            pip install -r requirements.txt
+        
+      - run:
+          name: install pylint
+          command: |
+            source vision-framework/bin/activate
+            pip install pylint
+          
+      - run:
+          name: Run linting
+          command: |
+            source vision-framework/bin/activate
+            pylint ./
+
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
