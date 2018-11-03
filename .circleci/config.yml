@@ -30,7 +30,7 @@ jobs:
           name: Run linting
           command: |
             source vision-framework/bin/activate
-            flake8 ./
+            flake8 ./ --exclude=.git,__pycache__,lib,bin
 
       - store_artifacts:
           path: test-reports
