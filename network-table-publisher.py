@@ -5,11 +5,12 @@ from networktables import NetworkTables
 """Gets Data and sends it to the smart dashboard"""
 
 class NetworkTablePublisher(IPublish):
-    def __init__(self):
+    table
+    def __init__(self,table_name):
         NetworkTables.initialize(server= '10.43.20.2')
+        self.table = NetworkTables.getTable(table_name)
     
-    def publish(self, data , table_name):
-        table = NetworkTables.getTable(table_name)
+    def publish(self, data):
         for key in data:
-            table.putNumber(key, data[key])
+            self.table.putNumber(key, data[key])
 
