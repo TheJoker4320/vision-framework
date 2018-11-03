@@ -11,7 +11,7 @@ class NetworkTablePublisher(IPublish):
         while len(team) != 4:
             team = '0' + team
         ip = '10.'+ team[:2] + '.' + team[2:] + '.2'
-        NetworkTables.initialize(ip)
+        NetworkTables.initialize(ip = server)
         self.table = NetworkTables.getTable(table_name)
     
     def publish(self, data):
