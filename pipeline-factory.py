@@ -2,19 +2,45 @@ from pipeline import Pipeline
 
 
 class PipelineFactory(object):
-    modifiers = {}
-    filters = {}
-    calcs = {}
-    publish = {}
+    registered_modifiers = {}
+    registered_filters = {}
+    registered_calcs = {}
+    registered_publish = {}
 
     """ Creates and returns a single pipeline"""
 
     @staticmethod
     def create_pipeline(proprties):
-        modifiers_list = proprties.get_modifiers(proprties)
-        filters_list = proprties.get_filters(proprties)
-        calcs_list = proprties.get_calcs(proprties)
-        publish_list = proprties.get_publish(proprties)
+        modifiers_dic = proprties.get_modifiers(proprties)
+        filters_dic = proprties.get_filters(proprties)
+        calcs_dic = proprties.get_calcs(proprties)
+        publish_dic = proprties.get_publish(proprties)
+
+        modifiers_list = []
+        filters_list = []
+        calcs_list = []
+        publish_list = []
+
+        for modifier_name in modifiers_dic:
+            if modifier_name in PipelineFactory.registered_modifiers:
+                instanc = PipelineFactory.registered_modifiers[modifier_name](**modifiers_dic[modifier_name])
+                modifiers_list.append(instanc)
+
+        for filter_name in filters_dic:
+            if filter_name in PipelineFactory.registered_filters:
+                instanc = PipelineFactory.registered_filters[filter_name](**filters_dic[filter_name])
+                modifiers_list.append(instanc)
+
+        for calc_name in calcs_dic:
+            if calc_name in PipelineFactory.registered_calcs:
+                instanc = PipelineFactory.registered_calcs[calc_name](**calcs_dic[calc_name])
+                modifiers_list.append(instanc)
+
+        for publish_name in publish_dic:
+            if publish_name in PipelineFactory.registered_publish:
+                instanc = PipelineFactory.registered_publish[publish_name](**publish_dic[publish_name])
+                modifiers_list.append(instanc)
+
         new_pipeline = Pipeline(modifiers_list, filters_list, calcs_list, publish_list)
         return new_pipeline
 
@@ -50,25 +76,22 @@ class PipelineFactory(object):
 
     @staticmethod
     def register_modifier(modifier):
-        PipelineFactory.modifiers[modifier.__name__] = modifier
+        PipelineFactory.registered_modifiers[modifier.__name__] = modifier
 
     """A class decorator that registers the filter in the pipeline factory"""
 
     @staticmethod
     def register_filter(filter):
-        PipelineFactory.modifiers[filter.__name__] = filter
+        PipelineFactory.registered_filters[filter.__name__] = filter
 
     """A class decorator that registers the calculation in the pipeline factory"""
 
     @staticmethod
     def register_calc(calc):
-        PipelineFactory.modifiers[calc.__name__] = calc
+        PipelineFactory.registered_calcs[calc.__name__] = calc
 
     """A decorator that registers the publisher in the pipeline factory"""
 
     @staticmethod
     def register_publisher(publisher):
-        PipelineFactory.modifiers[publisher.__name__] = publisher
-
-
-
+        PipelineFactory.registered_publish[publisher.__name__] = publisher
