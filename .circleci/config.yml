@@ -11,9 +11,9 @@ jobs:
 
       - restore_cache:
         keys:
-        - dependencies-{{ checksum "requirements.txt" }}
-        # fallback to using the latest cache if no exact match is found
-        - dependencies-
+          - dependencies-{{ checksum "requirements.txt" }}
+          # fallback to using the latest cache if no exact match is found
+          - dependencies-
 
       - run:
           name: install dependencies
