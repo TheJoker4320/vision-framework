@@ -12,10 +12,6 @@ jobs:
       - run:
           name: install virtualenv
           command: pip install virtualenv
-        
-      - run:
-          name: install pylint
-          command: pip install pylint
 
       - run:
           name: install dependencies
@@ -23,7 +19,13 @@ jobs:
             virtualenv vision-framework
             source vision-framework/bin/activate
             pip install -r requirements.txt
-
+        
+      - run:
+          name: install pylint
+          command: |
+            source vision-framework/bin/activate
+            pip install pylint
+          
       - run:
           name: Run linting
           command: |
