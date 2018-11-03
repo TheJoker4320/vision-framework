@@ -10,11 +10,11 @@ jobs:
       - checkout
 
       - run:
-        name: isntall virtualenv
+        name: install virtualenv
         command: pip install virtualenv
         
       - run:
-        name: isntall pylint
+        name: install pylint
         command: pip install pylint
 
       - run:
