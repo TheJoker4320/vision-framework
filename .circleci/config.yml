@@ -9,23 +9,12 @@ jobs:
     steps:
       - checkout
 
-      - restore_cache:
-        keys:
-          - dependencies-{{ checksum "requirements.txt" }}
-          # fallback to using the latest cache if no exact match is found
-          - dependencies-
-
       - run:
           name: install dependencies
           command: |
             python -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
-
-      - save_cache:
-          paths:
-            - ./venv
-          key: dependencies-{{ checksum "requirements.txt" }}
 
       - run:
           name: Run linting
