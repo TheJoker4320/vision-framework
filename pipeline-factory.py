@@ -81,8 +81,8 @@ class PipelineFactory(object):
     """A class decorator that registers the filter in the pipeline factory"""
 
     @staticmethod
-    def register_filter(filter):
-        PipelineFactory.registered_filters[filter.__name__] = filter
+    def register_filter(filterr):
+        PipelineFactory.registered_filters[filter.__name__] = filterr
 
     """A class decorator that registers the calculation in the pipeline factory"""
 
