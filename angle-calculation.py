@@ -13,17 +13,19 @@ class AngleCalculation(ICalculation):
         self.horizontal_field_of_view = horizontal_field_of_view
         self.image_x_center = image_x_center
         self.image_y_center = image_y_center
+        self.focal_length = utils.calculate_focal_length(self.image_width, self.horizontal_field_of_view)
+
+    def angle_calc(self, center, image_center):
+        angle_radians = math.atan((center - image_center) / self.focal_length)
+        return math.degrees(angle_radians)
 
     def calc(self, contour):
-        dictionary = {}
+        angles_degrees = {}
         x_center, y_center = utils.find_center(contour)
-        focal_length = utils.calculate_focal_length(self.image_width, self.horizontal_field_of_view)
 
-        x_angle = math.atan((x_center - self.image_x_center) / focal_length)
-        x_angle = math.degrees(x_angle)
-        y_angle = math.atan((y_center - self.image_y_center) / focal_length)
-        y_angle = math.degrees(y_angle)
+        x_angle_degrees = self.angle_calc(x_center, self.image_x_center)
+        y_angle_degrees = self.angle_calc(y_center, self.image_y_center)
 
-        dictionary["x_angle"] = x_angle
-        dictionary["y_angle"] = y_angle
-        return dictionary
+        angles_degrees["x_angle"] = x_angle_degrees
+        angles_degrees["y_angle"] = y_angle_degrees
+        return angles_degrees
