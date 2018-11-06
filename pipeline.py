@@ -42,7 +42,7 @@ class Pipeline(object):
                                           cv2.CHAIN_APPROX_SIMPLE)
 
         """
-        f represents a filter (called f to avoid naming it like the built 
+        f represents a filter (called f to avoid naming it like the built
         in function filter)
         """
         for f in self.filters:
