@@ -1,7 +1,8 @@
 from IModifier import IModifier
 import cv2
 
-"""Gets a frame and applies morphology to it """
+"""Gets a frame and applies morphology to it then returns it"""
+
 
 class Morph(IModifier):
 
