@@ -14,4 +14,5 @@ def find_center(contour):
 
 
 def calculate_focal_length(image_width, horizontal_field_of_view):
-    return image_width / (2 * math.tan(math.radians(horizontal_field_of_view / 2)))
+    return image_width / (
+        2 * math.tan(math.radians(horizontal_field_of_view / 2)))
