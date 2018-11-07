@@ -18,7 +18,8 @@ class ShapeFilter(IFilter):
 
         :param contour: the contour to
         :type contour: the contour to check
-        :return: is the contour is approximately similiar to the type of shape (by number of edges)
+        :return: is the contour is approximately similar to the type of shape
+        (by number of edges)
         :rtype: boolean
         """
         epsilon_arc = self.epsilon * cv2.arcLength(contour, True)
@@ -26,4 +27,5 @@ class ShapeFilter(IFilter):
         return len(approximate_polygon) == self.edges_count
 
     def filter(self, contours):
-        return [contour for contour in contours if self.__is_similar_shape(contour)]
+        return [contour for contour in contours if
+                self.__is_similar_shape(contour)]
