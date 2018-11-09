@@ -8,7 +8,8 @@ class IModifier(object):
     def modify(self, picture):
         """
 
-        :rtype: picture
-        :param picture:
-        :type picture:
+        :rtype: matrix of pixels
+        :param picture: a picture to modify
+        :type picture: matrix of pixels
         """
+        pass
