@@ -36,14 +36,16 @@ class Camera:
         """
         os.system(self.initial_string + " -c saturation=" + str(saturation))
 
-    def configure_white_balance_temperature_auto(self, white_balance_temperature_auto):
+    def configure_white_balance_temperature_auto(
+            self, white_balance_temperature_auto):
         """
 
         configure the auto white balance temperature
         :param white_balance_temperature_auto: int
         """
-        os.system(self.initial_string + " -c white_balance_temperature_auto=" + str(
-            white_balance_temperature_auto))
+        os.system(
+            self.initial_string + " -c white_balance_temperature_auto=" + str(
+                white_balance_temperature_auto))
 
     def configure_power_line_frequency(self, power_line_frequency):
         """
@@ -51,7 +53,8 @@ class Camera:
         configure the power line frequency
         :param power_line_frequency: int
         """
-        os.system(self.initial_string + " -c power_line_frequency=" + str(power_line_frequency))
+        os.system(self.initial_string + " -c power_line_frequency=" + str(
+            power_line_frequency))
 
     def configure_white_balance_temperature(self, white_balance_temperature):
         """
@@ -59,7 +62,8 @@ class Camera:
         configure the white balance temperature
         :param white_balance_temperature: int
         """
-        os.system(self.initial_string + " -c white_balance_temperature=" + str(white_balance_temperature))
+        os.system(self.initial_string + " -c white_balance_temperature=" + str(
+            white_balance_temperature))
 
     def configure_sharpness(self, sharpness):
         """
@@ -75,7 +79,8 @@ class Camera:
         configure the backlight compensation
         :param backlight_compensation: int
         """
-        os.system(self.initial_string + " -c backlight_compensation=" + str(backlight_compensation))
+        os.system(self.initial_string + " -c backlight_compensation=" + str(
+            backlight_compensation))
 
     def configure_exposure_auto(self, exposure_auto):
         """
@@ -83,7 +88,8 @@ class Camera:
         configure the auto exposure
         :param exposure_auto: int
         """
-        os.system(self.initial_string + " -c exposure_auto=" + str(exposure_auto))
+        os.system(
+            self.initial_string + " -c exposure_auto=" + str(exposure_auto))
 
     def configure_exposure_absolute(self, exposure_absolute):
         """
@@ -91,7 +97,8 @@ class Camera:
         configure the absolute exposure
         :param exposure_absolute: int
         """
-        os.system(self.initial_string + " -c exposure_absolute=" + str(exposure_absolute))
+        os.system(self.initial_string + " -c exposure_absolute=" + str(
+            exposure_absolute))
 
     def configure_pan_absolute(self, pan_absolute):
         """
@@ -99,7 +106,8 @@ class Camera:
         configure the absolute pan
         :param pan_absolute: int
         """
-        os.system(self.initial_string + " -c pan_absolute=" + str(pan_absolute))
+        os.system(
+            self.initial_string + " -c pan_absolute=" + str(pan_absolute))
 
     def configure_tilt_absolute(self, tilt_absolute):
         """
@@ -107,7 +115,8 @@ class Camera:
         configure the absolute tilt
         :param tilt_absolute:
         """
-        os.system(self.initial_string + " -c tilt_absolute=" + str(tilt_absolute))
+        os.system(
+            self.initial_string + " -c tilt_absolute=" + str(tilt_absolute))
 
     def configure_zoom_absolute(self, zoom_absolute):
         """
@@ -115,7 +124,8 @@ class Camera:
         configure the absolute zoom
         :param zoom_absolute:
         """
-        os.system(self.initial_string + " -c zoom_absolute=" + str(zoom_absolute))
+        os.system(
+            self.initial_string + " -c zoom_absolute=" + str(zoom_absolute))
 
     def get_frame(self):
         """
