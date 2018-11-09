@@ -3,7 +3,7 @@ import cv2
 
 
 class Morph(IModifier):
-    """Gets a frame and applies morphology to it then returns it"""
+    # Gets a frame and applies morphology to it then returns it
 
     def __init__(self, morph_open, morph_close):
         self.morph_open = morph_open
