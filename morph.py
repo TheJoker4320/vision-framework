@@ -1,10 +1,9 @@
 from IModifier import IModifier
 import cv2
 
-"""Gets a frame and applies morphology to it then returns it"""
-
 
 class Morph(IModifier):
+    """Gets a frame and applies morphology to it then returns it"""
 
     def __init__(self, morph_open, morph_close):
         self.morph_open = morph_open
