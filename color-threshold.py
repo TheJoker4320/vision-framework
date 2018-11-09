@@ -5,7 +5,9 @@ import cv2
 class ColorThreshold(IModifier):
     """
     Doing threshold color using HSV
+    HSV represents by the range between the maximum and the minimum values
     """
+
     def __init__(self, low_hsv, high_hsv):
         self.low_hsv = low_hsv
         self.high_hsv = high_hsv

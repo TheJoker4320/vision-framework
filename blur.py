@@ -5,6 +5,7 @@ import cv2
 class Blur(IModifier):
     """
     blurs the image using kernel
+    kernel represented as a tuple
     """
 
     def __init__(self, kernel):
