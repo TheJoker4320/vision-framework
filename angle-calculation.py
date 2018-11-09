@@ -15,7 +15,7 @@ class AngleCalculation(ICalculation):
         self.image_x_center = image_x_center
         self.image_y_center = image_y_center
         self.focal_length = utils.calculate_focal_length(self.image_width,
-                                                         self.horizontal_field_of_view)
+                                                self.horizontal_field_of_view)
 
     def angle_calc(self, center, image_center):
         angle_radians = math.atan((center - image_center) / self.focal_length)
