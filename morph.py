@@ -11,8 +11,11 @@ class Morph(IModifier):
         self.morph_close = morph_close
 
     def modify(self, frame):
+        modified_frame = frame
         if self.morph_open != 0:
-            frame = cv2.morphologyEx(frame, cv2.MORPH_OPEN, self.morph_open)
+            modified_frame = cv2.morphologyEx(frame, cv2.MORPH_OPEN,
+                                              self.morph_open)
         if self.morph_open != 0:
-            frame = cv2.morphologyEx(frame, cv2.MORPH_CLOSE, self.morph_close)
-        return frame
+            modified_frame = cv2.morphologyEx(frame, cv2.MORPH_CLOSE,
+                                              self.morph_close)
+        return modified_frame
