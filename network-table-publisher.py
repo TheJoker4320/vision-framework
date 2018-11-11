@@ -1,11 +1,12 @@
 from IPublish import IPublish
 from networktables import NetworkTables
 
-"""Gets Data and, team number and table name sends it to the specified table"""
-
 
 class NetworkTablePublisher(IPublish):
-
+    """
+    Gets Data ,team number and table name sends it to the specified
+    table via network tables protocol
+    """
     def __init__(self, table_name, team_num):
         team = str(team_num)
         while len(team) != 4:
