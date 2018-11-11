@@ -6,6 +6,8 @@ import utils
 class DistanceCalculation(ICalculation):
     """
     Calculates the distance between the camera and the object
+    uses the image's width, camera's field of view,
+    and object's height in reality
     """
 
     def __init__(self, field_of_view, image_width, real_height):

@@ -7,10 +7,10 @@ def distance(p1, p2):
 
 
 def find_center(contour):
-    m = cv2.moments(contour)
-    cx = int(m['m10'] / m['m00'])
-    cy = int(m['m01'] / m['m00'])
-    return cx, cy
+    moment = cv2.moments(contour)
+    center_x = int(moment['m10'] / moment['m00'])
+    center_y = int(moment['m01'] / moment['m00'])
+    return center_x, center_y
 
 
 def calculate_focal_length(image_width, horizontal_field_of_view):

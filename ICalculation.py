@@ -6,5 +6,8 @@ class ICalculation(object):
 
     @abstractmethod
     def calc(self, contour):
-        # an abstract function that gets a contours and sends a dictionary
+        """
+        an abstract function that gets a contour and returns a dictionary with
+        calculated data
+        """
         pass

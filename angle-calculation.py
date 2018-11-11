@@ -6,6 +6,8 @@ import utils
 class AngleCalculation(ICalculation):
     """
     Calculate the x and y angels between the camera and the object in the image
+    uses image's width, horizontal field of view and image's x and y values of
+    the center
     """
 
     def __init__(self, image_width, horizontal_field_of_view, image_x_center,
