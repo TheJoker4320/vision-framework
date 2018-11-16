@@ -32,7 +32,9 @@ class Camera:
         :param configuration: string
         :param value: int
          """
-        os.system(self.initial_string + " -c " + configuration + "=" + str(value))
+        os.system("{initial_string} -c {configuration}={value}".format(initial_string=self.initial_string,
+                                                                       configuration=configuration,
+                                                                       value=value))
 
     def configure_brightness(self, brightness):
         """
