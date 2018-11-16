@@ -2,7 +2,9 @@ from abc import ABCMeta, abstractmethod
 
 
 class IPublish(object):
-    """an interface which responsible for publishing data"""
+    """
+    an interface which responsible for publishing data
+    """
     __metaclass__ = ABCMeta
 
     @abstractmethod
