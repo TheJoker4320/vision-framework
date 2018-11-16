@@ -3,12 +3,14 @@ import cv2
 
 
 class Blur(IModifier):
-    """
-    blurs the image using kernel
-    kernel represented as a tuple
-    """
+    """blurs the image using kernel"""
 
     def __init__(self, kernel):
+        """
+
+        :param kernel: bluring kernel
+        :type kernel: tuple
+        """
         self.kernel = kernel
 
     def modify(self, pic):
