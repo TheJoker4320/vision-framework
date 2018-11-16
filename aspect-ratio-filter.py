@@ -1,29 +1,31 @@
-from IFilter import IFilter
+from filter import filter
 import cv2
 import utils
 
 
-class AspectRatioFilter(IFilter):
+class AspectRatioFilter(filter):
+
     """
-     Filters the contours by minimum and maximum values of the aspect ratio
-     the aspect ratio defined as the ratio between the hight and width
-     hight defined as the longer between the two side's length
-     """
+    Filters the contours by minimum and maximum values of the aspect ratio
+    the aspect ratio defined as the ratio between the height and width
+    height defined as the longer between the two side's length
+    """
 
     def __init__(self, min_ratio, max_ratio):
         self.min_ratio = min_ratio
         self.max_ratio = max_ratio
 
     def __in_aspect_ratio(self, contour):
-        """
 
+        """
         :param contour: a contour to check
         :type contour: contour
         :return: is the contour in the desired range
         :rtype: boolean
         """
-        rectrangle = cv2.minAreaRect(contour)
-        p0, p1, p2, p3 = cv2.boxPoints(rectrangle)  # the rectangle's points
+
+        rectangle = cv2.minAreaRect(contour)
+        p0, p1, p2, p3 = cv2.boxPoints(rectangle)  # the rectangle's points
         side1 = utils.distance(p0, p1)
         side2 = utils.distance(p1, p2)
         aspect_ratio = float(max(side1, side2)) / min(side1, side2)
@@ -33,5 +35,4 @@ class AspectRatioFilter(IFilter):
         return False
 
     def filter(self, contours):
-        return [contour for contour in contours if
-                self.__in_aspect_ratio(contour)]
+        return [contour for contour in contours if self.__in_aspect_ratio(contour)]

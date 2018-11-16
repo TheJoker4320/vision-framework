@@ -1,10 +1,11 @@
 import cv2
-from IFilter import IFilter
+from filter import filter
 
 
-class BiggestAreaFilter(IFilter):
+class BiggestAreaFilter(filter):
+
     """
-    goes over all the contours and returrn the one with the biggest area
+    Goes over all the contours and returns the one with the biggest area
     returned as a list with one element
     """
 
