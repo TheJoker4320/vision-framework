@@ -17,4 +17,4 @@ class NetworkTablePublisher(IPublish):
 
     def publish(self, data):
         for key, value in data.iteritems:
-            self.table.putNumber(key, value)
+            self.table.putData(key, value)
