@@ -1,8 +1,8 @@
-from filter import filter
+from filter import Filter
 import cv2
 
 
-class ShapeFilter(filter):
+class ShapeFilter(Filter):
 
     """
     Filters the contours by their approximate shape.

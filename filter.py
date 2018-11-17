@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 
 
-class filter(object):
+class Filter(object):
     __metaclass__ = ABCMeta
 
     @abstractmethod

@@ -1,9 +1,9 @@
-from filter import filter
+from filter import Filter
 import cv2
 import utils
 
 
-class AspectRatioFilter(filter):
+class AspectRatioFilter(Filter):
 
     """
     Filters the contours by minimum and maximum values of the aspect ratio

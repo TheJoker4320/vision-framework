@@ -1,9 +1,9 @@
 import cv2
-from filter import filter
+from filter import Filter
 import utils
 
 
-class AreaRatioFilter(filter):
+class AreaRatioFilter(Filter):
 
     """
     Filters the contours by minimum and maximum values of the area ratio.
