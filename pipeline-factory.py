@@ -1,97 +1,123 @@
 from pipeline import Pipeline
+import logging
 
 
 class PipelineFactory(object):
-    rgst_mods = {}  # Registered modifiers
-    rgst_fltrs = {}  # Registered filters
-    rgst_calcs = {}  # Registered Calculations
-    rgst_publish = {}  # Registered Publishers
+    modifier_registry = {}  # Registered modifiers
+    filter_registry = {}  # Registered filters
+    calculation_registry = {}  # Registered Calculations
+    publish_registry = {}  # Registered Publishers
 
     """ Creates and returns a single pipeline"""
 
     @staticmethod
     def create_pipeline(proprties):
-        mod_dic = proprties.get_modifiers(proprties)  # Modifiers Dictionary
-        fltr_dic = proprties.get_filters(proprties)  # Filters Dictionary
-        calc_dic = proprties.get_calcs(proprties)  # Calculations Dictionary
-        pub_dic = proprties.get_publish(proprties)  # Publishers Dictionary
+        modifier_dict = PipelineFactory.get_modifiers(proprties)
+        filter_dict = PipelineFactory.get_filters(proprties)
+        calculation_dict = PipelineFactory.get_calcs(proprties)
+        publish_dict = PipelineFactory.get_publish(proprties)
 
-        mods_lst = []  # Modifiers List
-        fltrs_lst = []  # Filters List
-        calcs_lst = []   # Calculation List
-        publish_lst = []  # Publishers List
+        modifier_list = PipelineFactory.build_list(modifier_dict, PipelineFactory.modifier_registry)
+        filter_list = PipelineFactory.build_list(filter_dict, PipelineFactory.filter_registry)
+        calculation_list = PipelineFactory.build_list(calculation_dict, PipelineFactory.calculation_registry)
+        publish_list = PipelineFactory.build_list(publish_dict, PipelineFactory.publish_registry)
 
-        for mod_name in mod_dic:
-            if mod_name in PipelineFactory.rgst_mods:
-                i = PipelineFactory.rgst_mods[mod_name](**mod_dic[mod_name])
-                mods_lst.append(i)  # i stands for instance
-
-        for flr_name in fltr_dic:
-            if flr_name in PipelineFactory.rgst_fltrs:
-                i = PipelineFactory.rgst_fltrs[flr_name](**fltr_dic[flr_name])
-                fltrs_lst.append(i)  # i stands for instance
-
-        for cal_name in calc_dic:
-            if cal_name in PipelineFactory.rgst_calcs:
-                i = PipelineFactory.rgst_calcs[cal_name](**calc_dic[cal_name])
-                calcs_lst.append(i)  # i stands for instance
-
-        for pub_name in pub_dic:
-            if pub_name in PipelineFactory.rgst_publish:
-                i = PipelineFactory.rgst_publish[pub_name](**pub_dic[pub_name])
-                publish_lst.append(i)  # i stands for instance
-
-        n_pipe = Pipeline(mods_lst, fltrs_lst, calcs_lst, publish_lst)
-        return n_pipe
-
-    """ A function that returns the list with all the modifiers"""
+        new_pipeiline = Pipeline(modifier_list, filter_list, calculation_list, publish_list)
+        return new_pipeiline
 
     @staticmethod
-    def get_modifiers(props):
-        modifiers_list = props['modifiers']
+    def get_modifiers(properties):
+        """ A function that returns the list with all the modifiers"""
+        modifiers_list = properties['modifiers']
         return modifiers_list
 
-    """ A function that returns the list with all the filters"""
-
     @staticmethod
-    def get_filters(props):
-        filters_list = props['filters']
+    def get_filters(properties):
+        """ A function that returns the list with all the filters"""
+        filters_list = properties['filters']
         return filters_list
 
-    """ A function that returns the list with all the calculations"""
-
     @staticmethod
-    def get_calcs(props):
-        calcs_list = props['calcs']
+    def get_calcs(properties):
+        """ A function that returns the list with all the calculations"""
+        calcs_list = properties['calculations']
         return calcs_list
 
-    """ A function that returns the list with all the publishers"""
-
     @staticmethod
-    def get_publish(props):
-        publish_list = props['publish']
+    def get_publish(properties):
+        """ A function that returns the list with all the publishers"""
+        publish_list = properties['publishers']
         return publish_list
 
-    """A class decorator that registers the modifier in the pipeline factory"""
+    @staticmethod
+    def build_list(dictionary, registry):
+        """
+
+        :param dictionary: dictionary of modifier/filter/calculation/publish
+        :type dictionary: dictionary
+        :param registry: registry of modifier/filter/calculation/publish
+        :type registry: dictionary
+        :return: list of build instances from the same type that was recieved
+        :rtype: list
+        """
+        return [registry[name](**properties) for name, properties in dictionary.iteritems() if
+                PipelineFactory.__in_registry(name, registry)]
 
     @staticmethod
-    def register_modifier(modifier):
-        PipelineFactory.rgst_mods[modifier.__name__] = modifier
+    def __in_registry(name, registry):
+        """
+        checks if the name exists in the registery
+        if not logs a warning
 
-    """A class decorator that registers the filter in the pipeline factory"""
+        :param name: name of modifier/filter/calculation/publish
+        :type name: string
+        :param registry: registery of modifier/filter/calculation/publish
+        :type registry: dictionary
+        :return: is the name exists in the registery
+        :rtype: bool
+        """
+        if name in registry:
+            return True
+
+        logging.warning("{} is not registered at the registries".format(name))
+        return False
 
     @staticmethod
-    def register_filter(filterr):
-        PipelineFactory.rgst_fltrs[filterr.__name__] = filterr
+    def modifier(name):
+        """A class decorator that registers the modifier class in the pipeline factory"""
 
-    """A class decorator that registers the calc in the pipeline factory"""
+        def decorator_function(cls):
+            PipelineFactory.modifier_registry[name] = cls
+            return cls
 
-    @staticmethod
-    def register_calc(calc):
-        PipelineFactory.rgst_calcs[calc.__name__] = calc
-
-    """A decorator that registers the publisher in the pipeline factory"""
+        return decorator_function
 
     @staticmethod
-    def register_publisher(publisher):
-        PipelineFactory.rgst_publish[publisher.__name__] = publisher
+    def filter(name):
+        """A class decorator that registers the filter class in the pipeline factory"""
+
+        def decorator_function(cls):
+            PipelineFactory.filter_registry[name] = cls
+            return cls
+
+        return decorator_function
+
+    @staticmethod
+    def calculation(name):
+        """A class decorator that registers the calculation class in the pipeline factory"""
+
+        def decorator_function(cls):
+            PipelineFactory.calculation_registry[name] = cls
+            return cls
+
+        return decorator_function
+
+    @staticmethod
+    def publisher(name):
+        """A decorator that registers the publisher class in the pipeline factory"""
+
+        def decorator_function(cls):
+            PipelineFactory.publish_registry[name] = cls
+            return cls
+
+        return decorator_function
