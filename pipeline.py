@@ -48,6 +48,8 @@ class Pipeline(object):
             contours = filter_object.filter(contours)
 
         Pipeline.__check_contours(contours)
+        if len(contours) == 0:
+            return
         contour = contours[0]  # the first contour that passed all filters
         """
         this iteration responsible for publishing via different publishers
