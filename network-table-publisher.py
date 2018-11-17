@@ -1,8 +1,8 @@
-from publish import publish
+from publish import Publish
 from networktables import NetworkTables
 
 
-class NetworkTablePublisher(publish):
+class NetworkTablePublisher(Publish):
     """
     Gets Data ,team number and table name sends it to the specified
     table via network tables protocol

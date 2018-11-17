@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 
 
-class publish(object):
+class Publish(object):
     """
     an interface which responsible for publishing data
     """
