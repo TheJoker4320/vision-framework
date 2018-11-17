@@ -1,8 +1,8 @@
-from IModifier import IModifier
+from modifier import Modifier
 import cv2
 
 
-class Blur(IModifier):
+class Blur(Modifier):
     """blurs the image using kernel"""
 
     def __init__(self, kernel):

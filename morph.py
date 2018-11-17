@@ -1,8 +1,8 @@
-from IModifier import IModifier
+from modifier import Modifier
 import cv2
 
 
-class Morph(IModifier):
+class Morph(Modifier):
     """
     gets a frame and applies open or close or both open and close
     or none of them and returns the modified frame

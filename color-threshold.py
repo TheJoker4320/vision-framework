@@ -1,8 +1,8 @@
-from IModifier import IModifier
+from modifier import Modifier
 import cv2
 
 
-class ColorThreshold(IModifier):
+class ColorThreshold(Modifier):
     """Doing threshold color using HSV"""
 
     def __init__(self, low_hsv, high_hsv):

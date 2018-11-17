@@ -1,8 +1,8 @@
-from IModifier import IModifier
+from modifier import Modifier
 import cv2
 
 
-class MaskModifier(IModifier):
+class MaskModifier(Modifier):
     """
     Masks the mask image with the original image
     using bitwise and
