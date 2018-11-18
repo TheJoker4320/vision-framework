@@ -5,6 +5,22 @@ import cv2
 class Camera:
     template = "v4l2-ctl -d /dev/video"
     configuration_functions = {}
+    configuration_strings = {
+        "brightness_str": "brightness",
+        "contrast_str": "contrast",
+        "saturation_str": "saturation",
+        "white_balance_temperature_auto_str": "white_balance_temperature_auto",
+        "power_line_frequency_str": "power_line_frequency",
+        "white_balance_temperature_str": "white_balance_temperature",
+        "sharpness_str": "sharpness",
+        "backlight_compensation_str": "backlight_compensation",
+        "exposure_auto_str": "exposure_auto",
+        "exposure_absolute_str": "exposure_absolute",
+        "pan_absolute_str": "pan_absolute",
+        "tilt_absolute_str": "tilt_absolute",
+        "zoom_absolute_str": "zoom_absolute",
+
+    }
 
     def __init__(self, port):
         """
@@ -40,7 +56,7 @@ class Camera:
         configure the brightness
         :param brightness: int
         """
-        self.config(Camera.configuration_strings["brightness_string"], brightness)
+        self.config(Camera.configuration_strings["brightness_str"], brightness)
 
     @configuration(configure="contrast")
     def configure_contrast(self, contrast):
@@ -48,7 +64,7 @@ class Camera:
         configure the contrast
         :param contrast: int
         """
-        self.config(Camera.contrast_string, contrast)
+        self.config(Camera.configuration_strings["contrast_str"], contrast)
 
     @configuration(configure="saturation")
     def configure_saturation(self, saturation):
@@ -56,7 +72,7 @@ class Camera:
         configure the saturation
         :param saturation: int
         """
-        self.config(Camera.saturation_string, saturation)
+        self.config(Camera.configuration_strings["saturation_str"], saturation)
 
     @configuration(configure="white_balance_temperature_auto")
     def configure_white_balance_temperature_auto(self, white_balance_temperature_auto):
@@ -64,7 +80,7 @@ class Camera:
         configure the auto white balance temperature
         :param white_balance_temperature_auto: int
         """
-        self.config(Camera.white_balance_temperature_auto_string, white_balance_temperature_auto)
+        self.config(Camera.configuration_strings["white_balance_temperature_auto_str"], white_balance_temperature_auto)
 
     @configuration(configure="power_line_frequency")
     def configure_power_line_frequency(self, power_line_frequency):
@@ -72,7 +88,7 @@ class Camera:
         configure the power line frequency
         :param power_line_frequency: int
         """
-        self.config(Camera.power_line_frequency_string, power_line_frequency)
+        self.config(Camera.configuration_strings["power_line_frequency_str"], power_line_frequency)
 
     @configuration(configure="white_balance_temperature")
     def configure_white_balance_temperature(self, white_balance_temperature):
@@ -80,7 +96,7 @@ class Camera:
         configure the white balance temperature
         :param white_balance_temperature: int
         """
-        self.config(Camera.white_balance_temperature_string, white_balance_temperature)
+        self.config(Camera.configuration_strings["white_balance_temperature_str"], white_balance_temperature)
 
     @configuration(configure="sharpness")
     def configure_sharpness(self, sharpness):
@@ -88,7 +104,7 @@ class Camera:
         configure the sharpness
         :param sharpness: int
         """
-        self.config(Camera.sharpness_string, sharpness)
+        self.config(Camera.configuration_strings["sharpness_str"], sharpness)
 
     @configuration(configure="backlight_compensation")
     def configure_backlight_compensation(self, backlight_compensation):
@@ -96,7 +112,7 @@ class Camera:
         configure the backlight compensation
         :param backlight_compensation: int
         """
-        self.config(Camera.backlight_compensation_string, backlight_compensation)
+        self.config(Camera.configuration_strings["backlight_compensation_str"], backlight_compensation)
 
     @configuration(configure="exposure_auto")
     def configure_exposure_auto(self, exposure_auto):
@@ -104,7 +120,7 @@ class Camera:
         configure the auto exposure
         :param exposure_auto: int
         """
-        self.config(Camera.exposure_auto_string, exposure_auto)
+        self.config(Camera.configuration_strings["exposure_auto_str"], exposure_auto)
 
     @configuration(configure="exposure_absolute")
     def configure_exposure_absolute(self, exposure_absolute):
@@ -112,7 +128,7 @@ class Camera:
         configure the absolute exposure
         :param exposure_absolute: int
         """
-        self.config(Camera.exposure_absolute_string, exposure_absolute)
+        self.config(Camera.configuration_strings["exposure_absolute_str"], exposure_absolute)
 
     @configuration(configure="pan_absolute")
     def configure_pan_absolute(self, pan_absolute):
@@ -120,7 +136,7 @@ class Camera:
         configure the absolute pan
         :param pan_absolute: int
         """
-        self.config(Camera.pan_absolute_string, pan_absolute)
+        self.config(Camera.configuration_strings["pan_absolute_str"], pan_absolute)
 
     @configuration(configure="tilt_absolute")
     def configure_tilt_absolute(self, tilt_absolute):
@@ -128,7 +144,7 @@ class Camera:
         configure the absolute tilt
         :param tilt_absolute:
         """
-        self.config(Camera.tilt_absolute_string, tilt_absolute)
+        self.config(Camera.configuration_strings["tilt_absolute_str"], tilt_absolute)
 
     @configuration(configure="zoom_absolute")
     def configure_zoom_absolute(self, zoom_absolute):
@@ -136,7 +152,7 @@ class Camera:
         configure the absolute zoom
         :param zoom_absolute:
         """
-        self.config(Camera.zoom_absolute_string, zoom_absolute)
+        self.config(Camera.configuration_strings["zoom_absolute_str"], zoom_absolute)
 
     def get_frame(self):
         """
