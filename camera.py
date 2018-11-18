@@ -4,24 +4,7 @@ import cv2
 
 class Camera:
     template = "v4l2-ctl -d /dev/video"
-    configuration_strings = {}
-    """
-    configuration_strings = {
-    "brightness_string" : "brightness",
-    "contrast_string" : "contrast",
-    "saturation_string" : "saturation",
-    "white_balance_temperature_auto_string" : "white_balance_temperature_auto",
-    "power_line_frequency_string" : "power_line_frequency",
-    "white_balance_temperature_string" : "white_balance_temperature",
-    "sharpness_string" : "sharpness",
-    "backlight_compensation_string" : "backlight_compensation",
-    "exposure_auto_string" : "exposure_auto",
-    "exposure_absolute_string" : "exposure_absolute",
-    "pan_absolute_string" : "pan_absolute",
-    "tilt_absolute_string" : "tilt_absolute",
-    "zoom_absolute_string" : "zoom_absolute"
-    }
-    """
+    configuration_functions = {}
 
     def __init__(self, port):
         """
@@ -33,11 +16,11 @@ class Camera:
 
     @staticmethod
     def configuration(configure):
-        # A class decorator that registers the configuration
+        # A function decorator that registers the function in the configuration dictionary
 
-        def decorator_function(cls):
-            Camera.configuration_strings[configure] = cls
-            return cls
+        def decorator_function(func):
+            Camera.configuration_functions[configure] = func
+            return func
 
         return decorator_function
 
