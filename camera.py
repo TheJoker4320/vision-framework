@@ -28,7 +28,7 @@ class Camera:
         :param int port: the port that the camera connect too
         """
         self.port = port
-        self.initial_string = Camera.template + str(self.port)
+        self.initial_string = "{template}{port}".format(template=Camera.template, port=self.port)
 
     @staticmethod
     def configuration(configure):
