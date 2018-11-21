@@ -6,8 +6,8 @@ class ShapeFilter(Filter):
 
     """
     Filters the contours by their approximate shape.
-    checks the approximate shape according to epsilon value.
-    as epsilon is bigger the filtering is more flexible.
+    Checks the approximate shape according to epsilon value.
+    As epsilon is bigger the filtering is more flexible.
     """
 
     def __init__(self, edges_count, epsilon):

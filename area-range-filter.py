@@ -1,8 +1,6 @@
 from filter import Filter
 import cv2
 
-"""Filters the contours according to the area range"""
-
 
 class AreaRangeFilter(Filter):
 
