@@ -5,7 +5,7 @@ import cv2
 class MaskModifier(Modifier):
     """
     Masks the mask image with the original image
-    using bitwise and
+    using bitwise AND (func)
     """
     def __init__(self, mask):
         self.mask = mask

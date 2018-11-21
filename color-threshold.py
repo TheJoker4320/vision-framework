@@ -3,15 +3,15 @@ import cv2
 
 
 class ColorThreshold(Modifier):
-    """Doing threshold color using HSV"""
+    
+    """Setting color threshold via the HSV values"""
 
     def __init__(self, low_hsv, high_hsv):
         """
-
         :param low_hsv: the lower limit of the HSV range
-        :type low_hsv: int
+        :type low_hsv: list
         :param high_hsv: the higher limit of the HSV range
-        :type high_hsv: int
+        :type high_hsv: list
         """
         self.low_hsv = low_hsv
         self.high_hsv = high_hsv
