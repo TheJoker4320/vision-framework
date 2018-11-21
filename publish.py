@@ -2,9 +2,6 @@ from abc import ABCMeta, abstractmethod
 
 
 class Publish(object):
-    """
-    an interface which responsible for publishing data
-    """
     __metaclass__ = ABCMeta
 
     @abstractmethod
