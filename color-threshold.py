@@ -3,7 +3,6 @@ import cv2
 
 
 class ColorThreshold(Modifier):
-    
     """Setting color threshold via the HSV values"""
 
     def __init__(self, low_hsv, high_hsv):
