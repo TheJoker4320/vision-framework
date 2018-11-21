@@ -1,4 +1,4 @@
-from Calculation import Calculation
+from calculation import Calculation
 import cv2
 import utils
 
