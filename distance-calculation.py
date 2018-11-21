@@ -4,10 +4,11 @@ import utils
 
 
 class DistanceCalculation(Calculation):
+    
     """
     Calculates the distance between the camera and the object
-    uses the image's width, camera's field of view,
-    and object's height in reality
+    Uses the image's width, camera's field of view,
+    and thr object's height in reality.
     """
 
     def __init__(self, field_of_view, image_width, real_height):
