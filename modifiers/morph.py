@@ -1,9 +1,9 @@
-from pipeline.pipeline_factory.PipelineFactory import modifier
+from vision_framework.pipeline.pipeline_factory import PipelineFactory
 from modifier import Modifier
 import cv2
 
 
-@modifier(name = "Morph")
+@PipelineFactory.modifier(name="Morph")
 class Morph(Modifier):
     """
     gets a frame and applies open or close or both open and close

@@ -1,4 +1,4 @@
-from pipeline.pipeline_factory import PipelineFactory
+from vision_framework.pipeline.pipeline_factory import PipelineFactory
 from modifier import Modifier
 import cv2
 

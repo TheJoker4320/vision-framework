@@ -1,5 +1,6 @@
 from pipeline import Pipeline
 import logging
+from modifiers import *
 
 
 class PipelineFactory(object):

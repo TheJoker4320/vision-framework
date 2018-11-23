@@ -1,9 +1,9 @@
-from pipeline.pipeline_factory.PipelineFactory import modifier
+from vision_framework.pipeline.pipeline_factory import PipelineFactory
 from modifier import Modifier
 import cv2
 
 
-@modifier(name = "Color Threshold")
+@PipelineFactory.modifier(name="Color Threshold")
 class ColorThreshold(Modifier):
     """
     Doing threshold color using HSV.
