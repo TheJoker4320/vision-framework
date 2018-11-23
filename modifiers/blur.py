@@ -1,7 +1,9 @@
+from pipeline.pipeline_factory import PipelineFactory
 from modifier import Modifier
 import cv2
 
 
+@PipelineFactory.modifier(name="Blur")
 class Blur(Modifier):
     """Blurs the image using a kernel."""
 
