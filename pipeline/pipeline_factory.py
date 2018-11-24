@@ -1,13 +1,34 @@
 from pipeline import Pipeline
 import logging
 from modifiers import *
+from modifiers.modifier import Modifier
+
+from filters import *
+from filters.filter import Filter
+
+from calculations import *
+from calculations.calculation import Calculation
+
+from publishers import *
+from publishers.publish import Publish
 
 
 class PipelineFactory(object):
-    modifier_registry = {}  # Registered modifiers
-    filter_registry = {}  # Registered filters
-    calculation_registry = {}  # Registered Calculations
-    publish_registry = {}  # Registered Publishers
+    @staticmethod
+    def modifier_registry():
+        return {modifier_class.__name__: modifier_class for modifier_class in Modifier.__subclasses__()}
+
+    @staticmethod
+    def filter_registry():
+        return {filter_class.__name__: filter_class for filter_class in Filter.__subclasses__()}
+
+    @staticmethod
+    def calculation_registry():
+        return {calculation_class.__name__: calculation_class for calculation_class in Calculation.__subclasses__()}
+
+    @staticmethod
+    def publisher_registry():
+        return {publisher_class.__name__: publisher_class for publisher_class in Publish.__subclasses__()}
 
     """ Creates and returns a single pipeline"""
 
@@ -18,13 +39,13 @@ class PipelineFactory(object):
         calculation_dict = PipelineFactory.get_calcs(proprties)
         publish_dict = PipelineFactory.get_publish(proprties)
 
-        modifier_list = PipelineFactory.build_list(modifier_dict, PipelineFactory.modifier_registry)
-        filter_list = PipelineFactory.build_list(filter_dict, PipelineFactory.filter_registry)
-        calculation_list = PipelineFactory.build_list(calculation_dict, PipelineFactory.calculation_registry)
-        publish_list = PipelineFactory.build_list(publish_dict, PipelineFactory.publish_registry)
+        modifier_list = PipelineFactory.build_list(modifier_dict, PipelineFactory.modifier_registry())
+        filter_list = PipelineFactory.build_list(filter_dict, PipelineFactory.filter_registry())
+        calculation_list = PipelineFactory.build_list(calculation_dict, PipelineFactory.calculation_registry())
+        publish_list = PipelineFactory.build_list(publish_dict, PipelineFactory.publisher_registry())
 
-        new_pipeiline = Pipeline(modifier_list, filter_list, calculation_list, publish_list)
-        return new_pipeiline
+        new_pipeline = Pipeline(modifier_list, filter_list, calculation_list, publish_list)
+        return new_pipeline
 
     @staticmethod
     def get_modifiers(properties):
