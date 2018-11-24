@@ -1,9 +1,7 @@
-from vision_framework.pipeline.pipeline_factory import PipelineFactory
 from modifier import Modifier
 import cv2
 
 
-@PipelineFactory.modifier(name="Blur")
 class Blur(Modifier):
     """Blurs the image using a kernel."""
 
@@ -12,7 +10,7 @@ class Blur(Modifier):
         :param kernel: bluring kernel
         :type kernel: tuple
         """
-        self.kernel = kernel
+        self.kernel = (kernel[0], kernel[1])
 
     def modify(self, pic):
         return cv2.GaussianBlur(pic, self.kernel, 0)
