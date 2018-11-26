@@ -50,6 +50,11 @@ class Camera:
                                                                        configuration=configuration,
                                                                        value=value))
 
+    def camera_setting_setter(props):
+        for key, value in props.iteriteams():
+            if key in Camera.configuration_functions:
+                Camera.configuration_functions[key](**value)
+
     @configuration(configure="brightness")
     def configure_brightness(self, brightness):
         """
