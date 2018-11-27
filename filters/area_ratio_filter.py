@@ -4,7 +4,6 @@ import utils
 
 
 class AreaRatioFilter(Filter):
-
     """
     Filters the contours by minimum and maximum values of the area ratio.
     The area ratio is defined as the ratio between the rectangle area and contour area.
@@ -15,7 +14,6 @@ class AreaRatioFilter(Filter):
         self.max_area_ratio = max_area_ratio
 
     def __check_area_ratio(self, contour):
-
         """
         :param contour: a contour to check
         :type contour: contour
@@ -25,14 +23,12 @@ class AreaRatioFilter(Filter):
 
         rect = cv2.minAreaRect(contour)
         point1, point2, point3, point4 = cv2.boxPoints(rect)
-        reg_height = utils.distance(point1, point2)
-        reg_width = utils.distance(point3, point4)
-        rect_area = reg_width * reg_height
+        rect_height = utils.distance(point1, point2)
+        rect_width = utils.distance(point3, point4)
+        rect_area = rect_width * rect_height
         cnt_area = cv2.contourArea(contour)  # The contour area
 
-        if self.max_area_ratio >= float(rect_area) / cnt_area >= self.min_area_ratio:
-            return True
-        return False
+        return cnt_area != 0 and self.max_area_ratio >= float(rect_area) / cnt_area >= self.min_area_ratio
 
     def filter(self, contours):
         return [contour for contour in contours if self.__check_area_ratio(contour)]
