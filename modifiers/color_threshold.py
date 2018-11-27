@@ -1,5 +1,6 @@
 from modifier import Modifier
 import cv2
+import numpy
 
 
 class ColorThreshold(Modifier):
@@ -19,8 +20,8 @@ class ColorThreshold(Modifier):
         :type do_mask: boolean
         """
 
-        self.low_hsv = low_hsv
-        self.high_hsv = high_hsv
+        self.low_hsv = numpy.array(low_hsv)
+        self.high_hsv = numpy.array(high_hsv)
         self.do_mask = do_mask
 
     def modify(self, pic):
