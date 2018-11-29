@@ -38,9 +38,6 @@ class Pipeline(object):
         for modifier in self.modifiers:
             frame = modifier.modify(frame)
 
-        cv2.namedWindow('modified frame')
-        cv2.imshow('modified frame', frame)
-
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         _, contours, _ = cv2.findContours(gray_frame, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
@@ -50,7 +47,7 @@ class Pipeline(object):
 
         for filter_object in self.filters:
             contours = filter_object.filter(contours)
-            logging.debug("{} passed {}".format(len(contours), filter_object.__name__))
+            logging.info("{} passed {}".format(len(contours), type(filter_object).__name__))
 
         logging.info("post filtering")
         if not Pipeline.__contain_contour(contours):
@@ -72,9 +69,9 @@ class Pipeline(object):
         """
         contour_amount = len(contours)
         if contour_amount == 0:
-            logging.info("there were not found any counter")
+            logging.debug("there were not found any counter")
             return False
         elif contour_amount == 1:
-            logging.info("single contour was found")
-        logging.info("multiple contours were found")
+            logging.debug("single contour was found")
+        logging.debug("multiple contours were found")
         return True
