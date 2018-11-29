@@ -22,13 +22,15 @@ class AreaRatioFilter(Filter):
         """
 
         rect = cv2.minAreaRect(contour)
-        point1, point2, point3, point4 = cv2.boxPoints(rect)
+        point1, point2, point3, _ = cv2.boxPoints(rect)
         rect_height = utils.distance(point1, point2)
-        rect_width = utils.distance(point3, point4)
+        rect_width = utils.distance(point2, point3)
         rect_area = rect_width * rect_height
         cnt_area = cv2.contourArea(contour)  # The contour area
+	fullness_ratio = cnt_area / float(rect_area) 
+	print fullness_ratio
 
-        return cnt_area != 0 and self.max_area_ratio >= float(rect_area) / cnt_area >= self.min_area_ratio
+        return cnt_area != 0 and self.max_area_ratio >= fullness_ratio >= self.min_area_ratio
 
     def filter(self, contours):
         return [contour for contour in contours if self.__check_area_ratio(contour)]
