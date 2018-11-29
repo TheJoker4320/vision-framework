@@ -1,16 +1,18 @@
 import cv2
 from camera import Camera
+import time
 
 
 def main():
     dic = {}
+    cam = Camera(1)
     cv2.namedWindow('shit')
-    cap = cv2.VideoCapture(0)
-    cam = Camera(0)
     cam.camera_setting_setter(dic)
+    # cam.get_frame()
     while True:
-        _, frame = cap.read()
-        cv2.imshow('shit', frame)
+	cv2.waitKey(30)    
+    	cv2.imshow('shit',cam.get_frame())
+	
 
 
 if __name__ == '__main__':

@@ -39,6 +39,7 @@ class Camera(object):
         :param int port: the port that the camera connect too
         """
         self.port = port
+	self.video_capture = cv2.VideoCapture(self.port)
         self.initial_string = "{template}{port}".format(template=Camera.template, port=self.port)
 
     def config(self, configuration, value):
@@ -165,6 +166,6 @@ class Camera(object):
 
         :return: an adjust frame
         """
-        video_capture = cv2.VideoCapture(self.port)
-        _, image = video_capture.read()
+        
+        _, image = self.video_capture.read()
         return image
