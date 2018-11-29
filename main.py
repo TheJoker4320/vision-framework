@@ -7,7 +7,7 @@ from camera import Camera
 def main():
     logging.basicConfig(level=logging.INFO)
     camera = Camera(1)
-    with open("jak.json", "r") as f:
+    with open("properties.json", "r") as f:
         prop = json.load(f)
     my_pipeline = PipelineFactory.create_pipeline(prop)
     while True:

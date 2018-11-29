@@ -12,11 +12,6 @@
     "exposure absolute": 5,
     "tilt absolute": 0,
     "exposure auto": 1,
-    "resolution": [
-      1280,
-      720
-    ],
-    "id": 1,
     "contrast": 10,
     "zoom absolute": 0
   },
