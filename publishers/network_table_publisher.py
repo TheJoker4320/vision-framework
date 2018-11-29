@@ -16,5 +16,5 @@ class NetworkTablePublisher(Publish):
         self.table = NetworkTables.getTable(table_name)
 
     def publish(self, data):
-        for key, value in data.iteritems:
-            self.table.putData(key, value)
+        for key, value in data.iteritems():
+            self.table.putValue(key, value)
