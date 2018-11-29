@@ -72,8 +72,8 @@
   },
   "filters": {
     "AreaRangeFilter": {
-      "min_area": 360,
-      "max_area": 360
+      "min_area": 100,
+      "max_area": 60000
     },
     "AspectRatioFilter": {
       "min_ratio": 0.12345679012345678,
@@ -82,10 +82,6 @@
     "AreaRatioFilter": {
       "min_area_ratio": 0.8,
       "max_area_ratio": 1
-    },
-    "ShapeFilter": {
-      "edges_count": 5,
-      "epsilon": 0.035
     }
   }
 }
