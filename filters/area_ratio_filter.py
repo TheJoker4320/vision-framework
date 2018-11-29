@@ -27,7 +27,7 @@ class AreaRatioFilter(Filter):
         rect_width = utils.distance(point2, point3)
         rect_area = rect_width * rect_height
         cnt_area = cv2.contourArea(contour)  # The contour area
-	fullness_ratio = cnt_area / float(rect_area) 
+        fullness_ratio = cnt_area / float(rect_area)
 
         return cnt_area != 0 and self.max_area_ratio >= fullness_ratio >= self.min_area_ratio
 
