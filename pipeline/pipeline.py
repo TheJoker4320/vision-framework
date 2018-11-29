@@ -38,6 +38,9 @@ class Pipeline(object):
         for modifier in self.modifiers:
             frame = modifier.modify(frame)
 
+        cv2.namedWindow('modified frame')
+        cv2.imshow('modified frame',frame)
+
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         _, contours, _ = cv2.findContours(gray_frame, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
