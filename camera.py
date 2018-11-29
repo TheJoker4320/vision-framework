@@ -1,10 +1,21 @@
 import os
 import cv2
 
+configuration_functions = {}
 
-class Camera:
+
+def configuration(configure):
+    # A function decorator that registers the function in the configuration dictionary
+
+    def decorator_function(func):
+        configuration_functions[configure] = func
+        return func
+
+    return decorator_function
+
+
+class Camera(object):
     template = "v4l2-ctl -d /dev/video"
-    configuration_functions = {}
     configuration_strings = {
         "brightness_str": "brightness",
         "contrast_str": "contrast",
@@ -30,16 +41,6 @@ class Camera:
         self.port = port
         self.initial_string = "{template}{port}".format(template=Camera.template, port=self.port)
 
-    @staticmethod
-    def configuration(configure):
-        # A function decorator that registers the function in the configuration dictionary
-
-        def decorator_function(func):
-            Camera.configuration_functions[configure] = func
-            return func
-
-        return decorator_function
-
     def config(self, configuration, value):
         """
         configure the configuration with the value
@@ -50,10 +51,10 @@ class Camera:
                                                                        configuration=configuration,
                                                                        value=value))
 
-    def camera_setting_setter(props):
-        for key, value in props.iteriteams():
-            if key in Camera.configuration_functions:
-                Camera.configuration_functions[key](**value)
+    def camera_setting_setter(self, props):
+        for key, value in props.iteritems():
+            if key in configuration_functions:
+                configuration_functions[key](**value)
 
     @configuration(configure="brightness")
     def configure_brightness(self, brightness):
