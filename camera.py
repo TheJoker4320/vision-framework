@@ -52,8 +52,9 @@ class Camera(object):
                                                                        configuration=configuration,
                                                                        value=value))
 
-    def camera_setting_setter(self, props):
-        for key, value in props.iteritems():
+    @staticmethod
+    def camera_setting_setter(properties):
+        for key, value in properties.iteritems():
             if key in configuration_functions:
                 configuration_functions[key](**value)
 
