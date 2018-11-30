@@ -1,5 +1,5 @@
 {
-  "camera_settings": {
+  "camera settings": {
     "white balance temperature auto": 0,
     "saturation": 100,
     "brightness": 70,
@@ -13,7 +13,8 @@
     "tilt absolute": 0,
     "exposure auto": 1,
     "contrast": 10,
-    "zoom absolute": 0
+    "zoom absolute": 0,
+    "id": 1
   },
   "publishers": {
     "NetworkTablePublisher": {
