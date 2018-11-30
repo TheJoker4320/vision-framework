@@ -15,6 +15,11 @@ def configuration(configure):
 
 
 class Camera(object):
+    """
+    An camera class
+    Has option to set configuration
+    """
+
     template = "v4l2-ctl -d /dev/video"
     configuration_strings = {
         "brightness_str": "brightness",
@@ -53,6 +58,14 @@ class Camera(object):
                                                                        value=value))
 
     def camera_setting_setter(self, properties):
+        """
+        Sets configurations to the camera by given configuration
+        The configuration need to be registered
+        Use configuration decorator to register setting functions
+
+        :param properties: the properties of the camera to apply on
+        :type properties: dictionary
+        """
         for key, value in properties.iteritems():
             if key in configuration_functions:
                 configuration_functions[key](self, value)
