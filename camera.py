@@ -52,11 +52,10 @@ class Camera(object):
                                                                        configuration=configuration,
                                                                        value=value))
 
-    @staticmethod
-    def camera_setting_setter(properties):
+    def camera_setting_setter(self, properties):
         for key, value in properties.iteritems():
             if key in configuration_functions:
-                configuration_functions[key](**value)
+                configuration_functions[key](self, value)
 
     @configuration(configure="brightness")
     def configure_brightness(self, brightness):
@@ -82,7 +81,7 @@ class Camera(object):
         """
         self.config(Camera.configuration_strings["saturation_str"], saturation)
 
-    @configuration(configure="white_balance_temperature_auto")
+    @configuration(configure="white balance temperature auto")
     def configure_white_balance_temperature_auto(self, white_balance_temperature_auto):
         """
         configure the auto white balance temperature
@@ -90,7 +89,7 @@ class Camera(object):
         """
         self.config(Camera.configuration_strings["white_balance_temperature_auto_str"], white_balance_temperature_auto)
 
-    @configuration(configure="power_line_frequency")
+    @configuration(configure="power line frequency")
     def configure_power_line_frequency(self, power_line_frequency):
         """
         configure the power line frequency
@@ -98,7 +97,7 @@ class Camera(object):
         """
         self.config(Camera.configuration_strings["power_line_frequency_str"], power_line_frequency)
 
-    @configuration(configure="white_balance_temperature")
+    @configuration(configure="white balance temperature")
     def configure_white_balance_temperature(self, white_balance_temperature):
         """
         configure the white balance temperature
@@ -114,7 +113,7 @@ class Camera(object):
         """
         self.config(Camera.configuration_strings["sharpness_str"], sharpness)
 
-    @configuration(configure="backlight_compensation")
+    @configuration(configure="backlight compensation")
     def configure_backlight_compensation(self, backlight_compensation):
         """
         configure the backlight compensation
@@ -122,7 +121,7 @@ class Camera(object):
         """
         self.config(Camera.configuration_strings["backlight_compensation_str"], backlight_compensation)
 
-    @configuration(configure="exposure_auto")
+    @configuration(configure="exposure auto")
     def configure_exposure_auto(self, exposure_auto):
         """
         configure the auto exposure
@@ -130,7 +129,7 @@ class Camera(object):
         """
         self.config(Camera.configuration_strings["exposure_auto_str"], exposure_auto)
 
-    @configuration(configure="exposure_absolute")
+    @configuration(configure="exposure absolute")
     def configure_exposure_absolute(self, exposure_absolute):
         """
         configure the absolute exposure
@@ -138,7 +137,7 @@ class Camera(object):
         """
         self.config(Camera.configuration_strings["exposure_absolute_str"], exposure_absolute)
 
-    @configuration(configure="pan_absolute")
+    @configuration(configure="pan absolute")
     def configure_pan_absolute(self, pan_absolute):
         """
         configure the absolute pan
@@ -146,7 +145,7 @@ class Camera(object):
         """
         self.config(Camera.configuration_strings["pan_absolute_str"], pan_absolute)
 
-    @configuration(configure="tilt_absolute")
+    @configuration(configure="tilt absolute")
     def configure_tilt_absolute(self, tilt_absolute):
         """
         configure the absolute tilt
@@ -154,7 +153,7 @@ class Camera(object):
         """
         self.config(Camera.configuration_strings["tilt_absolute_str"], tilt_absolute)
 
-    @configuration(configure="zoom_absolute")
+    @configuration(configure="zoom absolute")
     def configure_zoom_absolute(self, zoom_absolute):
         """
         configure the absolute zoom
