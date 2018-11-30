@@ -10,4 +10,4 @@ class BiggestAreaFilter(Filter):
     """
 
     def filter(self, contours):
-        return [max(contours, key=cv2.contourArea)]
+        return [max(contours, key=cv2.contourArea)] if contours!=[] else contours
