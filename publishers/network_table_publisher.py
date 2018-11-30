@@ -7,7 +7,7 @@ class NetworkTablePublisher(Publish):
     Gets Data ,team number and table name.
     Sends it to the specified table via network tables protocol.
     """
-    ip_template = "10.(0).(1).2"
+    ip_template = "10.{0}.{1}.2"
 
     def __init__(self, table_name, team_num):
         team_num = '0' * (4 - len(str(team_num))) + str(team_num)

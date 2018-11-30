@@ -7,7 +7,7 @@ class DistanceCalculation(Calculation):
     """
     Calculates the distance between the camera and the object
     Uses the image's width, camera's field of view,
-    and thr object's height in reality.
+    and the object's height in reality.
     """
 
     def __init__(self, field_of_view, image_width, real_height):

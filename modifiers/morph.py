@@ -10,6 +10,11 @@ class Morph(Modifier):
     """
 
     def __init__(self, morph_open, morph_close):
+        """
+
+        :param morph_open: a numpy array for the close method
+        :param morph_close:  a numpy array for the open method
+        """
         self.morph_open = numpy.ones(morph_open)
         self.morph_close = numpy.ones(morph_close)
 

@@ -6,10 +6,15 @@ class AreaRangeFilter(Filter):
 
     """
     Filters the contours by minimum and maximum values of the area.
-    The area is defined by tho contour area.
+    The area is defined by the contour area.
     """
 
     def __init__(self, min_area, max_area):
+        """
+
+        :param min_area: The minimum of the contour to filter
+        :param max_area: The maximum are of the contour to filter
+        """
         self.min_area = min_area
         self.max_area = max_area
 
