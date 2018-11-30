@@ -5,11 +5,15 @@ from camera import Camera
 
 
 def main():
-    logging.basicConfig(level=logging.INFO)
-    camera = Camera(1)
-    with open("properties.json", "r") as f:
-        prop = json.load(f)
-    my_pipeline = PipelineFactory.create_pipeline(prop)
+    logging.basicConfig(filename='logger.log', level=logging.INFO)
+
+    with open("properties.json", "r") as file_handler:
+        properties = json.load(file_handler)
+    my_pipeline = PipelineFactory.create_pipeline(properties)
+
+    camera_settings = properties['camera settings']
+    camera = Camera(camera_settings['id'])
+    Camera.camera_setting_setter(camera_settings)
     while True:
         my_pipeline.process_image(camera.get_frame())
 
