@@ -18,8 +18,8 @@ def main():
     camera = Camera(camera_settings['id'])
     camera.camera_setting_setter(camera_settings)
     while True:
-	frame= camera.get_frame()
-	# cv2.imshow('screen1',frame)
+        frame = camera.get_frame()
+        # cv2.imshow('screen1',frame)
         my_pipeline.process_image(frame)
 
 

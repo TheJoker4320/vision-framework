@@ -53,9 +53,9 @@ class Pipeline(object):
         if not Pipeline.__contain_contour(contours):
             return
         contour = contours[0]  # the first contour that passed all filters
-	# cv2.drawContours(frame, [contour], 0, (0,255,0), 3)
-	# cv2.waitKey(30)
-	# cv2.imshow("screen2",frame)
+        # cv2.drawContours(frame, [contour], 0, (0,255,0), 3)
+        # cv2.waitKey(30)
+        # cv2.imshow("screen2",frame)
         """
         this iteration responsible for publishing via different publishers
         the results of the calculations
