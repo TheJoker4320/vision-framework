@@ -41,15 +41,15 @@ class Pipeline(object):
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         _, contours, _ = cv2.findContours(gray_frame, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
-        logging.info("post modifying")
+        logging.debug("post modifying")
         if not Pipeline.__contain_contour(contours):
             return
 
         for filter_object in self.filters:
             contours = filter_object.filter(contours)
-            logging.info("{} passed {}".format(len(contours), type(filter_object).__name__))
+            logging.debug("{} passed {}".format(len(contours), type(filter_object).__name__))
 
-        logging.info("post filtering")
+        logging.debug("post filtering")
         if not Pipeline.__contain_contour(contours):
             return
         contour = contours[0]  # the first contour that passed all filters
