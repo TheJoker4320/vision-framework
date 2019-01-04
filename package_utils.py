@@ -1,5 +1,7 @@
 import os
 
+black_list = ['modifier.py', 'filter.py', 'publish.py', 'calculation.py', 'init.py']
+
 
 def check_import(file_name):
     """
@@ -8,13 +10,7 @@ def check_import(file_name):
     :return: True or false
     :rtype boolean
     """
-    if file_name == 'modifier.py':
-        return False
-    elif file_name == 'filter.py':
-        return False
-    elif file_name == 'publish.py':
-        return False
-    elif file_name == 'calculation.py':
+    if file_name in black_list:
         return False
     return file_name.endswith('.py') and file_name != '__init__.py'
 
