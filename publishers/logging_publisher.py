@@ -2,7 +2,7 @@ import logging
 from publish import Publish
 
 
-class Logger(Publish):
+class Logging_publisher(Publish):
     """
     A publish class
     Responsible for logging the information at info level
