@@ -1,6 +1,6 @@
 from calculation import Calculation
 import math
-import utils
+import calculation_utils
 
 
 class AngleCalculation(Calculation):
@@ -15,11 +15,11 @@ class AngleCalculation(Calculation):
         self.horizontal_field_of_view = horizontal_field_of_view
         self.image_x_center = image_x_center
         self.image_y_center = image_y_center
-        self.focal_length = utils.calculate_focal_length(self.image_width, self.horizontal_field_of_view)
+        self.focal_length = calculation_utils.calculate_focal_length(self.image_width, self.horizontal_field_of_view)
 
     def calc(self, contour):
         angles_degrees = {}
-        x_center, y_center = utils.find_center(contour)
+        x_center, y_center = calculation_utils.find_center(contour)
 
         x_angle_degrees = self.angle_calc(x_center, self.image_x_center)
         y_angle_degrees = self.angle_calc(y_center, self.image_y_center)

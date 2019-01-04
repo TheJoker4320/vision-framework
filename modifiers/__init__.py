@@ -1,3 +1,3 @@
-import package_utilis
+import package_utils
 
-__all__ = package_utilis.create_all(__file__)
+__all__ = package_utils.create_all(__file__)
