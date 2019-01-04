@@ -22,6 +22,6 @@ class Morph(Modifier):
         modified_frame = frame
         if self.morph_open != (0, 0):
             modified_frame = cv2.morphologyEx(frame, cv2.MORPH_OPEN, self.morph_open)
-        if self.morph_open != (0, 0):
+        if self.morph_close != (0, 0):
             modified_frame = cv2.morphologyEx(frame, cv2.MORPH_CLOSE, self.morph_close)
         return modified_frame
