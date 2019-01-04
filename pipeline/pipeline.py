@@ -58,8 +58,9 @@ class Pipeline(object):
         the results of the calculations
         """
         for calculation in self.calculations:
+            calc = calculation.calc(contour)
             for publisher in self.publishers:
-                publisher.publish(calculation.calc(contour))
+                publisher.publish(calc)
 
     @staticmethod
     def __contain_contour(contours):
