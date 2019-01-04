@@ -1,6 +1,6 @@
 import os
 
-black_list = ['modifier.py', 'filter.py', 'publish.py', 'calculation.py', 'init.py']
+black_list = ['modifier.py', 'filter.py', 'publish.py', 'calculation.py', '__init__.py']
 
 
 def check_import(file_name):
