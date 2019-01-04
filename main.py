@@ -1,8 +1,8 @@
 import json
-from pipeline.pipeline_factory import PipelineFactory
 import logging
+
 from camera import Camera
-import cv2
+from pipeline.pipeline_factory import PipelineFactory
 
 
 def main():
