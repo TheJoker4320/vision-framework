@@ -7,8 +7,6 @@ import cv2
 
 def main():
     logging.basicConfig(level=logging.INFO)
-    # cv2.namedWindow("screen1")
-    # cv2.namedWindow("screen2")
 
     with open("properties.json", "r") as file_handler:
         properties = json.load(file_handler)
@@ -19,7 +17,6 @@ def main():
     camera.camera_setting_setter(camera_settings)
     while True:
         frame = camera.get_frame()
-        # cv2.imshow('screen1',frame)
         my_pipeline.process_image(frame)
 
 
