@@ -1,15 +1,9 @@
 from pipeline import Pipeline
 import logging
-from modifiers import *
+
 from modifiers.modifier import Modifier
-
-from filters import *
 from filters.filter import Filter
-
-from calculations import *
 from calculations.calculation import Calculation
-
-from publishers import *
 from publishers.publish import Publish
 
 
