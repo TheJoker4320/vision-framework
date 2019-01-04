@@ -12,7 +12,7 @@ def check_import(file_name):
     """
     if file_name in black_list:
         return False
-    return file_name.endswith('.py') and file_name != '__init__.py'
+    return file_name.endswith('.py')
 
 
 def create_all(path):
