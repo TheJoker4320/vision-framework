@@ -1,6 +1,6 @@
 from filter import Filter
 import cv2
-import utils
+import calculation_utils
 
 
 class AspectRatioFilter(Filter):
@@ -26,8 +26,8 @@ class AspectRatioFilter(Filter):
 
         rectangle = cv2.minAreaRect(contour)
         p0, p1, p2, p3 = cv2.boxPoints(rectangle)  # the rectangle's points
-        side1 = utils.distance(p0, p1)
-        side2 = utils.distance(p1, p2)
+        side1 = calculation_utils.distance(p0, p1)
+        side2 = calculation_utils.distance(p1, p2)
         aspect_ratio = float(max(side1, side2)) / min(side1, side2)
 
         if self.min_ratio <= aspect_ratio <= self.max_ratio:
