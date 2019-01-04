@@ -52,10 +52,7 @@ class Pipeline(object):
         logging.debug("post filtering")
         if not Pipeline.__contain_contour(contours):
             return
-        contour = contours[0]  # the first contour that passed all filters
-        # cv2.drawContours(frame, [contour], 0, (0,255,0), 3)
-        # cv2.waitKey(30)
-        # cv2.imshow("screen2",frame)
+        contour = contours[0]
         """
         this iteration responsible for publishing via different publishers
         the results of the calculations
@@ -72,7 +69,7 @@ class Pipeline(object):
         """
         contour_amount = len(contours)
         if contour_amount == 0:
-            logging.debug("there were not found any counter")
+            logging.warning("there were not found any counter")
             return False
         elif contour_amount == 1:
             logging.debug("single contour was found")
