@@ -20,7 +20,7 @@ class Camera(object):
     Has option to set configuration
     """
 
-    template = "v4l2-ctl -d /dev/video"
+    TEMPLATE = "v4l2-ctl -d /dev/video"
     configuration_strings = {
         "brightness_str": "brightness",
         "contrast_str": "contrast",
@@ -43,9 +43,8 @@ class Camera(object):
 
         :param int port: the port that the camera connect too
         """
-        self.port = port
-        self.video_capture = cv2.VideoCapture(self.port)
-        self.initial_string = "{template}{port}".format(template=Camera.template, port=self.port)
+        self.video_capture = cv2.VideoCapture(port)
+        self.initial_string = "{template}{port}".format(template=Camera.TEMPLATE, port=port)
 
     def config(self, configuration, value):
         """
