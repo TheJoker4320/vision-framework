@@ -103,5 +103,3 @@ class PipelineFactory(object):
 
         logging.warning("{} is not registered at the registries".format(name))
         return False
-
-
