@@ -28,7 +28,7 @@ class PipelineFactory(object):
     def create_pipeline(proprties):
         """ Creates and returns a single pipeline"""
         requested_modifiers = PipelineFactory.get_modifiers(proprties)
-        requested_filters= PipelineFactory.get_filters(proprties)
+        requested_filters = PipelineFactory.get_filters(proprties)
         requested_calcs = PipelineFactory.get_calcs(proprties)
         requested_publishers = PipelineFactory.get_publish(proprties)
 
