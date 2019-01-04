@@ -24,19 +24,18 @@ class PipelineFactory(object):
     def publisher_registry():
         return {publisher_class.__name__: publisher_class for publisher_class in Publish.__subclasses__()}
 
-    """ Creates and returns a single pipeline"""
-
     @staticmethod
     def create_pipeline(proprties):
-        modifier_dict = PipelineFactory.get_modifiers(proprties)
-        filter_dict = PipelineFactory.get_filters(proprties)
-        calculation_dict = PipelineFactory.get_calcs(proprties)
-        publish_dict = PipelineFactory.get_publish(proprties)
+        """ Creates and returns a single pipeline"""
+        requested_modifiers = PipelineFactory.get_modifiers(proprties)
+        requested_filters= PipelineFactory.get_filters(proprties)
+        requested_calcs = PipelineFactory.get_calcs(proprties)
+        requested_publishers = PipelineFactory.get_publish(proprties)
 
-        modifier_list = PipelineFactory.build_list(modifier_dict, PipelineFactory.modifier_registry())
-        filter_list = PipelineFactory.build_list(filter_dict, PipelineFactory.filter_registry())
-        calculation_list = PipelineFactory.build_list(calculation_dict, PipelineFactory.calculation_registry())
-        publish_list = PipelineFactory.build_list(publish_dict, PipelineFactory.publisher_registry())
+        modifier_list = PipelineFactory.build_list(requested_modifiers, PipelineFactory.modifier_registry())
+        filter_list = PipelineFactory.build_list(requested_filters, PipelineFactory.filter_registry())
+        calculation_list = PipelineFactory.build_list(requested_calcs, PipelineFactory.calculation_registry())
+        publish_list = PipelineFactory.build_list(requested_publishers, PipelineFactory.publisher_registry())
 
         new_pipeline = Pipeline(modifier_list, filter_list, calculation_list, publish_list)
         return new_pipeline
@@ -68,7 +67,6 @@ class PipelineFactory(object):
     @staticmethod
     def build_list(dictionary, registry):
         """
-
         :param dictionary: dictionary of modifier/filter/calculation/publish
         :type dictionary: dictionary
         :param registry: registry of modifier/filter/calculation/publish
@@ -77,10 +75,10 @@ class PipelineFactory(object):
         :rtype: list
         """
         return [registry[name](**properties) for name, properties in dictionary.iteritems() if
-                PipelineFactory.__in_registry(name, registry)]
+                PipelineFactory.__is_in_registry(name, registry)]
 
     @staticmethod
-    def __in_registry(name, registry):
+    def __is_in_registry(name, registry):
         """
         checks if the name exists in the registery
         if not logs a warning
