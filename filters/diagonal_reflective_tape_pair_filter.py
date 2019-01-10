@@ -1,9 +1,10 @@
 from filter import Filter
 import cv2
 import calculation_utils
+import sys
 
 
-class DiagonalReflectiveTapePair(filter):
+class DiagonalReflectiveTapePair(Filter):
     """
     Goes over all the contours the two that turn to each other
     matches to the 2019 requirements
@@ -22,6 +23,8 @@ class DiagonalReflectiveTapePair(filter):
         return higher_point, lower_point
 
     def filter(self, contours):
+        shortest_higher_distance = sys.maxint
+        return_contours = []
 
         for contour1 in contours:
             # find the two highest points
@@ -33,6 +36,8 @@ class DiagonalReflectiveTapePair(filter):
                 higher_distance = calculation_utils.distance(higher_point_1, higher_point_2)
                 lower_distance = calculation_utils.distance((lower_point_1, lower_point_2))
 
-                if higher_distance > lower_distance:
-                    return [contour1, contour2]
-        return []
+                if shortest_higher_distance >= higher_distance > lower_distance:
+                    return_contours.append(calculation_utils.merge_contours(contour1,contour2))
+                    shortest_higher_distance = higher_distance
+
+        return return_contours
