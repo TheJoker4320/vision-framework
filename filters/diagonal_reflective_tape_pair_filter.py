@@ -37,7 +37,7 @@ class DiagonalReflectiveTapePair(Filter):
                 lower_distance = calculation_utils.distance((lower_point_1, lower_point_2))
 
                 if shortest_higher_distance >= higher_distance > lower_distance:
-                    return_contours.append(calculation_utils.merge_contours(contour1,contour2))
+                    return_contours.append(calculation_utils.merge_contours(contour1, contour2))
                     shortest_higher_distance = higher_distance
 
         return return_contours
