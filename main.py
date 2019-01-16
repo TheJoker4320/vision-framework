@@ -1,7 +1,7 @@
 import json
 import logging
 import collections
-from  streamer import Streamer
+from streamer import Streamer
 
 from camera import Camera
 from pipeline.pipeline_factory import PipelineFactory
