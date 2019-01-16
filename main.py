@@ -1,6 +1,7 @@
 import json
 import logging
 import collections
+from  streamer import Streamer
 
 from camera import Camera
 from pipeline.pipeline_factory import PipelineFactory
@@ -18,7 +19,8 @@ def main():
     camera.camera_setting_setter(camera_settings)
     while True:
         frame = camera.get_frame()
-        my_pipeline.process_image(frame)
+        processed_frame = my_pipeline.process_image(frame)
+        Streamer.update(frame, processed_frame)
 
 
 if __name__ == "__main__":
