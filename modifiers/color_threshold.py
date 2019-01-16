@@ -26,8 +26,8 @@ class ColorThreshold(Modifier):
 
     def modify(self, pic):
         hsv = cv2.cvtColor(pic, cv2.COLOR_BGR2HSV)
-        hsv = cv2.inRange(hsv, self.low_hsv, self.high_hsv)
+        mask = cv2.inRange(hsv, self.low_hsv, self.high_hsv)
         if self.do_mask:
-            hsv = cv2.bitwise_and(pic, pic, mask=hsv)
+            mask = cv2.bitwise_and(pic, pic, mask=mask)
 
-        return hsv
+        return mask

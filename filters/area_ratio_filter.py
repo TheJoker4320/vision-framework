@@ -1,6 +1,6 @@
 import cv2
 from filter import Filter
-import utils
+import calculation_utils
 
 
 class AreaRatioFilter(Filter):
@@ -23,8 +23,8 @@ class AreaRatioFilter(Filter):
 
         rect = cv2.minAreaRect(contour)
         point1, point2, point3, _ = cv2.boxPoints(rect)
-        rect_height = utils.distance(point1, point2)
-        rect_width = utils.distance(point2, point3)
+        rect_height = calculation_utils.distance(point1, point2)
+        rect_width = calculation_utils.distance(point2, point3)
         rect_area = rect_width * rect_height
         cnt_area = cv2.contourArea(contour)  # The contour area
 

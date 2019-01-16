@@ -3,7 +3,6 @@ import cv2
 
 
 class AreaRangeFilter(Filter):
-
     """
     Filters the contours by minimum and maximum values of the area.
     The area is defined by the contour area.
@@ -26,9 +25,7 @@ class AreaRangeFilter(Filter):
         :rtype: boolean
         """
         area = cv2.contourArea(contour)
-        if self.min_area <= area <= self.max_area:
-            return True
-        return False
+        return self.min_area <= area <= self.max_area
 
     def filter(self, contours):
-        return [contour for contour in contours if self.__check_area_range(contour)]
+        return filter(self.__check_area_range, contours)

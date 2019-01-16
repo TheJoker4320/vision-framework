@@ -1,5 +1,7 @@
 import os
 
+black_list = ['modifier.py', 'filter.py', 'publish.py', 'calculation.py', '__init__.py']
+
 
 def check_import(file_name):
     """
@@ -8,15 +10,9 @@ def check_import(file_name):
     :return: True or false
     :rtype boolean
     """
-    if file_name == 'modifier.py':
+    if file_name in black_list:
         return False
-    elif file_name == 'filter.py':
-        return False
-    elif file_name == 'publish.py':
-        return False
-    elif file_name == 'calculation.py':
-        return False
-    return file_name.endswith('.py') and file_name != '__init__.py'
+    return file_name.endswith('.py')
 
 
 def create_all(path):
