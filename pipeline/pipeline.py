@@ -40,7 +40,6 @@ class Pipeline(object):
 
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         _, contours, _ = cv2.findContours(gray_frame, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-
         logging.debug("post modifying")
         if not Pipeline.__contain_contour(contours):
             return
@@ -53,6 +52,8 @@ class Pipeline(object):
         if not Pipeline.__contain_contour(contours):
             return
         contour = contours[0]
+        cv2.drawContours(frame, [contour], 0, (0, 255, 0), 3)
+
         """
         this iteration responsible for publishing via different publishers
         the results of the calculations
@@ -61,6 +62,8 @@ class Pipeline(object):
             calc = calculation.calc(contour)
             for publisher in self.publishers:
                 publisher.publish(calc)
+
+        return frame
 
     @staticmethod
     def __contain_contour(contours):
