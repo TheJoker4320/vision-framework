@@ -42,7 +42,7 @@ class Pipeline(object):
         _, contours, _ = cv2.findContours(gray_frame, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         logging.debug("post modifying")
         if not Pipeline.__contain_contour(contours):
-            return
+            return frame
 
         for filter_object in self.filters:
             contours = filter_object.filter(contours)
@@ -50,7 +50,7 @@ class Pipeline(object):
 
         logging.debug("post filtering")
         if not Pipeline.__contain_contour(contours):
-            return
+            return frame
         contour = contours[0]
         cv2.drawContours(frame, [contour], 0, (0, 255, 0), 3)
 

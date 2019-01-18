@@ -4,7 +4,7 @@ import cv2
 
 class Streamer(object):
     def __init__(self):
-        self.original_frame = None
+        self.original_frame = 0
         self.app = Flask("Streamer")
         self.app.add_url_rule("/feed", "feed", self._get_response)
 
