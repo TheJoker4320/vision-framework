@@ -24,17 +24,17 @@ def merge_contours(contours):
     top_extreme_points = [__get_top_extreme_point(contour) for contour in contours]
     bottom_extreme_points = [__get_bottom_extreme_point(contour) for contour in contours]
 
-    left_extreme_point = min(left_extreme_points, lambda point: point[0])
-    right_extreme_point = max(right_extreme_points, lambda point: point[0])
-    top_extreme_point = min(top_extreme_points, lambda point: point[1])
-    bottom_extreme_point = max(bottom_extreme_points, lambda point: point[1])
+    left_extreme_point = min(left_extreme_points, key=lambda point: point[0])
+    right_extreme_point = max(right_extreme_points, key=lambda point: point[0])
+    top_extreme_point = min(top_extreme_points, key=lambda point: point[1])
+    bottom_extreme_point = max(bottom_extreme_points, key=lambda point: point[1])
 
-    p0 = (left_extreme_point[0], top_extreme_point[1])
-    p1 = (right_extreme_point[0], top_extreme_point[1])
-    p2 = (right_extreme_point[0], bottom_extreme_points[1])
-    p3 = (left_extreme_point[0], bottom_extreme_point[1])
+    p0 = numpy.array([left_extreme_point[0], top_extreme_point[1]])
+    p1 = numpy.array([right_extreme_point[0], top_extreme_point[1]])
+    p2 = numpy.array([right_extreme_point[0], bottom_extreme_point[1]])
+    p3 = numpy.array([left_extreme_point[0], bottom_extreme_point[1]])
 
-    merged_contour = numpy.array([p0, p1, p2, p3], dtype=numpy.int)
+    merged_contour = numpy.array([p0, p1, p2, p3])
     return merged_contour
 
 
