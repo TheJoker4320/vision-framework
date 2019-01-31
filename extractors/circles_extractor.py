@@ -10,7 +10,10 @@ class CirclesExtractor(Extractor):
 
     def extract(self, image):
         circles = cv2.HoughCircles(image, cv2.HOUGH_GRADIENT, self.dp, self.minimum_distance)  # list of (x ,y , radius)
+        if circles is None:
+            return []
         # create contours from  circles
+        circles = numpy.round(circles[0, :]).astype("int")
         return [CirclesExtractor.__create_bounding_contour(circle) for circle in circles]
 
     @staticmethod

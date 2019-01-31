@@ -2,6 +2,7 @@ from pipeline import Pipeline
 import logging
 
 from modifiers.modifier import Modifier
+from extractors.extractor import Extractor
 from filters.filter import Filter
 from calculations.calculation import Calculation
 from publishers.publish import Publish
@@ -11,6 +12,10 @@ class PipelineFactory(object):
     @staticmethod
     def modifier_registry():
         return {modifier_class.__name__: modifier_class for modifier_class in Modifier.__subclasses__()}
+
+    @staticmethod
+    def extractor_registry():
+        return {extractor_class.__name__: extractor_class for extractor_class in Extractor.__subclasses__()}
 
     @staticmethod
     def filter_registry():
@@ -28,16 +33,18 @@ class PipelineFactory(object):
     def create_pipeline(proprties):
         """ Creates and returns a single pipeline"""
         requested_modifiers = PipelineFactory.get_modifiers(proprties)
+        requested_extractors = PipelineFactory.get_extractors(proprties)
         requested_filters = PipelineFactory.get_filters(proprties)
         requested_calcs = PipelineFactory.get_calcs(proprties)
         requested_publishers = PipelineFactory.get_publish(proprties)
 
         modifier_list = PipelineFactory.build_list(requested_modifiers, PipelineFactory.modifier_registry())
+        extractor_list = PipelineFactory.build_list(requested_extractors, PipelineFactory.extractor_registry())
         filter_list = PipelineFactory.build_list(requested_filters, PipelineFactory.filter_registry())
         calculation_list = PipelineFactory.build_list(requested_calcs, PipelineFactory.calculation_registry())
         publish_list = PipelineFactory.build_list(requested_publishers, PipelineFactory.publisher_registry())
 
-        new_pipeline = Pipeline(modifier_list, filter_list, calculation_list, publish_list)
+        new_pipeline = Pipeline(modifier_list, extractor_list, filter_list, calculation_list, publish_list)
         return new_pipeline
 
     @staticmethod
@@ -45,6 +52,12 @@ class PipelineFactory(object):
         """ A function that returns the list with all the modifiers"""
         modifiers_list = properties['modifiers']
         return modifiers_list
+
+    @staticmethod
+    def get_extractors(properties):
+        """ A function that returns the list with all the extractors"""
+        extractors_list = properties['extractors']
+        return extractors_list
 
     @staticmethod
     def get_filters(properties):

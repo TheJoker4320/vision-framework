@@ -9,7 +9,7 @@ class Pipeline(object):
          publishers
     """
 
-    def __init__(self, modifiers, filters, calculations, publishers):
+    def __init__(self, modifiers, extractors, filters, calculations, publishers):
         """
 
         :param modifiers: the modifiers that the frame will pass trough
@@ -25,6 +25,7 @@ class Pipeline(object):
         :type publishers: list<IPublishers>
         """
         self.modifiers = modifiers
+        self.extractors = extractors
         self.filters = filters
         self.calculations = calculations
         self.publishers = publishers
@@ -39,7 +40,11 @@ class Pipeline(object):
             frame = modifier.modify(frame)
 
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        _, contours, _ = cv2.findContours(gray_frame, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        contours = []
+
+        for extractor in self.extractors:
+            contours.append(extractor.extract(gray_frame))
+
         logging.debug("post modifying")
         if not Pipeline.__contain_contour(contours):
             return frame
