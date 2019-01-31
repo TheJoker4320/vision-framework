@@ -1,6 +1,7 @@
 from networktables import NetworkTables
 import json
 import collections
+from pipeline.pipeline_factory import PipelineFactory
 
 
 class RemoteTuner(object):
@@ -9,7 +10,7 @@ class RemoteTuner(object):
     Uses Networktables
     """
 
-    def __init__(self, json_file_name):
+    def __init__(self, json_file_name, pipeline):
         self.json_file_name = json_file_name
 
         with open(json_file_name, "r") as file_handler:
@@ -17,6 +18,7 @@ class RemoteTuner(object):
 
         sub_table_name = json_file_name.split('/')[-1:][0].replace('.json', '')
         self.__write_initial(sub_table_name, self.pipeline_configurations)
+        self.pipeline = pipeline
 
     def __write_initial(self, name, dic):
         root_table = NetworkTables.getTable(name)
@@ -35,7 +37,7 @@ class RemoteTuner(object):
         """
 
         if type(value) != collections.OrderedDict:
-            if type(value) == list and type(value[0]) == float:
+            if (type(value) == list and (type(value[0]) == float or type(value[0]== int))):
                 value = [str(num) for num in value]
             table.putValue(key, value)
 
@@ -52,14 +54,15 @@ class RemoteTuner(object):
         for dictionary_name in path_list:
             current_dictionary = current_dictionary[dictionary_name]
         if type(value) == tuple and type(value[0]) == unicode:
-            current_dictionary[key] = [float(num) for num in value]
+            if "." in value[0]:
+                current_dictionary[key] = [float(num) for num in value]
+            else:
+                current_dictionary[key] = [int(num) for num in value]
         else:        
             current_dictionary[key] = value
         with open(self.json_file_name, "w") as file_handler:
             json.dump(self.pipeline_configurations, file_handler, indent=0)
+        self.pipeline = PipelineFactory.create_pipeline(self.pipeline_configurations)
 
-
-
-        
-
-
+    def get_pipeline(self):
+        return self.pipeline
