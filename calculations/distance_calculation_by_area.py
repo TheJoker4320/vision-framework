@@ -21,7 +21,7 @@ class DistanceCalculation(Calculation):
         merged_cont = calculation_utils.merge_contours(contours)
         cont_area = cv2.contourArea(merged_cont)
         ratio = math.sqrt(cont_area / self.real_area)
-        distance = ratio * self.focal_length  
+        distance = ratio * self.focal_length
         data_dictionary['distance'] = distance
 
         return data_dictionary
