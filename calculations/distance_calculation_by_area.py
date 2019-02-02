@@ -11,15 +11,16 @@ class DistanceCalculation(Calculation):
     and the object's height in reality.
     """
 
-    def __init__(self, field_of_view, image_width, real_height,real_area):
+    def __init__(self, field_of_view, image_width, real_area):
         self.focal_length = calculation_utils.calculate_focal_length(image_width, field_of_view)
-        self.real_height = real_height
         self.real_area = real_area
 
-    def calc(self, contour):
+    def calc(self, contours):
         data_dictionary = {}
-        area = cv2.contourArea(contour)
-        ratio = math.sqrt(area / self.real_area)
+
+        merged_cont = calculation_utils.merge_contours(contours)
+        cont_area = cv2.contourArea(merged_cont)
+        ratio = math.sqrt(cont_area / self.real_area)
         distance = ratio * self.focal_length  
         data_dictionary['distance'] = distance
 

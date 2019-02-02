@@ -14,10 +14,11 @@ class DistanceCalculation(Calculation):
         self.focal_length = calculation_utils.calculate_focal_length(image_width, field_of_view)
         self.real_height = real_height
 
-    def calc(self, contour):
+    def calc(self, contours):
         data_dictionary = {}
 
-        rectangle = cv2.minAreaRect(contour)
+        merged_cont = calculation_utils.merge_contours(contours)
+        rectangle = cv2.minAreaRect(merged_cont)
         p0, p1, p2, p3 = cv2.boxPoints(rectangle)
         side1_length = calculation_utils.distance(p0, p1)
         side2_length = calculation_utils.distance(p1, p2)
