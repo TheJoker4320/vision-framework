@@ -4,7 +4,7 @@ import math
 import calculation_utils
 
 
-class DistanceCalculation(Calculation):
+class DistanceCalculationByArea(Calculation):
     """
     Calculates the distance between the camera and the object
     Uses the image's width, camera's field of view,
