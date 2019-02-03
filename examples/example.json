@@ -70,7 +70,7 @@
       "min_area_ratio": 0.8,
       "max_area_ratio": 1
     },
-    "BiggestAreaFilter": {}
+    "DiagonalReflectiveTapePair": {}
   },
   "camera settings": {
     "white balance temperature auto": 0,
