@@ -3,6 +3,7 @@ import cv2
 import calculation_utils
 import sys
 import numpy_utils
+import numpy
 
 
 class DiagonalReflectiveTapePair(Filter):
@@ -39,7 +40,9 @@ class DiagonalReflectiveTapePair(Filter):
                 lower_distance = calculation_utils.distance(lower_point_1, lower_point_2)
 
                 if shortest_higher_distance >= higher_distance > lower_distance:
-                    return_contours.append(calculation_utils.merge_contours([contour1, contour2]))
-                    shortest_higher_distance = higher_distance
+                    if contour1 not in return_contours and contour2 not in return_contours:
+                        return_contours.append(contour1)
+                        return_contours.append(contour2)
+                        shortest_higher_distance = higher_distance
 
         return return_contours
