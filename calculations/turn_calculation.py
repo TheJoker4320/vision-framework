@@ -1,7 +1,7 @@
 from calculation import Calculation
-import calculation_utils
-import distance_calculation
+from distance_calculation import DistanceCalculation
 import math
+import calculation_utils
 
 
 class TurnCalculation(Calculation):
@@ -19,18 +19,18 @@ class TurnCalculation(Calculation):
         if len(contours) == 2:
             contour1 = contours[0]
             contour2 = contours[1]
-            distanceCalculation = distance_calculation(self.field_of_view, self.image_width, self.real_height)
+            distanceCalculation = DistanceCalculation(self.field_of_view, self.image_width, self.real_height)
             disFromContour1 = distanceCalculation.calc(contour1)['distance']
             disFromContour2 = distanceCalculation.calc(contour2)['distance']
-            height = min(disFromContour1, disFromContour2)
+            shorter_distance = min(disFromContour1, disFromContour2)
 
             merge_contours = calculation_utils.merge_contours(contour1, contour2)
             disFromCenter = distanceCalculation.calc(merge_contours)['distance']
 
-            angle = math.acos((math.pow(disFromCenter, 2) + math.pow(self.tape_width, 2) - math.pow(height, 2))/(2 * disFromCenter * self.tape_width))
-            before_turn = disFromCenter*math.cos(angle)
-            after_turn = disFromCenter*math.sin(angle)
-            dictionary = {"before turn": before_turn, "after turn": after_turn, "angle": angle*180/math.pi}
+            angle = math.acos((math.pow(disFromCenter, 2) + math.pow(self.tape_width, 2) - math.pow(shorter_distance, 2)) / (2 * disFromCenter * self.tape_width))
+            before_turn = disFromCenter * math.cos(angle)
+            after_turn = disFromCenter * math.sin(angle)
+            dictionary = {"before turn": before_turn, "after turn": after_turn, "angle": angle * 180 / math.pi}
             return dictionary
         else:
-            return
+            return {}
