@@ -37,7 +37,7 @@ class RemoteTuner(object):
         """
 
         if type(value) != collections.OrderedDict:
-            if (type(value) == list and (type(value[0]) == float or type(value[0]== int))):
+            if (type(value) == list and (type(value[0]) == float or type(value[0] == int))):
                 value = [str(num) for num in value]
             table.putValue(key, value)
 
@@ -46,7 +46,7 @@ class RemoteTuner(object):
             sub_table.addEntryListener(self.__listener)
             for sub_item in value.iteritems():
                 self.__recursive_write(sub_item[0], sub_item[1], sub_table)
-    
+
     def __listener(self, table, key, value, is_new):
         path = table.path
         path_list = path.split('/')[2:]
@@ -58,7 +58,7 @@ class RemoteTuner(object):
                 current_dictionary[key] = [float(num) for num in value]
             else:
                 current_dictionary[key] = [int(num) for num in value]
-        else:        
+        else:
             current_dictionary[key] = value
         with open(self.json_file_name, "w") as file_handler:
             json.dump(self.pipeline_configurations, file_handler, indent=0)

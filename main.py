@@ -20,11 +20,12 @@ def main():
     camera = Camera(camera_settings['id'])
     camera.set_camera_settings(camera_settings)
     NetworkTables.initialize(server='127.0.0.1')
-    r = RemoteTuner("examples/example.json",my_pipeline)
+    r = RemoteTuner("examples/example.json", my_pipeline)
     while True:
         frame = camera.get_frame()
         my_pipeline.process_image(frame)
         my_pipeline = r.get_pipeline()
+
 
 if __name__ == "__main__":
     main()
