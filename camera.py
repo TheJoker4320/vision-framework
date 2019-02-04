@@ -54,7 +54,7 @@ class Camera(object):
         """
         for key, value in properties.iteritems():
             if key in Camera.configuration_strings:
-                self.config(self, key, value)
+                self.config(key, value)
 
     def get_frame(self):
         """
