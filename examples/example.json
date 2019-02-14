@@ -48,12 +48,6 @@
       "horizontal_field_of_view": 51.3,
       "image_width": 640,
       "image_y_center": 239
-    },
-    "TurnCalculation": {
-      "field_of_view": 48.068,
-      "image_width": 640,
-      "real_height": 40.5,
-      "tape_width": 16
     }
 
   },

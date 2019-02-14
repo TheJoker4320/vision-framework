@@ -40,9 +40,10 @@ class DiagonalReflectiveTapePair(Filter):
                 lower_distance = calculation_utils.distance(lower_point_1, lower_point_2)
 
                 if shortest_higher_distance >= higher_distance > lower_distance:
-                    if contour1 not in return_contours and contour2 not in return_contours:
-                        return_contours.append(contour1)
-                        return_contours.append(contour2)
-                        shortest_higher_distance = higher_distance
+                    print "cnt1: " , contour1 , "cnt2: " ,contour2 , "return: " ,len(return_contours)
+                    # if contour1 not in return_contours and contour2 not in return_contours:
+                    return_contours.append(contour1)
+                    return_contours.append(contour2)
+                    shortest_higher_distance = higher_distance
 
         return return_contours
