@@ -7,12 +7,6 @@
     "Logger": {}
   },
   "modifiers": {
-    "Blur": {
-      "kernel": [
-        21,
-        21
-      ]
-    },
     "Morph": {
       "morph_close": [
         5,
@@ -26,26 +20,32 @@
     "ColorThreshold": {
       "do_mask": true,
       "low_hsv": [
-        63,
-        209,
-        29
+        61,
+        173,
+        57
       ],
       "high_hsv": [
-        84,
+        76,
         255,
-        103
+        190
+      ]
+    },
+    "Blur": {
+      "kernel": [
+        21,
+        21
       ]
     }
   },
   "calculations": {
     "DistanceCalculation": {
-      "field_of_view": 48.068,
+      "field_of_view": 51.3,
       "image_width": 640,
       "real_height": 40.5
     },
     "AngleCalculation": {
       "image_x_center": 319,
-      "horizontal_field_of_view": 48.068,
+      "horizontal_field_of_view": 51.3,
       "image_width": 640,
       "image_y_center": 239
     }
@@ -56,19 +56,20 @@
       "max_area": 60000
     },
     "AspectRatioFilter": {
-      "min_ratio": 0.12345679012345678,
-      "max_ratio": 8.1
+      "min_ratio": 0.34,
+      "max_ratio": 2.75
     },
     "AreaRatioFilter": {
       "min_area_ratio": 0.8,
       "max_area_ratio": 1
     },
+    "DiagonalReflectiveTapePair": {},
     "BiggestAreaFilter": {}
   },
   "camera settings": {
     "white balance temperature auto": 0,
     "saturation": 100,
-    "brightness": 70,
+    "brightness": 100,
     "backlight compensation": 0,
     "sharpness": 25,
     "power line frequency": 2,
