@@ -19,6 +19,9 @@ def calculate_focal_length(image_width, horizontal_field_of_view):
 
 
 def merge_contours(contours):
+    if len(contours) == 1:
+        return contours[0]
+
     left_extreme_points = [__get_left_extreme_point(contour) for contour in contours]
     right_extreme_points = [__get_right_extreme_point(contour) for contour in contours]
     top_extreme_points = [__get_top_extreme_point(contour) for contour in contours]

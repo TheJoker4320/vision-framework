@@ -51,15 +51,15 @@ class Pipeline(object):
         logging.debug("post filtering")
         if not Pipeline.__contain_contour(contours):
             return frame
-        contour = contours[0]
-        cv2.drawContours(frame, [contour], 0, (0, 255, 0), 3)
+
+        cv2.drawContours(frame, contours, -1, (0, 255, 0), 3)
 
         """
         this iteration responsible for publishing via different publishers
         the results of the calculations
         """
         for calculation in self.calculations:
-            calc = calculation.calc(contour)
+            calc = calculation.calc(contours)
             for publisher in self.publishers:
                 publisher.publish(calc)
 
