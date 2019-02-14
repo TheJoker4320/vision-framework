@@ -8,13 +8,14 @@ class CirclesExtractor(Extractor):
         self.dp = dp
         self.minimum_distance = minimum_distance
 
+
     def extract(self, image):
         circles = cv2.HoughCircles(image, cv2.HOUGH_GRADIENT, self.dp, self.minimum_distance)  # list of (x ,y , radius)
         if circles is None:
             return []
         # create contours from  circles
         circles = numpy.round(circles[0, :]).astype("int")
-        return [CirclesExtractor.__create_bounding_contour(circle) for circle in circles]
+        return [CirclesExtractor.__create_bounding_contour(circle) for circle in circles if circle[2]]
 
     @staticmethod
     def __create_bounding_contour(circle):
@@ -26,6 +27,7 @@ class CirclesExtractor(Extractor):
         :rtype: numpy array
         """
         center_x, center_y, radius = circle
+        print center_x, center_y, radius
         left_up_point = numpy.array([center_x - radius, center_y - radius])
         right_up_point = numpy.array([center_x + radius, center_y - radius])
         right_down_point = numpy.array([center_x + radius, center_y + radius])

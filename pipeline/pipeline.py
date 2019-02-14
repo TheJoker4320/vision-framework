@@ -44,6 +44,8 @@ class Pipeline(object):
 
         for extractor in self.extractors:
             contours = contours + extractor.extract(gray_frame)
+            
+        print contours
 
         logging.debug("post modifying")
         if not Pipeline.__contain_contour(contours):

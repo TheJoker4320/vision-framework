@@ -1,14 +1,14 @@
 {
 "extractors": {
 "CirclesExtractor": {
-"dp": 1.2, 
+"dp": 2.072649572649573, 
 "minimum_distance": 75.0
 }
 }, 
 "publishers": {
 "NetworkTablePublisher": {
 "table_name": "SmartDashboard", 
-"team_num": 4320.0
+"team_num": 4320
 }, 
 "Logger": {}
 }, 
@@ -25,17 +25,21 @@
 }, 
 "Blur": {
 "kernel": [
-21, 
-21
+15, 
+15
 ]
+}, 
+"ColorThreshold": {
+"do_mask": true, 
+"high_h": 12.307692307692317, 
+"high_s": 252.82051282051282, 
+"high_v": 160.00000000000003, 
+"low_h": 0.0, 
+"low_s": 95.89743589743591, 
+"low_v": 52.30769230769232
 }
 }, 
 "calculations": {
-"DistanceCalculation": {
-"field_of_view": 48.068, 
-"image_width": 640.0, 
-"real_height": 40.5
-}, 
 "AngleCalculation": {
 "image_x_center": 319.0, 
 "horizontal_field_of_view": 48.068, 
@@ -49,14 +53,14 @@
 "camera settings": {
 "white balance temperature auto": 0.0, 
 "saturation": 100.0, 
-"brightness": 70.0, 
+"brightness": 50.0, 
 "backlight compensation": 0.0, 
 "sharpness": 25.0, 
 "power line frequency": 2.0, 
 "white balance temperature": 4500.0, 
 "pan absolute": 0.0, 
 "field of view": 68.5, 
-"exposure absolute": 5.0, 
+"exposure absolute": 8.0, 
 "tilt absolute": 0.0, 
 "exposure auto": 1.0, 
 "contrast": 10.0, 

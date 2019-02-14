@@ -37,17 +37,19 @@ class RemoteTuner(object):
         """
 
         if type(value) != collections.OrderedDict:
-            if (type(value) == list and (type(value[0]) == float or type(value[0] == int))):
+            if (type(value) == list and (type(value[0]) == float or type(value[0]) == int)):
                 value = [str(num) for num in value]
             table.putValue(key, value)
 
         else:
+            print "________________________________",value,"___________________________________"
             sub_table = table.getSubTable(key)
             sub_table.addEntryListener(self.__listener)
             for sub_item in value.iteritems():
                 self.__recursive_write(sub_item[0], sub_item[1], sub_table)
 
     def __listener(self, table, key, value, is_new):
+        print "hello __ my old friend"
         path = table.path
         path_list = path.split('/')[2:]
         current_dictionary = self.pipeline_configurations

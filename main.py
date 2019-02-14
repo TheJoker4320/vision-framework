@@ -22,14 +22,14 @@ def main():
 
     feed = Streamer()
     Thread(target=feed.run).start()
-    #camera_settings = properties['camera settings']
-    #camera = Camera(camera_settings['id'])
-    #camera.set_camera_settings(camera_settings)
-    NetworkTables.initialize(server='127.0.0.1')
+    camera_settings = properties['camera settings']
+    camera = Camera(camera_settings['id'])
+    camera.set_camera_settings(camera_settings)
+    NetworkTables.initialize(server='10.43.20.69')
     r = RemoteTuner("examples/example_circle.json", my_pipeline)
-    frame = cv2.imread('ball.jpg')
+    # frame = cv2.imread('ball.jpg')
     while True:
-        #frame = camera.get_frame()
+        frame = camera.get_frame()
         processed_frame = my_pipeline.process_image(frame)
         my_pipeline = r.get_pipeline()
         feed.update(processed_frame)
