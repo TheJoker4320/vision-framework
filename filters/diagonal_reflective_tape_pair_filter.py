@@ -8,13 +8,9 @@ import numpy
 
 class DiagonalReflectiveTapePair(Filter):
     """
-    Goes over all the contours the two that turn to each other
-    matches to the 2019 requirements
-    the
+    Goes over all the contours, The two that turn to each other
+    matches to the 2019 requirements.
     """
-
-    def __init__(self):
-        pass
 
     def __find_two_highest_points(self, contour):
         rectangle = cv2.minAreaRect(contour)
@@ -40,8 +36,6 @@ class DiagonalReflectiveTapePair(Filter):
                 lower_distance = calculation_utils.distance(lower_point_1, lower_point_2)
 
                 if shortest_higher_distance >= higher_distance > lower_distance:
-                    print "cnt1: " , contour1 , "cnt2: " ,contour2 , "return: " ,len(return_contours)
-                    # if contour1 not in return_contours and contour2 not in return_contours:
                     return_contours.append(contour1)
                     return_contours.append(contour2)
                     shortest_higher_distance = higher_distance
