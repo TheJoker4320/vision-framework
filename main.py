@@ -12,7 +12,6 @@ from networktables import NetworkTables
 from remote_tuner import RemoteTuner
 
 
-
 def main():
     logging.basicConfig(level=logging.INFO)
 
@@ -32,7 +31,6 @@ def main():
     feed = Streamer()
     Thread(target=feed.run).start()
     # frame = cv2.imread('diagonal_test.jpg')
-    
     while True:
         frame = camera.get_frame()
         processed_frame = my_pipeline.process_image(frame)
