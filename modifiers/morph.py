@@ -5,15 +5,16 @@ import numpy
 
 class Morph(Modifier):
     """
-    gets a frame and applies open or close or both open and close
-    or none of them and returns the modified frame
+    Applies either open, close, both open and close or none of them on a frame
+    Returns the modified frame
     """
 
     def __init__(self, morph_open, morph_close):
         """
-
-        :param morph_open: a numpy array for the close method
-        :param morph_close:  a numpy array for the open method
+        :param morph_open: An array for the close method
+        :type morph_open: numpy array
+        :param morph_close:  A numpy array for the open method
+        :type morph_close: numpy array
         """
         self.morph_open = numpy.ones(morph_open)
         self.morph_close = numpy.ones(morph_close)

@@ -5,20 +5,25 @@ import cv2
 class ShapeFilter(Filter):
 
     """
-    Filters the contours by their approximate shape.
-    Checks the approximate shape according to epsilon value.
-    As epsilon is bigger the filtering is more flexible.
+    Filters the contours by their approximate shape
+    Checks the approximate shape according to epsilon value
+    As epsilon is bigger the filtering is more flexible
     """
 
     def __init__(self, edges_count, epsilon):
+        """
+        :param edges_count: The number of edges
+        :param epsilon: the value which is used to approximate the shape type
+        """
         self.edges_count = edges_count
         self.epsilon = epsilon
 
     def __check_contour_shape(self, contour):
         """
-        :param contour: a contour to check
+        Checks if the contour shape matches to the epsilon value (shape)
+        :param contour: A contour to check
         :type contour: contour
-        :return: is the contour in the desired range
+        :return: True or False
         :rtype: boolean
         """
         epsilon_arc = self.epsilon * cv2.arcLength(contour, True)

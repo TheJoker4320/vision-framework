@@ -4,23 +4,26 @@ import calculation_utils
 
 
 class AspectRatioFilter(Filter):
-
     """
     Filters the contours by minimum and maximum values of the aspect ratio
-    the aspect ratio defined as the ratio between the height and width
-    height defined as the longer between the two side's length
+    The aspect ratio defined as the ratio between the height and width
+    Height defined as the longer between the two side's length
     """
 
     def __init__(self, min_ratio, max_ratio):
+        """
+        :param min_ratio: The minimum aspect ratio of the contour to filter
+        :param max_ratio: The maximum aspect ratio of the contour to filter
+        """
         self.min_ratio = min_ratio
         self.max_ratio = max_ratio
 
     def __in_aspect_ratio(self, contour):
-
         """
-        :param contour: a contour to check
+        Checks if the contour aspect ratio is in the desired range
+        :param contour: A contour to check
         :type contour: contour
-        :return: is the contour in the desired range
+        :return: True or False
         :rtype: boolean
         """
 

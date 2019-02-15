@@ -1,3 +1,4 @@
+numpy
 pynetworktables
 opencv-python
 flask

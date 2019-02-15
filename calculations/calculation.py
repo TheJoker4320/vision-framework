@@ -7,6 +7,7 @@ class Calculation(object):
     @abstractmethod
     def calc(self, contours):
         """
-        An abstract function that gets a contour and returns a dictionary with calculated data.
+        An abstract function that gets a contour and returns a dictionary with calculated data
+        WIP
         """
         pass

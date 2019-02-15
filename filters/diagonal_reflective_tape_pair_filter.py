@@ -1,18 +1,22 @@
-from filter import Filter
+import sys
 import cv2
 import calculation_utils
-import sys
 import numpy_utils
-import numpy
+from filter import Filter
 
 
 class DiagonalReflectiveTapePair(Filter):
     """
-    Goes over all the contours, The two that turn to each other
-    matches to the 2019 requirements.
+    Goes over all the contours returns the two that turn to each other
+    Matches to the 2019 requirements
     """
 
     def __find_two_highest_points(self, contour):
+        """
+        WIP
+        :param contour:
+        :return:
+        """
         rectangle = cv2.minAreaRect(contour)
         points = cv2.boxPoints(rectangle)
         higher_point = min(points, key=lambda point: point[1])

@@ -4,24 +4,24 @@ import cv2
 
 class AreaRangeFilter(Filter):
     """
-    Filters the contours by minimum and maximum values of the area.
-    The area is defined by the contour area.
+    Filters the contours by minimum and maximum values of the area
+    The area is defined by the contour area
     """
 
     def __init__(self, min_area, max_area):
         """
-
-        :param min_area: The minimum of the contour to filter
-        :param max_area: The maximum are of the contour to filter
+        :param min_area: The minimum area of the contour to filter
+        :param max_area: The maximum area of the contour to filter
         """
         self.min_area = min_area
         self.max_area = max_area
 
     def __check_area_range(self, contour):
         """
-        :param contour: a contour to check
+        Checks if the contour area is in the desired range
+        :param contour: A contour to check
         :type contour: contour
-        :return: is the contour in the desired range
+        :return: True or False
         :rtype: boolean
         """
         area = cv2.contourArea(contour)

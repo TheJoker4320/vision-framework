@@ -7,7 +7,7 @@ class Modifier(object):
     @abstractmethod
     def modify(self, picture):
         """
-        :param picture: a picture to modify
+        :param picture: A picture to modify
         :type picture: matrix of pixels
         :rtype: matrix of pixels
         """

@@ -7,8 +7,7 @@ class Publish(object):
     @abstractmethod
     def publish(self, data_dict):
         """
-
-        :param data_dict: the dictionary to publish
+        :param data_dict: The dictionary to publish
         :type data_dict: dictionary
         """
         pass

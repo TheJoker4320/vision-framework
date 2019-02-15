@@ -6,11 +6,15 @@ import calculation_utils
 class DistanceCalculation(Calculation):
     """
     Calculates the distance between the camera and the object
-    Uses the image's width, camera's field of view,
-    and the object's height in reality.
+    Uses the image's width, camera's field of view and the object's height in reality.
     """
 
     def __init__(self, field_of_view, image_width, real_height):
+        """
+        :param field_of_view:
+        :param image_width:
+        :param real_height:
+        """
         self.focal_length = calculation_utils.calculate_focal_length(image_width, field_of_view)
         self.real_height = real_height
 

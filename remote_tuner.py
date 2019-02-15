@@ -7,7 +7,6 @@ from pipeline.pipeline_factory import PipelineFactory
 class RemoteTuner(object):
     """
     Responsible for remote tuning of the pipeline
-    Uses Networktables
     """
 
     def __init__(self, json_file_name, pipeline):
@@ -27,7 +26,6 @@ class RemoteTuner(object):
 
     def __recursive_write(self, key, value, table):
         """
-
         Puts a specific value in a specific place (key)
         recursively into the desired table
         """

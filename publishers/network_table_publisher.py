@@ -10,6 +10,10 @@ class NetworkTablePublisher(Publish):
     IP_TEMPLATE = "10.{0}.{1}.2"
 
     def __init__(self, table_name, team_num):
+        """
+        :param table_name: The name of the network table to publish to
+        :param team_num: The number of the team
+        """
         team_num = '0' * (4 - len(str(team_num))) + str(team_num)
         ip = NetworkTablePublisher.IP_TEMPLATE.format(team_num[:2], team_num[2:])
         NetworkTables.initialize(ip)

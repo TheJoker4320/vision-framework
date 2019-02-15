@@ -80,11 +80,11 @@ class PipelineFactory(object):
     @staticmethod
     def build_list(dictionary, registry):
         """
-        :param dictionary: dictionary of modifier/filter/calculation/publish
+        :param dictionary: Dictionary of modifier/filter/calculation/publish
         :type dictionary: dictionary
-        :param registry: registry of modifier/filter/calculation/publish
+        :param registry: Registry of modifier/filter/calculation/publish
         :type registry: dictionary
-        :return: list of build instances from the same type that was recieved
+        :return: A list of the built instances from the same type that was received
         :rtype: list
         """
         return [registry[name](**properties) for name, properties in dictionary.iteritems() if
@@ -93,14 +93,12 @@ class PipelineFactory(object):
     @staticmethod
     def __is_in_registry(name, registry):
         """
-        checks if the name exists in the registery
-        if not logs a warning
-
+        Checks if the name exists in the registry if not logs a warning
         :param name: name of modifier/filter/calculation/publish
         :type name: string
-        :param registry: registery of modifier/filter/calculation/publish
+        :param registry: registry of modifier/filter/calculation/publish
         :type registry: dictionary
-        :return: is the name exists in the registery
+        :return: is the name exists in the registry
         :rtype: bool
         """
         if name in registry:

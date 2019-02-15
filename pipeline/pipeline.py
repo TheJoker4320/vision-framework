@@ -4,24 +4,22 @@ import logging
 
 class Pipeline(object):
     """
-        represents a single pipeline
-        responsible for processing image via modifiers, filters, calculations and
-         publishers
+    Represents a single pipeline
+    Responsible for processing image via modifiers, filters, calculations and publishers
     """
 
     def __init__(self, modifiers, extractors, filters, calculations, publishers):
         """
 
-        :param modifiers: the modifiers that the frame will pass trough
+        :param modifiers: The modifiers that the frame will pass trough
         :type modifiers: list<IModifier>
-        :param filters: the filters that the contours which was detected in the
-         frame will pass trough
+        :param extractors: The ways to extract the contours
+        :type extractors: list<IExtractor>
+        :param filters: The filters that the detected contours in the frame will pass trough
         :type filters: list<IFilter>
-        :param calculations: the calculations that will be enabled on the
-        contours
+        :param calculations: The calculations that will be used on the contours
         :type calculations: list<ICalculation>
-        :param publishers: different ways to publish the results of the
-        calculations
+        :param publishers: The ways to publish the results of the calculations
         :type publishers: list<IPublishers>
         """
         self.modifiers = modifiers
@@ -32,9 +30,8 @@ class Pipeline(object):
 
     def process_image(self, frame):
         """
-
-        :param frame: a frame from the camera
-        :type frame: two dimensional array of pixels
+        :param frame: A frame from the camera
+        :type frame: Two dimensional pixel array
         """
         for modifier in self.modifiers:
             frame = modifier.modify(frame)
@@ -62,8 +59,8 @@ class Pipeline(object):
         cv2.drawContours(frame, contours, -1, (0, 255, 0), 3)
 
         """
-        this iteration responsible for publishing via different publishers
-        the results of the calculations
+        This iteration responsible for publishing (via different publishers)
+        the results of the calculations.
         """
         for calculation in self.calculations:
             calc = calculation.calc(contours)
@@ -74,8 +71,8 @@ class Pipeline(object):
     @staticmethod
     def __contain_contour(contours):
         """
-        logs the status of the contour's quantity
-        return if the amount of contours greater than 0
+        Logs the status of the contour's quantity
+        Returns if the amount of contours is greater than 0
         """
         contour_amount = len(contours)
         if contour_amount == 0:

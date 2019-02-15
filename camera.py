@@ -27,7 +27,6 @@ class Camera(object):
 
     def __init__(self, port):
         """
-
         :param int port: the port that the camera connect too
         """
         port = int(port)
@@ -46,10 +45,9 @@ class Camera(object):
 
     def set_camera_settings(self, properties):
         """
-        Sets configurations to the camera by given configuration
-        The configuration need to be registered
+        Sets camera configurations by a given set of properties
+        The properties need to be registered
         Use configuration decorator to register setting functions
-
         :param properties: the properties of the camera to apply on
         :type properties: dictionary
         """
@@ -59,8 +57,7 @@ class Camera(object):
 
     def get_frame(self):
         """
-
-        :return: an adjust frame
+        :return: An adjust frame
         """
 
         _, image = self.video_capture.read()

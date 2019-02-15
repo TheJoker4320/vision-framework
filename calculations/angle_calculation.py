@@ -5,9 +5,8 @@ import calculation_utils
 
 class AngleCalculation(Calculation):
     """
-
-    Calculate the x and y angels between the camera and the object in the image.
-    Uses the image's width, horizontal field of view and x/y values of the center.
+    Calculate the x and y angels between the camera and the object in the image
+    Uses the image's width, horizontal field of view and x/y values of the center
     """
 
     def __init__(self, image_width, horizontal_field_of_view, image_x_center, image_y_center):
@@ -31,10 +30,9 @@ class AngleCalculation(Calculation):
 
     def angle_calc(self, center, image_center):
         """
-
-        :param center: the x or y center
-        :param image_center: the image x or y center
-        :return: the angle in degrees
+        :param center: The x or y center
+        :param image_center: The image x or y center
+        :return: The angle in degrees
         """
         angle_radians = math.atan((center - image_center) / self.focal_length)
         return math.degrees(angle_radians)
