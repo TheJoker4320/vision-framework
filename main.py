@@ -1,19 +1,16 @@
 import json
 import logging
 import cv2
-
 import collections
+
 from threading import Thread
 from streamer import Streamer
-
 from camera import Camera
+
 from pipeline.pipeline_factory import PipelineFactory
-<<<<<<< HEAD
 from networktables import NetworkTables
 from remote_tuner import RemoteTuner
-=======
-import cv2
->>>>>>> 4bac9978eb6e56ecd036f7b69cf592b2a258a178
+
 
 
 def main():
