@@ -8,7 +8,6 @@ class CirclesExtractor(Extractor):
         self.dp = dp
         self.minimum_distance = minimum_distance
 
-
     def extract(self, image):
         circles = cv2.HoughCircles(image, cv2.HOUGH_GRADIENT, self.dp, self.minimum_distance)  # list of (x ,y , radius)
         if circles is None:

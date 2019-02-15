@@ -6,7 +6,7 @@ from pipeline.pipeline_factory import PipelineFactory
 
 class RemoteTuner(object):
     """
-    Responsible for remote tuning of pipeline
+    Responsible for remote tuning of the pipeline
     Uses Networktables
     """
 
@@ -28,21 +28,17 @@ class RemoteTuner(object):
     def __recursive_write(self, key, value, table):
         """
 
-        :param value:
-        :type value: dict
-        :param table:
-        :type table:
-        :return:
-        :rtype:
+        Puts a specific value in a specific place (key)
+        recursively into the desired table
         """
 
         if type(value) != collections.OrderedDict:
-            if (type(value) == list and (type(value[0]) == float or type(value[0]) == int)):
+            if type(value) == list and (type(value[0]) == float or type(value[0]) == int):
                 value = [str(num) for num in value]
             table.putValue(key, value)
 
         else:
-            print "________________________________",value,"___________________________________"
+            print "________________________________", value, "___________________________________"
             sub_table = table.getSubTable(key)
             sub_table.addEntryListener(self.__listener)
             for sub_item in value.iteritems():
