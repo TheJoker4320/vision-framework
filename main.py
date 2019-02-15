@@ -5,10 +5,9 @@ import argparse
 
 from threading import Thread
 from streamer import Streamer
-
 from camera import Camera
-from pipeline.pipeline_factory import PipelineFactory
 
+from pipeline.pipeline_factory import PipelineFactory
 from networktables import NetworkTables
 from remote_tuner import RemoteTuner
 

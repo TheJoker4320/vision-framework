@@ -9,7 +9,7 @@ class ColorThreshold(Modifier):
     Can perform mask, via bitwise and operation, between the original frame and the hsv
     """
 
-    def __init__(self, low_hsv, high_hsv, do_mask):
+    def __init__(self, low_h, low_s, low_v, high_h, high_s, high_v, do_mask):
         """
 
         :param low_hsv: the lower limit of the HSV range
@@ -20,8 +20,8 @@ class ColorThreshold(Modifier):
         :type do_mask: boolean
         """
 
-        self.low_hsv = numpy.array(low_hsv)
-        self.high_hsv = numpy.array(high_hsv)
+        self.low_hsv = numpy.array([low_h, low_s, low_v])
+        self.high_hsv = numpy.array([high_h, high_s, high_v])
         self.do_mask = do_mask
 
     def modify(self, pic):

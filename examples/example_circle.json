@@ -1,0 +1,70 @@
+{
+"extractors": {
+"CirclesExtractor": {
+"dp": 2.072649572649573, 
+"minimum_distance": 75.0
+}
+}, 
+"publishers": {
+"NetworkTablePublisher": {
+"table_name": "SmartDashboard", 
+"team_num": 4320
+}, 
+"Logger": {}
+}, 
+"modifiers": {
+"Morph": {
+"morph_close": [
+5, 
+5
+], 
+"morph_open": [
+5, 
+5
+]
+}, 
+"Blur": {
+"kernel": [
+15, 
+15
+]
+}, 
+"ColorThreshold": {
+"do_mask": true, 
+"high_h": 12.307692307692317, 
+"high_s": 252.82051282051282, 
+"high_v": 160.00000000000003, 
+"low_h": 0.0, 
+"low_s": 95.89743589743591, 
+"low_v": 52.30769230769232
+}
+}, 
+"calculations": {
+"AngleCalculation": {
+"image_x_center": 319.0, 
+"horizontal_field_of_view": 48.068, 
+"image_width": 640.0, 
+"image_y_center": 239.0
+}
+}, 
+"filters": {
+"BiggestAreaFilter": {}
+}, 
+"camera settings": {
+"white balance temperature auto": 0.0, 
+"saturation": 100.0, 
+"brightness": 50.0, 
+"backlight compensation": 0.0, 
+"sharpness": 25.0, 
+"power line frequency": 2.0, 
+"white balance temperature": 4500.0, 
+"pan absolute": 0.0, 
+"field of view": 68.5, 
+"exposure absolute": 8.0, 
+"tilt absolute": 0.0, 
+"exposure auto": 1.0, 
+"contrast": 10.0, 
+"zoom absolute": 0.0, 
+"id": 1.0
+}
+}

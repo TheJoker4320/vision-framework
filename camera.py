@@ -30,6 +30,7 @@ class Camera(object):
 
         :param int port: the port that the camera connect too
         """
+        port = int(port)
         self.video_capture = cv2.VideoCapture(port)
         self.initial_string = "{template}{port}".format(template=Camera.TEMPLATE, port=port)
 
