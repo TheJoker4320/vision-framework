@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 "publishers": {
 "NetworkTablePublisher": {
 "table_name": "SmartDashboard", 
@@ -35,6 +36,92 @@
 255.0, 
 103.0
 ]
+=======
+  "publishers": {
+    "NetworkTablePublisher": {
+      "table_name": "SmartDashboard",
+      "team_num": 4320
+    },
+    "Logger": {}
+  },
+  "modifiers": {
+    "Morph": {
+      "morph_close": [
+        5,
+        5
+      ],
+      "morph_open": [
+        5,
+        5
+      ]
+    },
+    "ColorThreshold": {
+      "do_mask": true,
+      "low_hsv": [
+        61,
+        173,
+        57
+      ],
+      "high_hsv": [
+        76,
+        255,
+        190
+      ]
+    },
+    "Blur": {
+      "kernel": [
+        21,
+        21
+      ]
+    }
+  },
+  "calculations": {
+    "DistanceCalculation": {
+      "field_of_view": 51.3,
+      "image_width": 640,
+      "real_height": 40.5
+    },
+    "AngleCalculation": {
+      "image_x_center": 319,
+      "horizontal_field_of_view": 51.3,
+      "image_width": 640,
+      "image_y_center": 239
+    }
+
+  },
+  "filters": {
+    "AreaRangeFilter": {
+      "min_area": 100,
+      "max_area": 60000
+    },
+    "AspectRatioFilter": {
+      "min_ratio": 0.34,
+      "max_ratio": 2.75
+    },
+    "AreaRatioFilter": {
+      "min_area_ratio": 0.8,
+      "max_area_ratio": 1
+    },
+    "DiagonalReflectiveTapePair": {}
+  },
+  "camera settings": {
+    "white balance temperature auto": 0,
+    "saturation": 100,
+    "brightness": 100,
+    "backlight compensation": 0,
+    "sharpness": 25,
+    "power line frequency": 2,
+    "white balance temperature": 4500,
+    "pan absolute": 0,
+    "field of view": 68.5,
+    "exposure absolute": 5,
+    "tilt absolute": 0,
+    "exposure auto": 1,
+    "contrast": 10,
+    "zoom absolute": 0,
+    "id": 1
+  }
+>>>>>>> 4bac9978eb6e56ecd036f7b69cf592b2a258a178
 }
 }, 
 "calculations": {
