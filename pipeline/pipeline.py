@@ -44,7 +44,7 @@ class Pipeline(object):
 
         for extractor in self.extractors:
             contours = contours + extractor.extract(gray_frame)
-            
+
         print contours
 
         logging.debug("post modifying")
@@ -69,7 +69,6 @@ class Pipeline(object):
             calc = calculation.calc(contour)
             for publisher in self.publishers:
                 publisher.publish(calc)
-
         return frame
 
     @staticmethod
