@@ -3,13 +3,18 @@ import cv2
 
 
 class Streamer(object):
-    def __init__(self):
-        self.original_frame = 0
-        self.app = Flask("Streamer")
-        self.app.add_url_rule("/feed", "feed", self._get_response)
+    app = Flask("Streamer")
 
-    def run(self):
-        self.app.run(host='0.0.0.0', port=80, debug=False, threaded=True)
+    def __init__(self, json_file_name):
+        self.original_frame = 0
+        # self.app = Flask("Streamer")
+        self.name = json_file_name.split('/')[-1:][0].replace('.json', '')
+        print self.name
+        Streamer.app.add_url_rule("/" + self.name, self.name, self._get_response)
+
+    @staticmethod
+    def run():
+        Streamer.app.run(host='0.0.0.0', port=80, debug=False, threaded=True)
 
     def update(self, original_frame):
         self.original_frame = original_frame

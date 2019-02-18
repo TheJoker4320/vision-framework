@@ -1,42 +1,7 @@
 {
-<<<<<<< HEAD
-"publishers": {
-"NetworkTablePublisher": {
-"table_name": "SmartDashboard", 
-"team_num": 4320.0
-}, 
-"Logger": {}
-}, 
-"modifiers": {
-"Blur": {
-"kernel": [
-21, 
-21
-]
-}, 
-"Morph": {
-"morph_close": [
-5, 
-5
-], 
-"morph_open": [
-5, 
-5
-]
-}, 
-"ColorThreshold": {
-"do_mask": true, 
-"low_hsv": [
-63.0, 
-209.0, 
-29.0
-], 
-"high_hsv": [
-84.0, 
-255.0, 
-103.0
-]
-=======
+  "extractors": {
+    "SimpleExtractor": {}
+  },
   "publishers": {
     "NetworkTablePublisher": {
       "table_name": "SmartDashboard",
@@ -45,6 +10,12 @@
     "Logger": {}
   },
   "modifiers": {
+    "Blur": {
+      "kernel": [
+        21,
+        21
+      ]
+    },
     "Morph": {
       "morph_close": [
         5,
@@ -57,37 +28,26 @@
     },
     "ColorThreshold": {
       "do_mask": true,
-      "low_hsv": [
-        61,
-        173,
-        57
-      ],
-      "high_hsv": [
-        76,
-        255,
-        190
-      ]
-    },
-    "Blur": {
-      "kernel": [
-        21,
-        21
-      ]
+      "high_h": 84,
+      "high_s": 255,
+      "high_v": 103,
+      "low_h": 63,
+      "low_s": 209,
+      "low_v": 29
     }
   },
   "calculations": {
     "DistanceCalculation": {
-      "field_of_view": 51.3,
+      "field_of_view": 48.068,
       "image_width": 640,
       "real_height": 40.5
     },
     "AngleCalculation": {
       "image_x_center": 319,
-      "horizontal_field_of_view": 51.3,
+      "horizontal_field_of_view": 48.068,
       "image_width": 640,
       "image_y_center": 239
     }
-
   },
   "filters": {
     "AreaRangeFilter": {
@@ -95,19 +55,19 @@
       "max_area": 60000
     },
     "AspectRatioFilter": {
-      "min_ratio": 0.34,
-      "max_ratio": 2.75
+      "min_ratio": 0.12345679012345678,
+      "max_ratio": 8.1
     },
     "AreaRatioFilter": {
       "min_area_ratio": 0.8,
       "max_area_ratio": 1
     },
-    "DiagonalReflectiveTapePair": {}
+    "BiggestAreaFilter": {}
   },
   "camera settings": {
     "white balance temperature auto": 0,
     "saturation": 100,
-    "brightness": 100,
+    "brightness": 70,
     "backlight compensation": 0,
     "sharpness": 25,
     "power line frequency": 2,
@@ -119,54 +79,6 @@
     "exposure auto": 1,
     "contrast": 10,
     "zoom absolute": 0,
-    "id": 1
+    "id": 0
   }
->>>>>>> 4bac9978eb6e56ecd036f7b69cf592b2a258a178
-}
-}, 
-"calculations": {
-"DistanceCalculation": {
-"field_of_view": 48.068, 
-"image_width": 640.0, 
-"real_height": 40.5
-}, 
-"AngleCalculation": {
-"image_x_center": 319.0, 
-"horizontal_field_of_view": 48.068, 
-"image_width": 640.0, 
-"image_y_center": 239.0
-}
-}, 
-"filters": {
-"AreaRangeFilter": {
-"min_area": 100.0, 
-"max_area": 60000.0
-}, 
-"AspectRatioFilter": {
-"min_ratio": 0.12345679012345678, 
-"max_ratio": 8.1
-}, 
-"AreaRatioFilter": {
-"min_area_ratio": 0.8, 
-"max_area_ratio": 1.0
-}, 
-"BiggestAreaFilter": {}
-}, 
-"camera settings": {
-"white balance temperature auto": 0.0, 
-"saturation": 100.0, 
-"brightness": 70.0, 
-"backlight compensation": 0.0, 
-"sharpness": 25.0, 
-"power line frequency": 2.0, 
-"white balance temperature": 4500.0, 
-"pan absolute": 0.0, 
-"field of view": 68.5, 
-"exposure absolute": 5.0, 
-"tilt absolute": 0.0, 
-"exposure auto": 1.0, 
-"contrast": 10.0, 
-"zoom absolute": 0.0, 
-"id": 0
-}
 }
