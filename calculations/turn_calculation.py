@@ -29,14 +29,17 @@ class TurnCalculation(Calculation):
             dis_from_contour1 = distance_calculation.calc([contour1])['distance']
             dis_from_contour2 = distance_calculation.calc([contour2])['distance']
             shorter_distance = min(dis_from_contour1, dis_from_contour2)
+            longer_distance = max(dis_from_contour1, dis_from_contour2)
 
             merge_contours = calculation_utils.merge_contours([contour1, contour2])
             dis_from_center = distance_calculation.calc([merge_contours])['distance']
-
-            angle = math.acos((math.pow(dis_from_center, 2) + math.pow(self.tape_width, 2) - math.pow(shorter_distance, 2)) / (2 * dis_from_center * self.tape_width))
-            before_turn = dis_from_center * math.cos(angle)
-            after_turn = dis_from_center * math.sin(angle)
-            dictionary = {"before turn": before_turn, "after turn": after_turn, "angle": angle * 180 / math.pi}
-            return dictionary
+            angle = math.acos((longer_distance ** 2 + self.tape_width ** 2 - shorter_distance ** 2) / (
+                2 * longer_distance * self.tape_width))
+            angle = angle + 0.5 * math.pi
+            half_tape_distance = self.tape_width / 2
+            second_run = math.tan(angle) * half_tape_distance
+            first_run = second_run * math.cos(angle) + math.sqrt(
+                second_run ** 2 * math.cos(angle) - second_run ** 2 + dis_from_center ** 2)
+            return {"angle": math.degrees(angle), "first distance": first_run, "second distance": second_run  }
         else:
             return {}
