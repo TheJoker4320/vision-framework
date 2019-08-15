@@ -34,7 +34,7 @@ class TurnCalculation(Calculation):
             merge_contours = calculation_utils.merge_contours([contour1, contour2])
             dis_from_center = distance_calculation.calc([merge_contours])['distance']
             angle = math.acos(
-                (long_dist ** 2 + self.tape_width ** 2 - short_dist ** 2) / ( 2 * long_dist * self.tape_width))
+                (long_dist ** 2 + self.tape_width ** 2 - short_dist ** 2) / (2 * long_dist * self.tape_width))
             angle = angle + 0.5 * math.pi
             half_tape_distance = self.tape_width / 2
             second_run = math.tan(angle) * half_tape_distance
