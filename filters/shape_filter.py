@@ -1,4 +1,4 @@
-from filter import Filter
+from filters.filter import Filter
 import cv2
 
 

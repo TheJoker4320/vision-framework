@@ -33,26 +33,29 @@ class Pipeline(object):
         :param frame: A frame from the camera
         :type frame: Two dimensional pixel array
         """
+
         for modifier in self.modifiers:
             frame = modifier.modify(frame)
 
-        gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         contours = []
+
+        gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         for extractor in self.extractors:
             contours = contours + extractor.extract(gray_frame)
 
-        print contours
+        print(contours)
 
-        logging.debug("post modifying")
+        logging.debug("Modifying stage --------- DONE")
         if not Pipeline.__contain_contour(contours):
+            logging.debug("NO CONTOUR FOUND")
             return frame
 
         for filter_object in self.filters:
             contours = filter_object.filter(contours)
             logging.debug("{} passed {}".format(len(contours), type(filter_object).__name__))
 
-        logging.debug("post filtering")
+        logging.debug("Filtering stage --------- DONE")
         if not Pipeline.__contain_contour(contours):
             return frame
 

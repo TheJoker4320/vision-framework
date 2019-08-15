@@ -1,6 +1,6 @@
-import cv2
-from filter import Filter
+from filters.filter import Filter
 import calculation_utils
+import cv2
 
 
 class AreaRatioFilter(Filter):

@@ -17,7 +17,7 @@ def check_import(file_name):
 
 def create_all(path):
     """
-    Gets the current files directory and cheacks if they are suitable returns a list of all the names
+    Gets the current files directory and checks if they are suitable returns a list of all the names
     :param path: The path from which to create the __all__ list
     :type path: string
     :return: A list of all modules that end with .py and contain children of modifiers/extractors/filter

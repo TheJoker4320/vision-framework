@@ -1,5 +1,5 @@
+from filters.filter import Filter
 import cv2
-from filter import Filter
 
 
 class BiggestAreaFilter(Filter):

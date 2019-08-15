@@ -1,4 +1,4 @@
-from pipeline import Pipeline
+from pipeline.pipeline import Pipeline
 import logging
 
 from modifiers.modifier import Modifier
@@ -87,7 +87,7 @@ class PipelineFactory(object):
         :return: A list of the built instances from the same type that was received
         :rtype: list
         """
-        return [registry[name](**properties) for name, properties in dictionary.iteritems() if
+        return [registry[name](**properties) for name, properties in dictionary.items() if
                 PipelineFactory.__is_in_registry(name, registry)]
 
     @staticmethod

@@ -1,4 +1,4 @@
-from modifier import Modifier
+from modifiers.modifier import Modifier
 import cv2
 import numpy
 
@@ -20,9 +20,14 @@ class Morph(Modifier):
         self.morph_close = numpy.ones(morph_close)
 
     def modify(self, frame):
+
         modified_frame = frame
-        if self.morph_open != (0, 0):
+        empty = numpy.ones((0, 0))
+
+        if self.morph_open != empty:
             modified_frame = cv2.morphologyEx(frame, cv2.MORPH_OPEN, self.morph_open)
-        if self.morph_close != (0, 0):
+
+        if self.morph_close != empty:
             modified_frame = cv2.morphologyEx(frame, cv2.MORPH_CLOSE, self.morph_close)
+
         return modified_frame

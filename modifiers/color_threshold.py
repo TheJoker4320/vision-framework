@@ -1,4 +1,4 @@
-from modifier import Modifier
+from modifiers.modifier import Modifier
 import cv2
 import numpy
 

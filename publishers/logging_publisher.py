@@ -1,8 +1,8 @@
 import logging
-from publish import Publish
+from publishers.publish import Publish
 
 
-class Logging_publisher(Publish):  # Consider Changing the name of the class
+class LoggingPublisher(Publish):
     """
     A publish class
     Responsible for logging the information at info level
@@ -14,5 +14,5 @@ class Logging_publisher(Publish):  # Consider Changing the name of the class
         :param data_dict:
         :return:
         """
-        for key, value in data_dict.iteritems():
+        for key, value in data_dict.items():
             logging.info("{key}:{value}".format(key=key, value=value))

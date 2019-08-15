@@ -21,7 +21,7 @@ class RemoteTuner(object):
 
     def __write_initial(self, name, dic):
         root_table = NetworkTables.getTable(name)
-        for item in dic.iteritems():
+        for item in dic.items():
             self.__recursive_write(item[0], item[1], root_table)
 
     def __recursive_write(self, key, value, table):
@@ -36,20 +36,20 @@ class RemoteTuner(object):
             table.putValue(key, value)
 
         else:
-            print "________________________________", value, "___________________________________"
+            print("________________________________", value, "___________________________________")
             sub_table = table.getSubTable(key)
             sub_table.addEntryListener(self.__listener)
-            for sub_item in value.iteritems():
+            for sub_item in value.items():
                 self.__recursive_write(sub_item[0], sub_item[1], sub_table)
 
     def __listener(self, table, key, value, is_new):
-        print "hello __ my old friend"
+        print("hello __ my old friend")
         path = table.path
         path_list = path.split('/')[2:]
         current_dictionary = self.pipeline_configurations
         for dictionary_name in path_list:
             current_dictionary = current_dictionary[dictionary_name]
-        if type(value) == tuple and type(value[0]) == unicode:
+        if type(value) == tuple and type(value[0]) == str:
             if "." in value[0]:
                 current_dictionary[key] = [float(num) for num in value]
             else:

@@ -1,8 +1,8 @@
+from filters.filter import Filter
 import sys
 import cv2
 import calculation_utils
 import numpy_utils
-from filter import Filter
 
 
 class DiagonalReflectiveTapePair(Filter):

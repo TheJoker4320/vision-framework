@@ -1,4 +1,4 @@
-from extractor import Extractor
+from extractors.extractor import Extractor
 import cv2
 import numpy
 
@@ -28,7 +28,7 @@ class CirclesExtractor(Extractor):
         :rtype: numpy array
         """
         center_x, center_y, radius = circle
-        print center_x, center_y, radius
+        print(center_x, center_y, radius)
         left_up_point = numpy.array([center_x - radius, center_y - radius])
         right_up_point = numpy.array([center_x + radius, center_y - radius])
         right_down_point = numpy.array([center_x + radius, center_y + radius])

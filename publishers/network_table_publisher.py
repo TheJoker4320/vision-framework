@@ -1,4 +1,4 @@
-from publish import Publish
+from publishers.publish import Publish
 from networktables import NetworkTables
 
 
@@ -20,5 +20,5 @@ class NetworkTablePublisher(Publish):
         self.table = NetworkTables.getTable(table_name)
 
     def publish(self, data):
-        for key, value in data.iteritems():
+        for key, value in data.items():
             self.table.putValue(key, value)

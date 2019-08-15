@@ -9,7 +9,7 @@ class Streamer(object):
         self.original_frame = 0
         # self.app = Flask("Streamer")
         self.name = json_file_name.split('/')[-1:][0].replace('.json', '')
-        print self.name
+        print(self.name)
         Streamer.app.add_url_rule("/" + self.name, self.name, self._get_response)
 
     @staticmethod

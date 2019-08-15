@@ -51,7 +51,7 @@ class Camera(object):
         :param properties: the properties of the camera to apply on
         :type properties: dictionary
         """
-        for key, value in properties.iteritems():
+        for key, value in properties.items():
             if key in Camera.configuration_strings:
                 self.config(key, value)
 

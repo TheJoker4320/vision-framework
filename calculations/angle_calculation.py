@@ -1,4 +1,4 @@
-from calculation import Calculation
+from calculations.calculation import Calculation
 import math
 import calculation_utils
 
