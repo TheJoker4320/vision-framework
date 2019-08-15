@@ -28,13 +28,13 @@ class TurnCalculation(Calculation):
             distance_calculation = DistanceCalculation(self.field_of_view, self.image_width, self.real_height)
             dis_from_contour1 = distance_calculation.calc([contour1])['distance']
             dis_from_contour2 = distance_calculation.calc([contour2])['distance']
-            shorter_distance = min(dis_from_contour1, dis_from_contour2)
-            longer_distance = max(dis_from_contour1, dis_from_contour2)
+            short_dist = min(dis_from_contour1, dis_from_contour2)
+            long_dist = max(dis_from_contour1, dis_from_contour2)
 
             merge_contours = calculation_utils.merge_contours([contour1, contour2])
             dis_from_center = distance_calculation.calc([merge_contours])['distance']
-            angle = math.acos((longer_distance ** 2 + self.tape_width ** 2 - shorter_distance ** 2) / (
-                        2 * longer_distance * self.tape_width))
+            angle = math.acos(
+                (long_dist ** 2 + self.tape_width ** 2 - short_dist ** 2) / ( 2 * long_dist * self.tape_width))
             angle = angle + 0.5 * math.pi
             half_tape_distance = self.tape_width / 2
             second_run = math.tan(angle) * half_tape_distance
