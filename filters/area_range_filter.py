@@ -28,4 +28,4 @@ class AreaRangeFilter(Filter):
         return self.min_area <= area <= self.max_area
 
     def filter(self, contours):
-        return filter(self.__check_area_range, contours)
+        return list(filter(self.__check_area_range, contours))
