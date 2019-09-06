@@ -25,12 +25,12 @@ class Camera(object):
         "zoom_absolute"
     ]
 
-    def __init__(self, port):
+    def __init__(self, port, api_preference):
         """
         :param int port: the port that the camera connect too
         """
         port = int(port)
-        self.video_capture = cv2.VideoCapture(port)
+        self.video_capture = cv2.VideoCapture(port, api_preference)
         self.initial_string = "{template}{port}".format(template=Camera.TEMPLATE, port=port)
 
     def config(self, configuration, value):
