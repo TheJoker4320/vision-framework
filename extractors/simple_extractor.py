@@ -8,4 +8,4 @@ class SimpleExtractor(Extractor):
     """
 
     def extract(self, image):
-        return cv2.findContours(image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[0]
+        return cv2.findContours(image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)[1]
