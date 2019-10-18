@@ -109,11 +109,14 @@ WIP
 WIP
 
 ## Credits
-Vision Proccessing team which inculdes:
-Zohar Shaked
-Shay Linzberg 
-Nadav Moran
-Bar-Hen Krochmel
+Current Vision Proccessing team which inculdes (As of 2019):
+* Zohar Shaked
+* Shay Linzberg 
+* Nadav Moran
+
+Past Vision Processing team:
+* Bar-Hen Krochmel
+
 Special thanks to:
 Daniel Vaserstein - For helping us organize our code better and helping set the project conventions.
 
