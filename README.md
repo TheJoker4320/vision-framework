@@ -15,7 +15,7 @@ Install all of the above libraries to run the code and then run main.py
 
 ## Code Highlights
 * Built in calibration of any camera, This includes any type of a camera paramter (as long as the camera supports it).
-* Verstile and easy to add new pipelines, Quirks and methodes.
+* Very verstile framework, It is easy to add new pipelines, Quirks and methods.
 * Takes about X miliseconds to build a pipeline.
 
 ## Project Philosophy
@@ -25,13 +25,13 @@ Once you have a pipeline object you can call the pipeline's method - process_ima
 The cofigurations are done in a json format, For an example see the [json example](https://github.com/TheJoker4320/vision-framework/blob/develop/examples/example.json).
 
 ### Pipeline
-pipeline is a class that represents a set of operations which are preformed on an image once process_image is called. 
-The following are the operations:
-* modify the image.
-* extract contours from the image.
-* filter the extracted contours.
-* calculate data from the filtered contours.
-* publish data into to the Roborio. 
+Pipeline is a class that represents a set of operational stages which are preformed on an image once process_image is called. 
+These stages inculde but not limted to the followings:
+* Modification stage - which uses diffrent modifiers to modify the image.
+* Extraction stage - which uses diffrent extractors to extract contours from the image.
+* Filter stage - which uses diffrent filters to filter the extracted contours.
+* Calculation stage - which uses diffrent calculations to calculate data from the filtered contours.
+* Publishing stage - which uses diffrent publishers to publish data into to the a desired machine. 
 
 Every operation from the list above is represented by a class. Every implementation of this operation is a subclass of it's operation class and the pipeline applies each one of them in it's turn. see [pipeline class](https://github.com/TheJoker4320/vision-framework/blob/develop/pipeline/pipeline.py) to understand better the algorithm.
 
@@ -78,4 +78,4 @@ The publisher class has an abstract function, publish. The function gets a dicti
 See [publish class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/publish.py) for more info.
 
 ## Contact Info
-for any problem encounterd with the Framework, feel free to contact us at our mail: frcthejoker4320@gmail.com .
+For any problem encounterd with the Framework, feel free to contact us at our mail: frcthejoker4320@gmail.com .
