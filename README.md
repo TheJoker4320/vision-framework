@@ -1,5 +1,5 @@
 # Vision-Pipeline
-The Joker's #4320 Vision Processing Framework for the First Robotics Competition (FRC). 
+The Joker's #4320 Vision Processing Framework for the First Robotics Competition (FRC).   
 The code is written in python, but also uses a json format for the creation of the pipeline.
 
 ## Installation
