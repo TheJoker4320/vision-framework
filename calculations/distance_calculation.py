@@ -16,15 +16,15 @@ class DistanceCalculation(Calculation):
         :param distance_function:
         """
         self.distance_function = distance_function
-        
+
     def calc(self, contours):
         data_dictionary = {}
-        
+
         merged_cont = calculation_utils.merge_contours(contours)
         rectangle = cv2.minAreaRect(merged_cont)
         _, p1, p2, _ = cv2.boxPoints(rectangle)
         imaginary_height = calculation_utils.distance(p1, p2)
-        distance = eval(distance_function)
+        distance = eval(self.distance_function)
         data_dictionary['distance'] = distance
-        
+
         return data_dictionary
