@@ -99,6 +99,8 @@ Class Quirks:
 * Logging Publisher - See [logging class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/logging_publisher.py) for more info.
 * Network Table Publisher - See [morph class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/network_table_publisher.py) for more info.
 
+### Json User Input
+WIP
 
 ## Conventions
 WIP
@@ -107,7 +109,13 @@ WIP
 WIP
 
 ## Credits
-WIP
+Vision Proccessing team which inculdes:
+Zohar Shaked
+Shay Linzberg 
+Nadav Moran
+Bar-Hen Krochmel
+Special thanks to:
+Daniel Vaserstein - For helping us organize our code better and helping set the project conventions.
 
 ## Contact Info
 For any problem encounterd with the Framework, feel free to contact us at our mail: frcthejoker4320@gmail.com .
