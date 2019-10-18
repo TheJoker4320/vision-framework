@@ -72,7 +72,7 @@ Class Quirks:
 ### Filter Stage
 The third stage of the pipeline, during this stage we get contours from the previous stage and filter them by diffrent parameters, like size,shape, aspect ratio and so on.
 
-Main Quirk: modifier, see [modifier class](https://github.com/TheJoker4320/vision-framework/blob/develop/filters/filter.py) for more info.  
+Main Quirk: filter, see [filter class](https://github.com/TheJoker4320/vision-framework/blob/develop/filters/filter.py) for more info.  
 
 Class Quirks:
 * Area Range - See [area range filter](https://github.com/TheJoker4320/vision-framework/blob/develop/filters/area_range_filter.py) for more info.
@@ -83,14 +83,13 @@ Class Quirks:
 * Shpae - See [shape filter](https://github.com/TheJoker4320/vision-framework/blob/filters/filters/shape_filter.py) for more info.
 
 ### Calculation Stage
-The first stage of the pipeline, during this stage we get a frame from the camera and applie diffrent modifier quirks on it to get a good image for the extraction stage.
+The fourth stage of the pipeline, during this stage we use the diffrent filtered contours from the previous stage for many diffrent calculations, these inculde distance and angle calcualtions for every filterd contour.
 
-Main Quirk: modifier, see [modifier class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/modifier.py) for more info.  
+Main Quirk: calculation, see [calculation class](https://github.com/TheJoker4320/vision-framework/blob/develop/calculations/modifier.py) for more info.  
 
 Class Quirks:
-* Blur - See [blur class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/blur.py) for more info.
-* Morph - See [morph class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/morph.py) for more info.
-* Color Treshold - See [blur class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/color_threshold.py) for more info.
+* Angle - See [angle calculation](https://github.com/TheJoker4320/vision-framework/blob/develop/calculations/angle_calculation.py) for more info.
+* more will be added soon!
 
 ### Publishing Stage
 The last stage of the pipeline, during this stage we send (publish) the calcultaions from the previous stage to the desired Robot, Computer or any other working machine that can run python.
@@ -102,6 +101,9 @@ Class Quirks:
 
 
 ## Conventions
+WIP
+
+## Remarks
 WIP
 
 ## Credits
