@@ -1,6 +1,6 @@
 # Vision-Pipeline
 The Joker's #4320 Vision Processing Framework for the First Robotics Competition (FRC).   
-The code is written in python, but also uses a json format for the creation of the pipeline.
+The code is written enti in python, but also uses a json files to get user specific data for the creation of the pipeline.
 
 ## Installation
 
@@ -20,12 +20,14 @@ Install all of the above libraries to run the code and then run main.py
 
 ## Project Philosophy
 The project is based on a pipeline object.
-Once you have a pipeline object you can call the pipeline's method - process_image and it will process the given image by your configurations.
+Once you have a pipeline object you can call the main pipeline method - process_image and it will process the given image by your configurations.
 
 The cofigurations are done in a json format, For an example see the [json example](https://github.com/TheJoker4320/vision-framework/blob/develop/examples/example.json).
 
 ### Pipeline
-Pipeline is a class that represents a set of operational stages which are preformed on an image once process_image is called. 
+Pipeline is a class that represents a set of operational stages which are preformed one after the other on an image, 
+which we get from the camera. All this is done once process_image is called. 
+
 These stages inculde but not limted to the followings:
 * Modification stage - which uses diffrent modifiers to modify the image.
 * Extraction stage - which uses diffrent extractors to extract contours from the image.
@@ -33,7 +35,10 @@ These stages inculde but not limted to the followings:
 * Calculation stage - which uses diffrent calculations to calculate data from the filtered contours.
 * Publishing stage - which uses diffrent publishers to publish data into to the a desired machine. 
 
-Every operation from the list above is represented by a class. Every implementation of this operation is a subclass of it's operation class and the pipeline applies each one of them in it's turn. see [pipeline class](https://github.com/TheJoker4320/vision-framework/blob/develop/pipeline/pipeline.py) to understand better the algorithm.
+Every stage from the list above is represented by a directory (i.e modifers for the modification stage). 
+Each Directory contains a "Main Quirk" which is an abstract class (i.e modifiers in the modification stage).
+
+See [pipeline class](https://github.com/TheJoker4320/vision-framework/blob/develop/pipeline/pipeline.py) to better understand the algorithm at work here.
 
 ### Modifier
 Modifiers is an abstract class which represents every modification that has to be preformed on the image. The modifiers are applied one after another when the result of the previous one is the input of the next one.
