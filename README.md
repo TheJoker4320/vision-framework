@@ -51,16 +51,16 @@ See [pipeline class](https://github.com/TheJoker4320/vision-framework/blob/devel
 ### Modification Stage
 The first stage of the pipeline, during this stage we get a frame from the camera and applie diffrent modifier quirks on it to get a good image for the extraction stage.
 
-Main Quirk: modifier, see [modifier class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/modifier.py) for more info.  
+Main Quirk: modifier, see [modifier quirk](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/modifier.py) for more info.  
 
 Class Quirks:
-* Blur - See [blur class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/blur.py) for more info.
-* Morph - See [morph class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/morph.py) for more info.
-* Color Treshold - See [blur class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/color_threshold.py) for more info.
+* Blur - See [blur modifier](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/blur.py) for more info.
+* Morph - See [morph modifier](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/morph.py) for more info.
+* Color Treshold - See [color treshold modifier](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/color_threshold.py) for more info.
 
 
 ### Extraction Stage
-The first stage of the pipeline, during this stage we get a frame from the camera and applie diffrent modifier quirks on it to get a good image for the extraction stage.
+The second stage of the pipeline, during this stage we get the modified frame from the previous stage and extract all the contours from it by their type.
 
 Main Quirk: extractor, see [extractor class](https://github.com/TheJoker4320/vision-framework/blob/develop/extractors/extractor.py) for more info.  
 
@@ -70,20 +70,23 @@ Class Quirks:
 
 
 ### Filter Stage
-The first stage of the pipeline, during this stage we get a frame from the camera and applie diffrent modifier quirks on it to get a good image for the extraction stage.
+The third stage of the pipeline, during this stage we get contours from the previous stage and filter them by diffrent parameters, like size,shape, aspect ratio and so on.
 
-Main Quirk: modifier, see [modifier class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/modifier.py) for more info.  
+Main Quirk: modifier, see [modifier class](https://github.com/TheJoker4320/vision-framework/blob/develop/filters/filter.py) for more info.  
 
 Class Quirks:
-* Blur - See [blur class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/blur.py) for more info.
-* Morph - See [morph class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/morph.py) for more info.
-* Color Treshold - See [blur class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/color_threshold.py) for more info.
-
+* Area Range - See [area range filter](https://github.com/TheJoker4320/vision-framework/blob/develop/filters/area_range_filter.py) for more info.
+* Area Ratio - See [area ratio filter](https://github.com/TheJoker4320/vision-framework/blob/develop/filters/area_ratio_filter.py) for more info.
+* Aspect Ratio - See [aspect ratio filter](https://github.com/TheJoker4320/vision-framework/blob/filters/filters/aspect_ratio_filter.py) for more info.
+* Biggest Area - See [biggest area filter](https://github.com/TheJoker4320/vision-framework/blob/filters/filters/biggest_area_filter.py) for more info.
+* Diagonal Reflective Tape - See [diagonal reflective tape pair filter](https://github.com/TheJoker4320/vision-framework/blob/filters/filters/diagonal_reflective_tape_pair_filter.py) for more info.
+* Shpae - See [shape filter](https://github.com/TheJoker4320/vision-framework/blob/filters/filters/shape_filter.py) for more info.
 
 ### Calculation Stage
 The first stage of the pipeline, during this stage we get a frame from the camera and applie diffrent modifier quirks on it to get a good image for the extraction stage.
 
 Main Quirk: modifier, see [modifier class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/modifier.py) for more info.  
+
 Class Quirks:
 * Blur - See [blur class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/blur.py) for more info.
 * Morph - See [morph class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/morph.py) for more info.
@@ -99,6 +102,7 @@ Class Quirks:
 
 
 ## Conventions
+WIP
 
 ## Credits
 WIP
