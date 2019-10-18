@@ -44,7 +44,7 @@ This directory is genrally referred to as Quirks.
 Each Directory contains a "Main Quirk" which is an abstract class and is called Quirk.
 Each and every implementation of the "Main Quirk" is given a name for example Foo.
 
-And now here is an example:
+And now here is an example:  
 For the modification stage there is a directory called modifiers. 
 This directory contains the "Main Quirk" which is called modifer.
 Each and every Quirk in this directory implements The Main Quirk. 
@@ -55,7 +55,7 @@ The first stage of the pipeline, during this stage we get a frame from the camer
 
 Main Quirk: modifier, see [modifier quirk](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/modifier.py) for more info.  
 
-Class Quirks:
+Class Quirks:  
 * Blur - See [blur modifier](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/blur.py) for more info.
 * Morph - See [morph modifier](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/morph.py) for more info.
 * Color Treshold - See [color treshold modifier](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/color_threshold.py) for more info.
