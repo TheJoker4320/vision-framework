@@ -121,4 +121,5 @@ Special thanks to:
 Daniel Vaserstein - For helping us organize our code better, helping set the project conventions and mentoring us till the very end.
 
 ## Contact Info
-For any problem encounterd with the Framework, feel free to contact us at our mail: frcthejoker4320@gmail.com .
+For any problem encounterd with the Framework, feel free to contact us at our mail: frcthejoker4320@gmail.com
+or just write us a pr in this git.
