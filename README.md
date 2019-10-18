@@ -99,8 +99,9 @@ Class Quirks:
 * Logging Publisher - See [logging class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/logging_publisher.py) for more info.
 * Network Table Publisher - See [morph class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/network_table_publisher.py) for more info.
 
-### Json User Input
-WIP
+### Pipeline Creation
+The framework uses a json file as a way of creating a pipeline.
+For an example file you see can check the [examples directory](https://github.com/TheJoker4320/vision-framework/blob/develop/examples)
 
 ## Conventions
 WIP
