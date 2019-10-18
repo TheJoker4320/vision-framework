@@ -110,12 +110,10 @@ WIP
 WIP
 
 ## Credits
-Current Vision Proccessing team which inculdes (As of 2019):
+Original Vision Proccessing team which inculdes (2019-2020):
 * Zohar Shaked
 * Shay Linzberg 
 * Nadav Moran
-
-Past Vision Processing team:
 * Bar-Hen Krochmel
 
 Special thanks to:       
