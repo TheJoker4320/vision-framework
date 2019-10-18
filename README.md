@@ -117,7 +117,7 @@ Current Vision Proccessing team which inculdes (As of 2019):
 Past Vision Processing team:
 * Bar-Hen Krochmel
 
-Special thanks to:
+Special thanks to:       
 Daniel Vaserstein - For helping us organize our code better and helping set the project conventions.
 
 ## Contact Info
