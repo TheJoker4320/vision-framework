@@ -51,7 +51,7 @@ See [pipeline class](https://github.com/TheJoker4320/vision-framework/blob/devel
 ### Modification Stage
 desc
 
-*Main Qurik*: modifier, see [modifier class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/modifier.py) for more info.
+Main Quirk: modifier, see [modifier class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/modifier.py) for more info.  
 Quirks:
 * Blur - See [blur](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/blur.py) for info
 * Morph - See [morph](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/morph.py) for info
