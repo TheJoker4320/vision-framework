@@ -1,5 +1,6 @@
 # Vision-Pipeline
-This project is The Joker's #4320 vision processing project for the First Robotic Competition (FRC).
+The Joker's #4320 Vision Processing Framework for the First Robotics Competition (FRC). 
+The code is written in python, but also uses a json format for the creation of the pipeline.
 
 ## Installation
 
@@ -11,6 +12,11 @@ This project is The Joker's #4320 vision processing project for the First Roboti
 * pynetwotktables
 
 Install all of the above libraries to run the code and then run main.py
+
+## Code Highlights
+* Built in calibration of any camera, This includes any type of a camera paramter (as long as the camera supports it).
+* Verstile and easy to add new pipelines, Quirks and methodes.
+* Takes about X miliseconds to build a pipeline.
 
 ## Project Philosophy
 The project is based on a pipeline object.
@@ -71,4 +77,5 @@ The publisher class has an abstract function, publish. The function gets a dicti
 
 See [publish class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/publish.py) for more info.
 
-
+## Contact Info
+for any problem encounterd with the Framework, feel free to contact us at our mail: frcthejoker4320@gmail.com .
