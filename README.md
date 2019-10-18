@@ -19,9 +19,6 @@ Install all of the above libraries to run the code and then run main.py
 * Takes about X miliseconds to build a pipeline.
 * The code was entirely written by high school students which are listed in the credits part.
 
-## Project Conventions
-WIP
-
 ## Project Philosophy
 The project is based on a pipeline object.
 Once you have a pipeline object you can call the main pipeline method - process_image and it will process the given image by your configurations.
@@ -39,14 +36,15 @@ These stages inculde but not limted to the followings:
 * Calculation stage - which uses diffrent calculations to calculate data from the filtered contours.
 * Publishing stage - which uses diffrent publishers to publish data into to the a desired machine. 
 
-Every stage from the list above is represented by a directory. 
-Each Directory contains a "Main Quirk" which is an abstract class.
-Each and every implementation of the "Main Quirk" is called a Quirk.
+## Project Conventions
+Every stage from the list above is represented by a directory and is called the <quirk>s. 
+Each Directory contains a "Main Quirk" which is an abstract class and is called <quirk>.
+Each and every implementation of the "Main Quirk" is given a name for example <quirk> a.
 
-Here is an example:
+And now here is an example:
 For the modification stage there is a directory called modifiers. 
 This directory contains the "Main Quirk" which is called modifer.
-Each and every Quirk (file) in this directory implements The Main Quirk. 
+Each and every Quirk (file) in this directory implements The Ma in Quirk. 
 For example the Blur Quirk (object) implements the Modifier which is the Main Quirk (object). 
 
 See [pipeline class](https://github.com/TheJoker4320/vision-framework/blob/develop/pipeline/pipeline.py) to better understand the algorithm that builds the pipeline.
