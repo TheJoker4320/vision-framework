@@ -19,6 +19,9 @@ Install all of the above libraries to run the code and then run main.py
 * Takes about X miliseconds to build a pipeline.
 * The code was entirely written by high school students which are listed in the credits part.
 
+## Project Conventions
+WIP
+
 ## Project Philosophy
 The project is based on a pipeline object.
 Once you have a pipeline object you can call the main pipeline method - process_image and it will process the given image by your configurations.
@@ -100,14 +103,8 @@ Class Quirks:
 * Network Table Publisher - See [morph class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/network_table_publisher.py) for more info.
 
 ### Pipeline Creation
-The framework uses a json file as a way of creating a pipeline.
+The framework uses a json file as a way of creating a pipeline.  
 For an example file you see can check the [examples directory](https://github.com/TheJoker4320/vision-framework/blob/develop/examples)
-
-## Conventions
-WIP
-
-## Remarks
-WIP
 
 ## Credits
 Original Vision Proccessing team which inculdes (2019-2020):
