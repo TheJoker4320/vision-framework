@@ -38,17 +38,21 @@ These stages inculde but not limted to the followings:
 
 See [pipeline class](https://github.com/TheJoker4320/vision-framework/blob/develop/pipeline/pipeline.py) to better understand the algorithm that builds the pipeline.
 
-### Project Conventions
+### Stage Conventions  
 Every stage from the list above is represented by a directory.
-This directory is genrally referred to as Quirks.
+This directory is genrally referred to as Quirks directory.
+Quirk is every file that cointains a class that is used in the pipeline for any purpouse.
 Each Directory contains a "Main Quirk" which is an abstract class and is called Quirk.
 Each and every implementation of the "Main Quirk" is given a name for example Foo.
 
 And now here is an example:  
-For the modification stage there is a directory called modifiers. 
+For the Modification Stage there is a directory called modifiers. 
 This directory contains the "Main Quirk" which is called modifer.
 Each and every Quirk in this directory implements The Main Quirk. 
 For example the Blur Modifier implements Modifier (which is the Main Quirk). 
+
+### File Conventions
+For the file conventions see the PEP8 convention guide.
 
 ### Modification Stage:
 The first stage of the pipeline, during this stage we get a frame from the camera and applie diffrent modifier quirks on it to get a good image for the extraction stage.
