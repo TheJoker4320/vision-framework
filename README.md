@@ -88,7 +88,7 @@ Class Quirks:
 * Color Treshold - See [blur class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/color_threshold.py) for more info.
 
 ### Publishing Stage
-The last stage of the pipeline, during this stage we send (publish) the calcultaions from the previous stage to the desired Robot.
+The last stage of the pipeline, during this stage we send (publish) the calcultaions from the previous stage to the desired Robot, Computer or any other working machine that can run python.
 
 Main Quirk: publisher, see [publisher class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/publish.py) for more info.  
 Class Quirks:
