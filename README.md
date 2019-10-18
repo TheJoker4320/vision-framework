@@ -51,7 +51,7 @@ For example the Blur Quirk (object) implements the Modifier which is the Main Qu
 
 See [pipeline class](https://github.com/TheJoker4320/vision-framework/blob/develop/pipeline/pipeline.py) to better understand the algorithm that builds the pipeline.
 
-### Modification Stage
+### Modification Stage:
 The first stage of the pipeline, during this stage we get a frame from the camera and applie diffrent modifier quirks on it to get a good image for the extraction stage.
 
 Main Quirk: modifier, see [modifier quirk](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/modifier.py) for more info.  
@@ -62,7 +62,7 @@ Class Quirks:
 * Color Treshold - See [color treshold modifier](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/color_threshold.py) for more info.
 
 
-### Extraction Stage
+### Extraction Stage:
 The second stage of the pipeline, during this stage we get the modified frame from the previous stage and extract all the contours from it by their type.
 
 Main Quirk: extractor, see [extractor class](https://github.com/TheJoker4320/vision-framework/blob/develop/extractors/extractor.py) for more info.  
@@ -72,7 +72,7 @@ Class Quirks:
 * Simple - See [simple extractor class](https://github.com/TheJoker4320/vision-framework/blob/develop/extractors/simple_extractor.py) for more info.
 
 
-### Filter Stage
+### Filter Stage:
 The third stage of the pipeline, during this stage we get contours from the previous stage and filter them by diffrent parameters, like size,shape, aspect ratio and so on.
 
 Main Quirk: filter, see [filter class](https://github.com/TheJoker4320/vision-framework/blob/develop/filters/filter.py) for more info.  
@@ -85,7 +85,7 @@ Class Quirks:
 * Diagonal Reflective Tape - See [diagonal reflective tape pair filter](https://github.com/TheJoker4320/vision-framework/blob/filters/filters/diagonal_reflective_tape_pair_filter.py) for more info.
 * Shpae - See [shape filter](https://github.com/TheJoker4320/vision-framework/blob/filters/filters/shape_filter.py) for more info.
 
-### Calculation Stage
+### Calculation Stage:
 The fourth stage of the pipeline, during this stage we use the diffrent filtered contours from the previous stage for many diffrent calculations, these inculde distance and angle calcualtions for every filterd contour.
 
 Main Quirk: calculation, see [calculation class](https://github.com/TheJoker4320/vision-framework/blob/develop/calculations/modifier.py) for more info.  
@@ -94,7 +94,7 @@ Class Quirks:
 * Angle - See [angle calculation](https://github.com/TheJoker4320/vision-framework/blob/develop/calculations/angle_calculation.py) for more info.
 * more will be added soon!
 
-### Publishing Stage
+### Publishing Stage:
 The last stage of the pipeline, during this stage we send (publish) the calcultaions from the previous stage to the desired Robot, Computer or any other working machine that can run python.
 
 Main Quirk: publisher, see [publisher class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/publish.py) for more info.  
