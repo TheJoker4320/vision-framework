@@ -59,37 +59,42 @@ Class Quirks:
 
 
 ### Extraction Stage
-Extractor is an abstract class which represents every extraction of contours from the modified image (from the previous operation). 
-All the contours from every extractor are grouped together for the next operations.
+The first stage of the pipeline, during this stage we get a frame from the camera and applie diffrent modifier quirks on it to get a good image for the extraction stage.
 
-The extractor class has an abstract function, extract. The function gets an image (the modified one from the previous stage) and returns a list of contours.
+Main Quirk: modifier, see [modifier class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/modifier.py) for more info.  
+Class Quirks:
+* Blur - See [blur class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/blur.py) for more info.
+* Morph - See [morph class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/morph.py) for more info.
+* Color Treshold - See [blur class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/color_threshold.py) for more info.
 
-See [extractor class](https://github.com/TheJoker4320/vision-framework/blob/develop/extractors/extractor.py) for more info.
 
 ### Filter Stage
-Filter is an abstract class which represents filters that filter the contours. 
-Every filter is applied on the contours (from the previous stage) and passes on only the ones that fit to the filter.
-Each filter is applied on the result of the previous filter.
+The first stage of the pipeline, during this stage we get a frame from the camera and applie diffrent modifier quirks on it to get a good image for the extraction stage.
 
-The filter class has an abstract function, which is called filter.
-The function gets list of contours and returns list of the fit contours.
+Main Quirk: modifier, see [modifier class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/modifier.py) for more info.  
+Class Quirks:
+* Blur - See [blur class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/blur.py) for more info.
+* Morph - See [morph class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/morph.py) for more info.
+* Color Treshold - See [blur class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/color_threshold.py) for more info.
 
-See [filter class](https://github.com/TheJoker4320/vision-framework/blob/develop/filters/filter.py) for more info.
 
 ### Calculation Stage
-Calculation is an abstract class which represents calculation that get you data from the contours from the previous stage.
+The first stage of the pipeline, during this stage we get a frame from the camera and applie diffrent modifier quirks on it to get a good image for the extraction stage.
 
-The calculation class has an abstract function,calculate.The function gets list of contours, preforms the calculation and returns a dictionary with the resulted data.
-
-See [calculation class](https://github.com/TheJoker4320/vision-framework/blob/develop/calculations/calculation.py) for more info.
+Main Quirk: modifier, see [modifier class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/modifier.py) for more info.  
+Class Quirks:
+* Blur - See [blur class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/blur.py) for more info.
+* Morph - See [morph class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/morph.py) for more info.
+* Color Treshold - See [blur class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/color_threshold.py) for more info.
 
 ### Publishing Stage
-Publisher is an abstract class which represents publishing methodologies.
-Every publisher publishes data in a specific way (the data from the previous stage).
+The last stage of the pipeline, during this stage we send (publish) the calcultaions from the previous stage to the desired Robot.
 
-The publisher class has an abstract function, publish. The function gets a dictionary with data to publish and publishes it.
+Main Quirk: publisher, see [publisher class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/publish.py) for more info.  
+Class Quirks:
+* Logging Publisher - See [logging class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/logging_publisher.py) for more info.
+* Network Table Publisher - See [morph class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/network_table_publisher.py) for more info.
 
-See [publish class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/publish.py) for more info.
 
 ## Conventions
 
