@@ -49,13 +49,13 @@ For example the Blur Quirk (object) implements the Modifier which is the Main Qu
 See [pipeline class](https://github.com/TheJoker4320/vision-framework/blob/develop/pipeline/pipeline.py) to better understand the algorithm that builds the pipeline.
 
 ### Modification Stage
-desc
+The first stage of the pipeline, during this stage we get a frame from the camera and applie diffrent modifier quirks on it to get a good image for the extraction stage.
 
 Main Quirk: modifier, see [modifier class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/modifier.py) for more info.  
-Quirks:
-* Blur - See [blur](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/blur.py) for info
-* Morph - See [morph](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/morph.py) for info
-* Color Treshold - See [blur](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/color_threshold.py) for info
+Class Quirks:
+* Blur - See [blur class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/blur.py) for info
+* Morph - See [morph class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/morph.py) for info
+* Color Treshold - See [blur class](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/color_threshold.py) for info
 
 
 ### Extraction Stage
