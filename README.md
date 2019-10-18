@@ -36,7 +36,7 @@ These stages inculde but not limted to the followings:
 * Calculation stage - which uses diffrent calculations to calculate data from the filtered contours.
 * Publishing stage - which uses diffrent publishers to publish data into to the a desired machine. 
 
-## Project Conventions
+### Project Conventions
 Every stage from the list above is represented by a directory and is called the <quirk>s. 
 Each Directory contains a "Main Quirk" which is an abstract class and is called <quirk>.
 Each and every implementation of the "Main Quirk" is given a name for example <quirk> a.
