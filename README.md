@@ -36,18 +36,19 @@ These stages inculde but not limted to the followings:
 * Calculation stage - which uses diffrent calculations to calculate data from the filtered contours.
 * Publishing stage - which uses diffrent publishers to publish data into to the a desired machine. 
 
+See [pipeline class](https://github.com/TheJoker4320/vision-framework/blob/develop/pipeline/pipeline.py) to better understand the algorithm that builds the pipeline.
+
 ### Project Conventions
-Every stage from the list above is represented by a directory and is called the <quirk>s. 
-Each Directory contains a "Main Quirk" which is an abstract class and is called <quirk>.
-Each and every implementation of the "Main Quirk" is given a name for example <quirk> a.
+Every stage from the list above is represented by a directory.
+This directory is genrally referred to as Quirks.
+Each Directory contains a "Main Quirk" which is an abstract class and is called Quirk.
+Each and every implementation of the "Main Quirk" is given a name for example Foo.
 
 And now here is an example:
 For the modification stage there is a directory called modifiers. 
 This directory contains the "Main Quirk" which is called modifer.
-Each and every Quirk (file) in this directory implements The Ma in Quirk. 
-For example the Blur Quirk (object) implements the Modifier which is the Main Quirk (object). 
-
-See [pipeline class](https://github.com/TheJoker4320/vision-framework/blob/develop/pipeline/pipeline.py) to better understand the algorithm that builds the pipeline.
+Each and every Quirk in this directory implements The Main Quirk. 
+For example the Blur Modifier implements Modifier (which is the Main Quirk). 
 
 ### Modification Stage:
 The first stage of the pipeline, during this stage we get a frame from the camera and applie diffrent modifier quirks on it to get a good image for the extraction stage.
