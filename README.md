@@ -113,9 +113,11 @@ We highely recommend you will be famillar with JSON before trying the pipeline.
 Original Vision Proccessing team which inculdes (2018-2019):
 * Zohar Shaked
 * Shay Linzberg 
-* Bar-Hen Krochmel
-Contributors:
-* Nadav Moran
+* Bar-Hen Krochmel  
+  
+Contributors:  
+* Nadav Moran  
+  
 Special thanks to:       
 Daniel Vaserstein - For helping us organize our code better, helping set the project conventions and mentoring us till the very end.
 
