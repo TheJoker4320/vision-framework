@@ -109,14 +109,14 @@ Class Quirks:
 
 ### Pipeline Creation
 The framework uses a json file as a way of creating a pipeline.  
-For an example file you see can check the [examples directory](https://github.com/TheJoker4320/vision-framework/blob/develop/examples).   
+For an example file you see can check the [examples directory](https://github.com/TheJoker4320/vision-framework/blob/develop/examples).     
 We highely recommend you will be famillar with JSON before trying to create a pipeline.
 
 ### Grip File Support
 WIP
 
 ### Camera Calibration
-WIP
+The Camera calibration is done by using JSON file format and all the parameters are given to camera.py to learn more about this process check [camera class](https://github.com/TheJoker4320/vision-framework/blob/develop/camera.py)
 
 ## Credits
 Original Vision Proccessing team which inculdes (2018-2019):
