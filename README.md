@@ -51,7 +51,7 @@ This directory contains the "Main Quirk" which is called modifer.
 Each and every Quirk in this directory implements The Main Quirk.   
 For example the Blur Modifier implements Modifier (which is the Main Quirk).   
 
-For the file conventions see the PEP8 convention guide.
+For the file conventions see the [PEP8](https://github.com/PyCQA/pep8-naming.git/README.rst) convention guide.
 
 ### Modification Stage:
 The first stage of the pipeline, during this stage we get a frame from the camera and applie diffrent modifier quirks on it to get a good image for the extraction stage.
