@@ -11,7 +11,7 @@ The code is written entirely in Python 3, but also uses a JSON files to get user
 * Numpy
 * Pynetwotktables
 
-Install all of the above libraries to run the code and then you can run main.py.
+Install all of the above libraries to run the code and then you can run main.py.  
 If you don't know how to install any of the libraries check our installation guide.
 
 ## Code Highlights
