@@ -116,7 +116,9 @@ We highely recommend you will be famillar with JSON before trying to create a pi
 WIP
 
 ### Camera Calibration
-The Camera calibration is done by using JSON file format and all the parameters are given to camera.py to learn more about this process check [camera class](https://github.com/TheJoker4320/vision-framework/blob/develop/camera.py).
+The Camera calibration is done by writing all the camera parameters that you want to calibarate in a JSON file format (where you write your pipeline creation input). Then all the parameters are given to camera.py,and that clibrates them.  
+
+To learn more about this process check [camera class](https://github.com/TheJoker4320/vision-framework/blob/develop/camera.py).
 
 ## Credits
 Original Vision Proccessing team which inculdes (2018-2019):
