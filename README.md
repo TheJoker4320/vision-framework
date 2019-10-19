@@ -1,6 +1,6 @@
 # Vision-Pipeline
 The Joker's #4320 Vision Processing Framework for the First Robotics Competition (FRC).   
-The code is written entirely in Python 3, but also uses a json files to get user specific data for the creation of the pipeline.
+The code is written entirely in Python 3, but also uses a JSON files to get user specific data for the creation of the pipeline.
 
 ## Installation
 
@@ -107,14 +107,15 @@ Class Quirks:
 ### Pipeline Creation
 The framework uses a json file as a way of creating a pipeline.  
 For an example file you see can check the [examples directory](https://github.com/TheJoker4320/vision-framework/blob/develop/examples)
+We highely recommend you will be famillar with JSON before trying the pipeline.
 
 ## Credits
-Original Vision Proccessing team which inculdes (2019-2020):
+Original Vision Proccessing team which inculdes (2018-2019):
 * Zohar Shaked
 * Shay Linzberg 
-* Nadav Moran
 * Bar-Hen Krochmel
-
+Contributors:
+* Nadav Moran
 Special thanks to:       
 Daniel Vaserstein - For helping us organize our code better, helping set the project conventions and mentoring us till the very end.
 
