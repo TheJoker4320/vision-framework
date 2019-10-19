@@ -49,7 +49,7 @@ And now here is an example:
 For the Modification Stage there is a directory called modifiers.  
 This directory contains the "Main Quirk" which is called modifer.  
 Each and every Quirk in this directory implements The Main Quirk.   
-For example the Blur Modifier implements Modifier (which is the Main Quirk).   
+For example the Blur Modifier implements Modifier.   
 
 For the file conventions see the [PEP8](https://github.com/PyCQA/pep8-naming.git) convention guide.
 
