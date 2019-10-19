@@ -11,19 +11,19 @@ The code is written entirely in Python 3, but also uses a JSON files to get user
 * Numpy
 * Pynetwotktables
 
-Install all of the above libraries to run the code and then run main.py
+Install all of the above libraries to run the code and then you can run main.py.
+If you don't know how to install any of the libraries check our installation guide.
 
 ## Code Highlights
 * Built in calibration of any camera, This includes any type of a camera paramter (as long as the camera supports it).
-* Very verstile framework, It is easy to add new pipelines, Quirks and methods.
+* Very verstile framework, It is easy to add new pipelines, Quirks and methods and functions.
 * Takes about X miliseconds to build a pipeline.
+* The code is open source and we highely encourge using it!
 * The code was entirely written by high school students which are listed in the credits part.
 
 ## Project Philosophy
 The project is based on a pipeline object.
 Once you have a pipeline object you can call the main pipeline method - process_image and it will process the given image by your configurations.
-
-The cofigurations are done in a json format, For an example see the [json example](https://github.com/TheJoker4320/vision-framework/blob/develop/examples/example.json).
 
 ### Pipeline
 Pipeline is a class that represents a set of operational stages which are preformed one after the other on an image, 
@@ -108,6 +108,9 @@ Class Quirks:
 The framework uses a json file as a way of creating a pipeline.  
 For an example file you see can check the [examples directory](https://github.com/TheJoker4320/vision-framework/blob/develop/examples)
 We highely recommend you will be famillar with JSON before trying the pipeline.
+
+### Grip File Support
+WIP
 
 ## Credits
 Original Vision Proccessing team which inculdes (2018-2019):
