@@ -39,7 +39,7 @@ These stages inculde but not limted to the followings:
 See [pipeline class](https://github.com/TheJoker4320/vision-framework/blob/develop/pipeline/pipeline.py) to better understand the algorithm that builds the pipeline.
 
 ### Conventions  
-Every stage from the list above is represented by a directory.
+Every stage from the list above is represented by a directory.  
 This directory is genrally referred to as Quirks directory.  
 Quirk is every file that cointains a class that is used in the pipeline for any purpouse.  
 Each Directory contains a "Main Quirk" which is an abstract class and is called Quirk.  
