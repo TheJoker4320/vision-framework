@@ -126,7 +126,7 @@ Original Vision Proccessing team which inculdes (2018-2019):
 * Shay Linzberg 
 * Bar-Hen Krochmel  
   
-Contributors:  
+Code Contributors:  
 * Nadav Moran  
   
 Special thanks to:       
