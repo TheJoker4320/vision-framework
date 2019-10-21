@@ -42,7 +42,7 @@ See [pipeline class](https://github.com/TheJoker4320/vision-framework/blob/devel
 Every stage from the list above is represented by a directory.  
 This directory is genrally referred to as Quirks directory.  
 Quirk is every file that cointains a class that is used in the pipeline for any purpouse.  
-Each Directory contains a Main Quirk which is an abstract class, which every other class in the directory needs to implements it.  
+Each Directory contains a Main Quirk which is an abstract class, Every other class in the directory needs to implement it.  
 
 And now here is an example:  
 For the Modification Stage there is a directory called modifiers.  
