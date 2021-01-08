@@ -41,6 +41,22 @@ def merge_contours(contours):
     return merged_contour
 
 
+def create_rotation_matrix(yaw_angle, pitch_angle, roll_angle):
+    sin, cos = numpy.sin(yaw_angle), numpy.cos(yaw_angle)
+    rotation_matrix = numpy.array([[cos, 0, sin],
+                                   [0, 1, 0],
+                                   [-sin, 0, cos]])
+    sin, cos = numpy.sin(pitch_angle), numpy.cos(pitch_angle)
+    rotation_matrix = rotation_matrix.dot(numpy.array([[1, 0, 0],
+                                                       [0, cos, -sin],
+                                                       [0, sin, cos]]))
+    sin, cos = numpy.sin(roll_angle), numpy.cos(roll_angle)
+    rotation_matrix = rotation_matrix.dot(numpy.array([[cos, -sin, 0],
+                                                       [sin, cos, 0],
+                                                       [0, 0, 1]]))
+    return rotation_matrix
+
+
 def __get_left_extreme_point(contour):
     return tuple(contour[contour[:, :, 0].argmin()][0])
 
