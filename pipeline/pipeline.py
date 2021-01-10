@@ -53,7 +53,7 @@ class Pipeline(object):
 
         for filter_object in self.filters:
             contours = filter_object.filter(contours)
-            print( type(filter_object).__name__)
+            print(type(filter_object).__name__)
             logging.debug("{} passed {}".format(len(contours), type(filter_object).__name__))
 
         logging.debug("Filtering stage --------- DONE")
