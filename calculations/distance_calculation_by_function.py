@@ -32,7 +32,7 @@ class DistanceCalculationByFunction(Calculation):
         imaginary_height = calculation_utils.distance(p1, p2)
 
         # set the imaginary_height in the given function (as an x)
-        distance = eval(self.distance_function)
+        distance = eval(self.distance_function, {}, {"imaginary_height": imaginary_height})
 
         data_dictionary['distance'] = distance
 
