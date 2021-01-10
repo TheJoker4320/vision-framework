@@ -43,8 +43,8 @@
       "real_height": 40.5,
       "tape_width": 50
     },
-    "DistanceCalculation": {
-      "distance_function": "193.1*(imaginary_height^0.934)"
+    "DistanceCalculationByFunction": {
+      "distance_function": "193.1*(imaginary_height**0.934)"
     },
     "AngleCalculation": {
       "image_x_center": 319,
