@@ -26,7 +26,7 @@ def main():
     # frame = cv2.imread('ball.jpg')
     streamer = Streamer("examples/example.json")
     Thread(target=Streamer.run).start()
-    # frame = cv2.imread('diagonal_test.jpg')
+    # frame = cv2.imread('test.jpg')
 
     while True:
         frame = camera.get_frame()
