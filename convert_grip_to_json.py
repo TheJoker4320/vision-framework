@@ -51,12 +51,14 @@ def edit_json(json_file_name: str, modifiers_values: dict):
     with open(json_file_name, "r") as file_handler:
         properties = json.load(file_handler, object_pairs_hook=OrderedDict)
     # Run-on all the modifiers functions according to their names
-    for modifier, values in modifiers_values.items():
+    for modifier, grip_values in modifiers_values.items():
         try:
-            properties = eval(f'{modifier}({properties}, {values})')
+            properties = eval("edit_function(properties, grip_values)", {},
+                              {"edit_function": GRIP_NAME_TO_FRAMEWORK_FUNCTIONS[modifier],
+                               "properties": properties, "grip_values": grip_values})
         except Exception as exception:
-            print(exception.__class__.__name__ + f'{modifier}: ' + str(
-                NameError("modifier function's name is incorrect( or not in the GRIP_NAME_TO_FRAMEWORK_FUNCTIONS"
+            print(exception.__class__.__name__ + f' {modifier}: ' + str(
+                NameError("modifier function's name is incorrect (or not in the GRIP_NAME_TO_FRAMEWORK_FUNCTIONS"
                           "dictionary or invalid JSON file")))
             continue
 
