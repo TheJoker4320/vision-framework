@@ -3,7 +3,7 @@ import cv2
 import calculation_utils
 
 
-class DistanceCalculation(Calculation):
+class DistanceCalculationByFocalLength(Calculation):
     """
     Calculates the distance between the camera and the object
     Uses the image's width, camera's field of view and the object's height in reality.

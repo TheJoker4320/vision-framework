@@ -1,5 +1,5 @@
 from calculations.calculation import Calculation
-from calculations.distance_calculation import DistanceCalculation
+from calculations.distance_calculation_by_focal_length import DistanceCalculationByFocalLength
 import math
 import calculation_utils
 
@@ -25,7 +25,7 @@ class TurnCalculation(Calculation):
         if len(contours) == 2:
             contour1 = contours[0]
             contour2 = contours[1]
-            distance_calculation = DistanceCalculation(self.field_of_view, self.image_width, self.real_height)
+            distance_calculation = DistanceCalculationByFocalLength(self.field_of_view, self.image_width, self.real_height)
             dis_from_contour1 = distance_calculation.calc([contour1])['distance']
             dis_from_contour2 = distance_calculation.calc([contour2])['distance']
             short_dist = min(dis_from_contour1, dis_from_contour2)
