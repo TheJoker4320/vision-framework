@@ -64,24 +64,24 @@ def clean_and_format_dictionary(values_dict: dict) -> dict:
 
 def edit_json(json_file_name: str, grip_data: dict):
     """
-    Change Values in the json according to the given dictionary
+    Change Values in the JSON according to the given dictionary
     Note: Change ONLY the given values, the rest will STAY as is
 
-    :param json_file_name: the json file's name
+    :param json_file_name: the JSON file's name
     :type json_file_name: str
 
     :param grip_data: the dictionary where the key is the name like in the GRIP and the value is it's values in
                       the GRIP file
     :type grip_data: dict
     """
-    # Open the json file
+    # Open the JSON file
     with open(json_file_name, "r") as json_handler:
         properties = json.load(json_handler, object_pairs_hook=OrderedDict)
 
     # Run-on all the modifiers functions according to their names
     for grip_name, grip_values in grip_data.items():
         try:
-            # Call the wanted function to convert the values of the GRIP file to the json file
+            # Call the wanted function to convert the values of the GRIP file to the JSON file
             properties = eval("edit_function(properties, grip_values)", {},
                               {"edit_function": GRIP_NAME_TO_FRAMEWORK_FUNCTIONS[grip_name],
                                "properties": properties, "grip_values": grip_values})
@@ -98,7 +98,7 @@ def edit_json(json_file_name: str, grip_data: dict):
 
 
 """
-This section below used for function that convert the GRIP values to the json and return it 
+This section below used for function that convert the GRIP values to the JSON and return it 
 after you add the function do not forget to add it to the GRIP_NAME_TO_FRAMEWORK_FUNCTIONS dictionary 
 
 you can add your own function by the following format:
@@ -118,7 +118,7 @@ def blur(opened_json_file: OrderedDict, grip_values: list):
     """
     Change the Blur Values in the JSON data
 
-    :param opened_json_file: the given json file opened as a OrderedDict
+    :param opened_json_file: the given JSON file opened as a OrderedDict
     :type opened_json_file: OrderedDict
 
     :param grip_values: the inserted values in the GRIP file for this action by order from first to last
@@ -137,7 +137,7 @@ def hsv_threshold(opened_json_file: OrderedDict, grip_values: list):
     """
     Change the HSV_Threshold Values in the JSON data
 
-    :param opened_json_file: the given json file opened as a OrderedDict
+    :param opened_json_file: the given JSON file opened as a OrderedDict
     :type opened_json_file: OrderedDict
 
     :param grip_values: the inserted values in the GRIP file for this action by order from first to last
@@ -164,7 +164,7 @@ def mask(opened_json_file: OrderedDict, grip_values: list):
     """
     Change the HSV_Threshold (because the mask is in it) Values in the JSON data
 
-    :param opened_json_file: the given json file opened as a OrderedDict
+    :param opened_json_file: the given JSON file opened as a OrderedDict
     :type opened_json_file: OrderedDict
 
     :param grip_values: the inserted values in the GRIP file for this action by order from first to last
@@ -173,7 +173,7 @@ def mask(opened_json_file: OrderedDict, grip_values: list):
     """
 
     # NOTE: once it is set it can not be change to False
-    #       to change it to False you must do it directly through the json file
+    #       to change it to False you must do it directly through the JSON file
     opened_json_file["modifiers"]["ColorThreshold"]["high_v"] = True
     return opened_json_file
 
@@ -181,7 +181,7 @@ def mask(opened_json_file: OrderedDict, grip_values: list):
 """
 A global dictionary for the integreation from the GRIP naming convention to the wanted function
 in the key there is the name as it is in the GRIP (notice the there are '_' instead of ' ')
-in the value there is the function you want to use to edit the json file (notice that you need to create one above)
+in the value there is the function you want to use to edit the JSON file (notice that you need to create one above)
 
 see the first example in the dictionary for guidance
 """
