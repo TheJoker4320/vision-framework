@@ -33,6 +33,7 @@ def main():
         processed_frame = my_pipeline.process_image(frame)
         streamer.update(processed_frame)
         # my_pipeline = tuner.get_pipeline()
-    
+
+
 if __name__ == "__main__":
     main()
