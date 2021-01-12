@@ -98,8 +98,8 @@ def edit_json(json_file_name: str, grip_data: dict):
 
 
 """
-This section below used for function that convert the GRIP values to the JSON and return it 
-after you add the function do not forget to add it to the GRIP_NAME_TO_FRAMEWORK_FUNCTIONS dictionary 
+This section below used for function that convert the GRIP values to the JSON and return it
+after you add the function do not forget to add it to the GRIP_NAME_TO_FRAMEWORK_FUNCTIONS dictionary
 
 you can add your own function by the following format:
 
@@ -108,7 +108,7 @@ def name(opened_json_file: OrderedDict, grip_values: list):
     # name = the function name
     # json_file = the opened JSON file (as in the builtin function)
     # grip_values = the values read from the GRIP file for this section only
-    
+
     return opened_json_file
 
 """
