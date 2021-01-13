@@ -4,23 +4,22 @@ The code is written entirely in Python 3, but also uses a JSON files to get user
 
 ## Table of Contents
 * [Installation](#installation)
-* Code Highlights
-* Project Philosophy
-    * Pipeline
-    * Conventions
-    * Modification Stage
-    * Extraction Stage
-    * Filter Stage
-    * Calculation Stage
-    * Publishing Stage
-* Features
-    * Pipeline Creation
-    * Grip File Support
-    * Camera Calibration
-* Credits
-* [Contact Info]
+* [Code Highlights](#code-highlights)
+* [Project Philosophy](#project-philosophy)
+    * [Pipeline](#pipeline)
+    * [Conventions](#conventions)
+    * [Modification Stage](#modification-stage)
+    * [Extraction Stage](#extraction-stage)
+    * [Filter Stage](#filter-stage)
+    * [Calculation Stage](#calculation-stage)
+    * [Publishing Stage](#publishing-stage)
+* [Features](#features)
+    * [Pipeline Creation](#pipeline-creation)
+    * [Grip File Support](#grip-file-support)
+    * [Camera Calibration](#camera-calibration)
+* [Credits](#credits)
+* [Contact Info](#contact-info)
 
-<a name="installation"></a>
 ## Installation
 
 ### Requirements
@@ -81,7 +80,6 @@ Class Quirks:
 * Morph - See [morph modifier](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/morph.py) for more info.
 * Color Threshold - See [color threshold modifier](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/color_threshold.py) for more info.
 
-
 ### Extraction Stage:
 The second stage of the pipeline, during this stage we get the modified frame from the previous stage and extract all the contours from it by their type.
 
@@ -90,7 +88,6 @@ Main Quirk: extractor, see [extractor class](https://github.com/TheJoker4320/vis
 Class Quirks:
 * Circles - See [circles_extractor class](https://github.com/TheJoker4320/vision-framework/blob/develop/extractors/circles_extractor.py) for more info.
 * Simple - See [simple extractor class](https://github.com/TheJoker4320/vision-framework/blob/develop/extractors/simple_extractor.py) for more info.
-
 
 ### Filter Stage:
 The third stage of the pipeline, during this stage we get contours from the previous stage and filter them by different parameters, like size,shape, aspect ratio and so on.
