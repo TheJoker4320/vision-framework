@@ -129,7 +129,15 @@ For an example file you see can check the [examples directory](https://github.co
 We highly recommend you will be familiar with JSON before trying to create a pipeline.
 
 ### Grip File Support
-WIP
+We as a framework offer the users to convert a GRIP file to JSON file.  
+The converter is also versatile and need to be update according to the GRIP program and the framework development.  
+to convert a GRIP file to JSON file all you need is to:
+1. create a grip file
+2. create a basic JSON file - a JSON file that contain the basic format for the framework (you can find one in the examples directory as [example.py](https://github.com/TheJoker4320/vision-framework/blob/develop/examples/example.py).       )
+3. run on the command line the followed command:  
+`python convert_grip_to_json.py grip_file_name.grip json_file_name.json`
+
+If you want to add more support to the converter or just check comment about the function you can see the [converter](https://github.com/TheJoker4320/vision-framework/blob/develop/convert_grip_to_json.py) and edit it in the designated place.
 
 ### Camera Calibration
 The Camera calibration is done by writing all the camera parameters that you want to calibrate in a JSON file format (where you write your pipeline creation input). Then all the parameters are given to camera.py, and that calibrates them.  
