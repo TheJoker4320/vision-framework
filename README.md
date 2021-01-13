@@ -1,12 +1,31 @@
-# Vision-Pipeline
+#  PipeLight - Vision-Pipeline Framework
 The Joker's #4320 Vision Processing Framework for the First Robotics Competition (FRC).   
 The code is written entirely in Python 3, but also uses a JSON files to get user specific data for the framework.
 
+## Table of Contents
+* [Installation](#installation)
+* Code Highlights
+* Project Philosophy
+    * Pipeline
+    * Conventions
+    * Modification Stage
+    * Extraction Stage
+    * Filter Stage
+    * Calculation Stage
+    * Publishing Stage
+* Features
+    * Pipeline Creation
+    * Grip File Support
+    * Camera Calibration
+* Credits
+* [Contact Info]
+
+<a name="installation"></a>
 ## Installation
 
 ### Requirements
 * Python 3.6 or higher
-* OpenCV
+* OpenCV (preference for version 3.4.x)
 * Flask
 * Numpy
 * Pynetwotktables
