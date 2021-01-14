@@ -1,4 +1,4 @@
-#  PipeLight - Vision-Pipeline Framework
+#  PipeLight - Vision Processing Framework
 The Joker's #4320 Vision Processing Framework for the First Robotics Competition (FRC).   
 The code is written entirely in Python 3, but also uses a JSON files to get user specific data for the framework.
 
@@ -32,10 +32,13 @@ The code is written entirely in Python 3, but also uses a JSON files to get user
 Install all of the above libraries to run the code and then you can run main.py.  
 If you don't know how to install any of the libraries check our installation guide.
 
+### Installation Guide
+
+the guide
+
 ## Code Highlights
-* Built in calibration of any camera, This includes any type of a camera parameter (as long as the camera supports it).
-* Very versatile framework, It is easy to add new pipelines, Quirks and methods and functions.
-* Takes about X milliseconds to build a pipeline.
+* Built in camera calibration, as long as the camera supports it.
+* Very versatile framework, easy to add and manage new pipelines, Quirks and methods and functions.
 * The code is open source and we highly encourage using it!
 * The code was entirely written by high school students which are listed in the credits part.
 
@@ -118,7 +121,7 @@ Main Quirk: publisher, see [publisher class](https://github.com/TheJoker4320/vis
  
 Class Quirks:
 * Logging Publisher - See [logging class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/logging_publisher.py) for more info.
-* Network Table Publisher - See [morph class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/network_table_publisher.py) for more info.
+* Network Table Publisher - See [network table class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/network_table_publisher.py) for more info.
 
 ## Features
 
@@ -134,11 +137,11 @@ Note: the order of each the Quirks in each stage is according to the order in th
 
 #### Modification Stage
 
-|Quirk Name|Variables|type|Description|
-|----------|---------|----|-----------|
-|Blur      |kernel - the size of the kernel across the x and y axises of the image, the height and width should be odd| list of 2 floats (convert to tuple in the program). | Blurs the image using a blur kernel.|
-|ColorThreshold|low_h - the lower limit of the Hue range <br> low_s - - the lower limit of the Saturation range <br> low_v - the lower limit of the Value range <br> high_h - the higher limit of the Hue range<br> high_s - the higher limit of the Saturation range <br> high_v - the higher limit of the value range <br> do_mask - flag for performing mask|hsv values - float <br> do_mask - boolean|Applies color threshold using HSV <br> Can perform mask, via bitwise AND operation, between the original frame and the HSV.|
-|Morph|morph_open - the size of the kernel for the Opening<br> morph_close - the size of the kernel for the Closing | list of 2 floats (convert to a numpy array in the program)|Applies either open, close, both open and close or none of them on a frame.|
+|Quirk Name|Variables|type|Description|Code Link|
+|----------|---------|----|-----------|---------|
+|Blur      |kernel - the size of the kernel across the x and y axises of the image, the height and width should be odd| list of 2 floats (convert to tuple in the program). | Blurs the image using a blur kernel.|[blur modifier](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/blur.py)|
+|ColorThreshold|low_h - the lower limit of the Hue range <br> low_s - - the lower limit of the Saturation range <br> low_v - the lower limit of the Value range <br> high_h - the higher limit of the Hue range<br> high_s - the higher limit of the Saturation range <br> high_v - the higher limit of the value range <br> do_mask - flag for performing mask|hsv values - float <br> do_mask - boolean|Applies color threshold using HSV <br> Can perform mask, via bitwise AND operation, between the original frame and the HSV.|[color threshold modifier](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/color_threshold.py)|
+|Morph|morph_open - the size of the kernel for the Opening<br> morph_close - the size of the kernel for the Closing | list of 2 floats (convert to a numpy array in the program)|Applies either open, close, both open and close or none of them on a frame.|[morph modifier](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/morph.py)|
 
 
 and How it look on the json file (all of the modifiers above, you can delete what you do not want to use)  
@@ -183,10 +186,10 @@ Note that except of the last one all of them has , after (to understand why it i
 
 
 #### Extraction Stage
-|Quirk Name|Variables|type|Description|
-|----------|---------|----|-----------|
-|SimpleExtractor|None| None| Extracts all the contours that were detected at the given frame.|
-|CirclesExtractor|dp - This parameter is the inverse ratio of the accumulator resolution to the image resolution (see Yuen et al. for more details). Essentially, the larger the dp gets, the smaller the accumulator array gets <br> minimum_distance - Minimum distance between the center (x, y) coordinates of detected circles. If the distance is too small, multiple circles in the same neighborhood as the original may be (falsely) detected. If the distance is too large, then some circles may not be detected at all| Extracts all the contours that are circular.|
+|Quirk Name|Variables|type|Description|Code Link|
+|----------|---------|----|-----------|---------|
+|SimpleExtractor|None| None| Extracts all the contours that were detected at the given frame.|[simple extractor class](https://github.com/TheJoker4320/vision-framework/blob/develop/extractors/simple_extractor.py)|
+|CirclesExtractor|dp - This parameter is the inverse ratio of the accumulator resolution to the image resolution (see Yuen et al. for more details). Essentially, the larger the dp gets, the smaller the accumulator array gets <br> minimum_distance - Minimum distance between the center (x, y) coordinates of detected circles. If the distance is too small, multiple circles in the same neighborhood as the original may be (falsely) detected. If the distance is too large, then some circles may not be detected at all| Extracts all the contours that are circular.|[circles_extractor class](https://github.com/TheJoker4320/vision-framework/blob/develop/extractors/circles_extractor.py)|
 
 and How it look on the json file (all of the extractors above, you can delete what you do not want to use)  
 Example in the JSON file:
@@ -208,14 +211,14 @@ Example in the JSON file:
 Note that except of the last one all of them has , after (to understand why it is highly recommended to read JSON file format).
 
 #### Filter Stage
-|Quirk Name|Variables|type|Description|
-|----------|---------|----|-----------|
-|AreaRangeFilter|min_area - the minimum area of the contour to filter <br> max_area - the maximum area of the contour to filter|float| Filters the contours by minimum and maximum values of the area. <br> The area is defined by the contour area.|
-|AreaRatioFilter|min_area_ratio - the minimum area ratio of the contour to filter <br> max_area_ratio - the maximum area ratio of the contour to filter|float| Filters the contours by minimum and maximum values of the area ratio. <br> The area ratio is defined as the ratio between the rectangle area and contour area.|
-|AspectRatioFilter| min_ratio - the minimum aspect ratio of the contour to filter <br> max_ratio - the maximum aspect ratio of the contour to filter|float| Filters the contours by minimum and maximum values of the aspect ratio. <br> The aspect ratio defined as the ratio between the height and width. <br> Height defined as the longer between the two side's length.|
-|BiggestAreaFilter|None|None| Goes over all the contours and returns the one with the biggest area.|
-|DiagonalReflectiveTapePair|None|None| Goes over all the contours returns the two that turn to each other. <br> Matches to the 2019 requirements.|
-|ShapeFilter| edges_count - the number of edges <br> epsilon - the value which is used to approximate the shape type| edges_count - int <br> epsilon - float| Filters the contours by their approximate shape. <br> Checks the approximate shape according to epsilon value. <br> As epsilon is bigger the filtering is more flexible.|
+|Quirk Name|Variables|type|Description|Code Link|
+|----------|---------|----|-----------|---------|
+|AreaRangeFilter|min_area - the minimum area of the contour to filter <br> max_area - the maximum area of the contour to filter|float| Filters the contours by minimum and maximum values of the area. <br> The area is defined by the contour area.|[area range filter](https://github.com/TheJoker4320/vision-framework/blob/develop/filters/area_range_filter.py)|
+|AreaRatioFilter|min_area_ratio - the minimum area ratio of the contour to filter <br> max_area_ratio - the maximum area ratio of the contour to filter|float| Filters the contours by minimum and maximum values of the area ratio. <br> The area ratio is defined as the ratio between the rectangle area and contour area.|[area ratio filter](https://github.com/TheJoker4320/vision-framework/blob/develop/filters/area_ratio_filter.py)|
+|AspectRatioFilter| min_ratio - the minimum aspect ratio of the contour to filter <br> max_ratio - the maximum aspect ratio of the contour to filter|float| Filters the contours by minimum and maximum values of the aspect ratio. <br> The aspect ratio defined as the ratio between the height and width. <br> Height defined as the longer between the two side's length.|[aspect ratio filter](https://github.com/TheJoker4320/vision-framework/blob/filters/filters/aspect_ratio_filter.py) |
+|BiggestAreaFilter|None|None| Goes over all the contours and returns the one with the biggest area.|[biggest area filter](https://github.com/TheJoker4320/vision-framework/blob/filters/filters/biggest_area_filter.py)|
+|DiagonalReflectiveTapePair|None|None| Goes over all the contours returns the two that turn to each other. <br> Matches to the 2019 requirements.|[diagonal pair filter](https://github.com/TheJoker4320/vision-framework/blob/filters/filters/diagonal_reflective_tape_pair_filter.py)|
+|ShapeFilter| edges_count - the number of edges <br> epsilon - the value which is used to approximate the shape type| edges_count - int <br> epsilon - float| Filters the contours by their approximate shape. <br> Checks the approximate shape according to epsilon value. <br> As epsilon is bigger the filtering is more flexible.|[shape filter](https://github.com/TheJoker4320/vision-framework/blob/filters/filters/shape_filter.py)|
 
 and How it look on the json file (all of the filters above, you can delete what you do not want to use)  
 Example in the JSON file:
@@ -254,14 +257,14 @@ Example in the JSON file:
 Note that except of the last one all of them has , after (to understand why it is highly recommended to read JSON file format).
 
 #### Calculation Stage
-|Quirk Name|Variables|type|Description|
-|----------|---------|----|-----------|
-|AngleCalculation|image_width - the width of the image (in pixels) <br> horizontal_field_of_view - the field of view on the horizontal axis (in degrees) <br> image_x_center - the image x center <br> image_y_center - the image y center|float|Calculate the x and y angels between the camera and the object in the image.|
-|DistanceCalculationByArea| field_of_view - the fov of the camera (in degrees) <br> image_width - the width of the image (in pixels) <br> real_area - the real are of the object| float| Calculates the distance between the camera and the object.|
-|DistanceCalculationByFocalLength| field_of_view - the fov of the camera (in degrees) <br> image_width - the width of the image (in pixels) <br> real_height - the real height of the object (in meters)| float| Calculates the distance between the camera and the object.|
-|DistanceCalculationByFunction| distance_function - self made distance calculation function, where f(x) is the real distance of the camera from the object and x is the image's height in pixels (imaginary_height)| str| Calculates the distance between the camera and the object.|
-|DistanceCalculationByVector| horizontal_field_of_view - the field of view on the horizontal axis (in degrees) <br> vertical_field_of_view - the field of view on the vertical axis (in degrees) <br> image_width - the width of the image (in pixels) <br> image_height - the height of the image (in pixels) <br> object_surface_area - the object surface area (in meters ** 2) <br> yaw_angle - the clockwise yaw angle (in degrees) in which the camera is rotated, the yaw angle is the angle around the y axis (default is 0.0) <br> pitch_angle - the clockwise pitch angle (in degrees) in which the camera is rotated, the pitch angle is the angle around the x axis (default is 0.0) <br> roll_angle - the clockwise roll angle (in degrees) in which the camera is rotated, the roll angle is the angle around the z axis (default is 0.0) <br> x_offset - the distance (in meters) in the x axis away from the center of the robot (default is 0.0) <br> y_offset - the distance (in meters) in the y axis away from the center of the robot (default is 0.0) <br> z_offset - the distance (in meters) in the z axis away from the center of the robot (default is 0.0)| float| Calculates the distance between the camera and the object across the x, y and z axises.|
-|TurnCalculation| field_of_view - the fov of the camera (in degrees) <br> image_width - the width of the image (in pixels) <br> real_height - the real height of the object (in meters) <br> tape_width - the tape tape width (in meters)| float| Calculate the distance of the legs of a right triangle where the direct distance is the hypotenuse, and calculate the angle needed to turn to get to the first leg's position.| 
+|Quirk Name|Variables|type|Description|Code Link|
+|----------|---------|----|-----------|---------|
+|AngleCalculation|image_width - the width of the image (in pixels) <br> horizontal_field_of_view - the field of view on the horizontal axis (in degrees) <br> image_x_center - the image x center <br> image_y_center - the image y center|float|Calculate the x and y angels between the camera and the object in the image.|[angle calculation](https://github.com/TheJoker4320/vision-framework/blob/develop/calculations/angle_calculation.py)|
+|DistanceCalculationByArea| field_of_view - the fov of the camera (in degrees) <br> image_width - the width of the image (in pixels) <br> real_area - the real are of the object| float| Calculates the distance between the camera and the object.|[distance calculation by area calculation](https://github.com/TheJoker4320/vision-framework/blob/develop/calculations/distance_calculation_by_area.py)|
+|DistanceCalculationByFocalLength| field_of_view - the fov of the camera (in degrees) <br> image_width - the width of the image (in pixels) <br> real_height - the real height of the object (in meters)| float| Calculates the distance between the camera and the object.|[distance calculation by focal length calculation](https://github.com/TheJoker4320/vision-framework/blob/develop/calculations/distance_calculation_by_focal_length.py)|
+|DistanceCalculationByFunction| distance_function - self made distance calculation function, where f(x) is the real distance of the camera from the object and x is the image's height in pixels (imaginary_height)| str| Calculates the distance between the camera and the object.|[distance calculation by function calculation](https://github.com/TheJoker4320/vision-framework/blob/develop/calculations/distance_calculation_by_function.py)|
+|DistanceCalculationByVector| horizontal_field_of_view - the field of view on the horizontal axis (in degrees) <br> vertical_field_of_view - the field of view on the vertical axis (in degrees) <br> image_width - the width of the image (in pixels) <br> image_height - the height of the image (in pixels) <br> object_surface_area - the object surface area (in meters ** 2) <br> yaw_angle - the clockwise yaw angle (in degrees) in which the camera is rotated, the yaw angle is the angle around the y axis (default is 0.0) <br> pitch_angle - the clockwise pitch angle (in degrees) in which the camera is rotated, the pitch angle is the angle around the x axis (default is 0.0) <br> roll_angle - the clockwise roll angle (in degrees) in which the camera is rotated, the roll angle is the angle around the z axis (default is 0.0) <br> x_offset - the distance (in meters) in the x axis away from the center of the robot (default is 0.0) <br> y_offset - the distance (in meters) in the y axis away from the center of the robot (default is 0.0) <br> z_offset - the distance (in meters) in the z axis away from the center of the robot (default is 0.0)| float| Calculates the distance between the camera and the object across the x, y and z axises.|[distance calculation by vector calculation](https://github.com/TheJoker4320/vision-framework/blob/develop/calculations/distance_calculation_by_vector.py)|
+|TurnCalculation| field_of_view - the fov of the camera (in degrees) <br> image_width - the width of the image (in pixels) <br> real_height - the real height of the object (in meters) <br> tape_width - the tape tape width (in meters)| float| Calculate the distance of the legs of a right triangle where the direct distance is the hypotenuse, and calculate the angle needed to turn to get to the first leg's position.|[turn calculation](https://github.com/TheJoker4320/vision-framework/blob/develop/calculations/turn_calculation.py)|
    
 and How it look on the json file (all of the calculations above, you can delete what you do not want to use)  
 Example in the JSON file:
@@ -321,10 +324,10 @@ Note that except of the last one all of them has , after (to understand why it i
 
 
 #### Publishing Stage
-|Quirk Name|Variables|type|Description|
-|----------|---------|----|-----------|
-|LoggingPublisher|None|None| A publish class. Responsible for logging the information at info level.|
-|NetworkTablePublisher| table_name - the name of the network table to publish to <br> team_num - the number of the team| table_name - str <br> team_num - int (but can get float)| Publish the calculated data to the specified table via network tables protocol.|
+|Quirk Name|Variables|type|Description|Code Link|
+|----------|---------|----|-----------|---------|
+|LoggingPublisher|None|None| A publish class. Responsible for logging the information at info level.|[logging class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/logging_publisher.py)|
+|NetworkTablePublisher| table_name - the name of the network table to publish to <br> team_num - the number of the team| table_name - str <br> team_num - int (but can get float)| Publish the calculated data to the specified table via network tables protocol.|[network table class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/network_table_publisher.py)|
 
 and How it look on the json file (all of the publishers above, you can delete what you do not want to use)  
 Example in the JSON file:
