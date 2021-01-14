@@ -34,7 +34,16 @@ If you don't know how to install any of the libraries check our installation gui
 
 ### Installation Guide
 
-the guide
+
+3 easy step to install all the requirements (assuming you have python 3.6 and above, if not first download it):
+1. *FIRST*, install the framework (you can do to it through github bash or website).
+2. Open the cmd terminal in the folder.
+3. Download all the requirements using the followed command:
+```bash
+python pip install -r requirements.txt  
+```
+Note: sometimes it will not find python, in that case try instated `py` or `py3` or only `pip`.
+
 
 ## Code Highlights
 * Built in camera calibration, as long as the camera supports it.
@@ -364,7 +373,90 @@ If you want to add more support to the converter or just check comment about the
 ### Camera Calibration
 The Camera calibration is done by writing all the camera parameters that you want to calibrate in a JSON file format (where you write your pipeline creation input). Then all the parameters are given to camera.py, and that calibrates them.  
 
+TODO: The camera parameters (and how it look in the JSON like in the pipeline creation)
+
+
+
 To learn more about this process check [camera class](https://github.com/TheJoker4320/vision-framework/blob/develop/camera.py).
+
+### Streamer 
+
+the streamer
+TODO: what is the streamer , how to use (include how to create one)
+
+### Remote Tuner
+
+the remote tuner
+TODO: what it the remote tuner, how to use it (include how to create one)
+
+## Run The Framework
+To run the framework all you need to do is run the `main.py` file, but do not forget to update it according to your need.  
+The main file contains:  
+* The pipeline creation according to the inserted JSON file.
+* The camera calibration according to the inserted JSON file.
+* A stream of the processed video (can be on a comment on a game)
+* A remote tuner for the JSON file (can be on a comment on a game)
+
+Example of a simple main file:
+```python
+import json
+import logging
+import cv2
+import collections
+
+from threading import Thread
+from streamer import Streamer
+from camera import Camera
+
+from pipeline.pipeline_factory import PipelineFactory
+from networktables import NetworkTables
+from remote_tuner import RemoteTuner
+
+
+def main():
+    # Start logging
+    logging.basicConfig(level=logging.INFO)
+    
+    # Set the JSON file for the pipeline 
+    json_file_path = "examples/example.json"
+    
+    # Open the JSON file and read the data
+    with open(json_file_path, "r") as file_handler:
+        properties = json.load(file_handler, object_pairs_hook=collections.OrderedDict)
+    # Create a pipeline according to the properties
+    my_pipeline = PipelineFactory.create_pipeline(properties)
+    
+    # Get the camera setting
+    camera_settings = properties['camera settings']
+    # Create a camera 
+    camera = Camera(camera_settings['id'], cv2.CAP_V4L)
+    # Set the camera setting (the wanted calibration and etc.)
+    camera.set_camera_settings(camera_settings)
+    
+    # Create a remote tuner
+    tuner = RemoteTuner(json_file_path, my_pipeline)
+    
+    # Create a streamer
+    streamer = Streamer(json_file_path)
+    # Start stream
+    Thread(target=Streamer.run).start()
+
+    while True:
+        # Get frame from the camera
+        frame = camera.get_frame()
+        # Process it according to the pipeline
+        processed_frame = my_pipeline.process_image(frame)
+        # Update the streamer with the new processed frame
+        streamer.update(processed_frame)
+        # Update the pipeline (if any value in the tuner changed)
+        my_pipeline = tuner.get_pipeline()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+You can modify the main to match your vision need - number of cameras, multiple pipelines, stream or tune need and more. 
 
 ## Credits
 Original Vision Processing team which includes (2018-2019):
