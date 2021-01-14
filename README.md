@@ -430,12 +430,36 @@ To learn more about this process check [camera class](https://github.com/TheJoke
 
 ### Streamer 
 
-the streamer
-TODO: what is the streamer , how to use (include how to create one)
+One of the features in the framework is the Streamer that allows the user to watch live feed of the vision processing.  
+all you need to do is to enter the location of the JSON file (build in format of the framework) and it will open a stream to your local network where the feed is at the location of ip where the code is running from + the JSON file name.  
+for an example your computer ip is 10.43.20.10 and your json file name is example.json then the location of the stream is at 10.43.20.10/example and you can watch the feed through your browser.  
+
+To use the streamer in the code, you need to add to the main file (see why on the next topic on [running the framework](#run-the-framework))
+first you need to create an Streamer as an object:
+```python
+from streamer import Streamer
+
+# Create a streamer
+streamer = Streamer(json_file_path)
+```
+
+you need to put the stream on a thread to make sure it will not block stuck your program:
+```python
+# Start stream
+Thread(target=Streamer.run).start()
+```
+afterward you need to get a frame (the pre-process or pro-process, an image you would like to stream), at this case we will take a `processed_frame` variable to be the frame and now we just need to stream it:
+```python
+# Update the streamer with the processed frame
+streamer.update(processed_frame)
+```
+Note: the `streamer.update(processed_frame)` supose to be in the loop if you want it to make a video stream (you can see an example of the streamer in main in the topic about [running the framework](#run-the-framework)).
+
 
 ### Remote Tuner
 
 the remote tuner
+
 TODO: what it the remote tuner, how to use it (include how to create one)
 
 ## Run The Framework
@@ -495,7 +519,7 @@ def main():
         frame = camera.get_frame()
         # Process it according to the pipeline
         processed_frame = my_pipeline.process_image(frame)
-        # Update the streamer with the new processed frame
+        # Update the streamer with the processed frame
         streamer.update(processed_frame)
         # Update the pipeline (if any value in the tuner changed)
         my_pipeline = tuner.get_pipeline()
