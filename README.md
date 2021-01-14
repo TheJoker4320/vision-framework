@@ -153,7 +153,7 @@ Note: the order of each the Quirks in each stage is according to the order in th
 |Morph|morph_open - the size of the kernel for the Opening<br> morph_close - the size of the kernel for the Closing | list of 2 floats (convert to a numpy array in the program)|Applies either open, close, both open and close or none of them on a frame.|[morph modifier](https://github.com/TheJoker4320/vision-framework/blob/develop/modifiers/morph.py)|
 
 
-and How it look on the json file (all of the modifiers above, you can delete what you do not want to use)  
+And how it look on the json file (all of the modifiers above, you can delete what you do not want to use)  
 Example in the JSON file:
 
 ```python 
@@ -193,14 +193,13 @@ Example in the JSON file:
 ```
 Note that except of the last one all of them has , after (to understand why it is highly recommended to read JSON file format).
 
-
 #### Extraction Stage
 |Quirk Name|Variables|type|Description|Code Link|
 |----------|---------|----|-----------|---------|
 |SimpleExtractor|None| None| Extracts all the contours that were detected at the given frame.|[simple extractor class](https://github.com/TheJoker4320/vision-framework/blob/develop/extractors/simple_extractor.py)|
 |CirclesExtractor|dp - This parameter is the inverse ratio of the accumulator resolution to the image resolution (see Yuen et al. for more details). Essentially, the larger the dp gets, the smaller the accumulator array gets <br> minimum_distance - Minimum distance between the center (x, y) coordinates of detected circles. If the distance is too small, multiple circles in the same neighborhood as the original may be (falsely) detected. If the distance is too large, then some circles may not be detected at all| Extracts all the contours that are circular.|[circles_extractor class](https://github.com/TheJoker4320/vision-framework/blob/develop/extractors/circles_extractor.py)|
 
-and How it look on the json file (all of the extractors above, you can delete what you do not want to use)  
+And how it look on the json file (all of the extractors above, you can delete what you do not want to use)  
 Example in the JSON file:
 
 ```python 
@@ -229,7 +228,7 @@ Note that except of the last one all of them has , after (to understand why it i
 |DiagonalReflectiveTapePair|None|None| Goes over all the contours returns the two that turn to each other. <br> Matches to the 2019 requirements.|[diagonal pair filter](https://github.com/TheJoker4320/vision-framework/blob/filters/filters/diagonal_reflective_tape_pair_filter.py)|
 |ShapeFilter| edges_count - the number of edges <br> epsilon - the value which is used to approximate the shape type| edges_count - int <br> epsilon - float| Filters the contours by their approximate shape. <br> Checks the approximate shape according to epsilon value. <br> As epsilon is bigger the filtering is more flexible.|[shape filter](https://github.com/TheJoker4320/vision-framework/blob/filters/filters/shape_filter.py)|
 
-and How it look on the json file (all of the filters above, you can delete what you do not want to use)  
+And how it look on the json file (all of the filters above, you can delete what you do not want to use)  
 Example in the JSON file:
 
 ```python 
@@ -275,7 +274,7 @@ Note that except of the last one all of them has , after (to understand why it i
 |DistanceCalculationByVector| horizontal_field_of_view - the field of view on the horizontal axis (in degrees) <br> vertical_field_of_view - the field of view on the vertical axis (in degrees) <br> image_width - the width of the image (in pixels) <br> image_height - the height of the image (in pixels) <br> object_surface_area - the object surface area (in meters ** 2) <br> yaw_angle - the clockwise yaw angle (in degrees) in which the camera is rotated, the yaw angle is the angle around the y axis (default is 0.0) <br> pitch_angle - the clockwise pitch angle (in degrees) in which the camera is rotated, the pitch angle is the angle around the x axis (default is 0.0) <br> roll_angle - the clockwise roll angle (in degrees) in which the camera is rotated, the roll angle is the angle around the z axis (default is 0.0) <br> x_offset - the distance (in meters) in the x axis away from the center of the robot (default is 0.0) <br> y_offset - the distance (in meters) in the y axis away from the center of the robot (default is 0.0) <br> z_offset - the distance (in meters) in the z axis away from the center of the robot (default is 0.0)| float| Calculates the distance between the camera and the object across the x, y and z axises.|[distance calculation by vector calculation](https://github.com/TheJoker4320/vision-framework/blob/develop/calculations/distance_calculation_by_vector.py)|
 |TurnCalculation| field_of_view - the fov of the camera (in degrees) <br> image_width - the width of the image (in pixels) <br> real_height - the real height of the object (in meters) <br> tape_width - the tape tape width (in meters)| float| Calculate the distance of the legs of a right triangle where the direct distance is the hypotenuse, and calculate the angle needed to turn to get to the first leg's position.|[turn calculation](https://github.com/TheJoker4320/vision-framework/blob/develop/calculations/turn_calculation.py)|
    
-and How it look on the json file (all of the calculations above, you can delete what you do not want to use)  
+And how it look on the json file (all of the calculations above, you can delete what you do not want to use)  
 Example in the JSON file:
 
 ```python 
@@ -338,7 +337,7 @@ Note that except of the last one all of them has , after (to understand why it i
 |LoggingPublisher|None|None| A publish class. Responsible for logging the information at info level.|[logging class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/logging_publisher.py)|
 |NetworkTablePublisher| table_name - the name of the network table to publish to <br> team_num - the number of the team| table_name - str <br> team_num - int (but can get float)| Publish the calculated data to the specified table via network tables protocol.|[network table class](https://github.com/TheJoker4320/vision-framework/blob/develop/publishers/network_table_publisher.py)|
 
-and How it look on the json file (all of the publishers above, you can delete what you do not want to use)  
+And how it look on the json file (all of the publishers above, you can delete what you do not want to use)  
 Example in the JSON file:
 
 ```python 
@@ -372,10 +371,60 @@ If you want to add more support to the converter or just check comment about the
 
 ### Camera Calibration
 The Camera calibration is done by writing all the camera parameters that you want to calibrate in a JSON file format (where you write your pipeline creation input). Then all the parameters are given to camera.py, and that calibrates them.  
+For the camera calibration v4l2 is used (make sure you have it)
+if you do not have it all you need to is write the followed command in the command line:
+```bash
+$ sudo apt-get update
 
-TODO: The camera parameters (and how it look in the JSON like in the pipeline creation)
+$ sudo apt-get install v4l-utils
+```
+As you can see it can only be done on a linux based system (v4l2 - Video4Linux version 2) such on the FIRST operation system to the raspberry pi or the basic os of the jetson.  
 
+The camera parameters includes:
+* brightness (int) - Picture brightness, or more precisely, the black level (int).
+* contrast (int) - Picture contrast or luma gain (int).
+* saturation (int) - Picture color saturation or chroma gain (int).
+* white balance temperature auto (0 or 1 - bool but as an int) - Automatic white balance.
+* power line frequency (int) - Enables a power line frequency filter to avoid flicker. Possible values for it is 0-3.
+* white balance temperature (int) - This control specifies the white balance settings as a color temperature in Kelvin. A driver should have a minimum of 2800 (incandescent) to 6500 (daylight). 
+* sharpness (int) - Adjusts the sharpness filters in a camera. The minimum value disables the filters, higher values give a sharper picture. 
+* backlight compensation (int) - Adjusts the backlight compensation in a camera. The minimum value disables backlight compensation.
+* exposure auto (int) - Enables automatic adjustments of the exposure time and/or iris aperture. The effect of manual changes of the exposure time or iris aperture while these features are enabled is undefined, drivers should ignore such requests. Possible values are 0-3
+* exposure absolute (int) - Determines the exposure time of the camera sensor. The exposure time is limited by the frame interval. Drivers should interpret the values as 100 µs units, where the value 1 stands for 1/10000th of a second, 10000 for 1 second and 100000 for 10 seconds.
+* pan absolute (int) - This control turns the camera horizontally to the specified position. Positive values move the camera to the right (clockwise when viewed from above), negative values to the left. Drivers should interpret the values as arc seconds, with valid values between -180 * 3600 and +180 * 3600 inclusive.
+* tilt absolute (int) - This control turns the camera vertically to the specified position. Positive values move the camera up, negative values down. Drivers should interpret the values as arc seconds, with valid values between -180 * 3600 and +180 * 3600 inclusive.
+* zoom absolute (int) - Specify the objective lens focal length as an absolute value. The zoom unit is driver-specific and its value should be a positive integer.
 
+for more information about this setting and more see this [link](https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/ext-ctrls-camera.html)
+
+Another important thing is the id of the camera and the field of view that is also included in the JSON file:
+The id is the port that the camera connect to (if it is the first camera it is 0 the second is 1, it is relevant to how much cameras connected and not to the place of the port).  
+The field of view is the field of view of the camera.  
+
+And how it look on the json file (all of the parameters above, you can delete what you do not want to use)  
+Example in the JSON file:
+
+```python
+{
+    "camera settings": {
+        "white balance temperature auto": 0,
+        "saturation": 100,
+        "brightness": 70,
+        "backlight compensation": 0,
+        "sharpness": 25,
+        "power line frequency": 2,
+        "white balance temperature": 4500,
+        "pan absolute": 0,
+        "field of view": 68.5,
+        "exposure absolute": 5,
+        "tilt absolute": 0,
+        "exposure auto": 1,
+        "contrast": 10,
+        "zoom absolute": 0,
+        "id": 0
+      }
+}
+```
 
 To learn more about this process check [camera class](https://github.com/TheJoker4320/vision-framework/blob/develop/camera.py).
 
