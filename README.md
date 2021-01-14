@@ -179,7 +179,7 @@ Example in the JSON file:
     ...
 }
 ```
-Note that except of the last one all of them has , after (to understand why it is highly recommended to read JSON file format)
+Note that except of the last one all of them has , after (to understand why it is highly recommended to read JSON file format).
 
 
 #### Extraction Stage
@@ -205,7 +205,7 @@ Example in the JSON file:
     ...
 }
 ```
-Note that except of the last one all of them has , after (to understand why it is highly recommended to read JSON file format)
+Note that except of the last one all of them has , after (to understand why it is highly recommended to read JSON file format).
 
 #### Filter Stage
 |Quirk Name|Variables|type|Description|
@@ -251,7 +251,7 @@ Example in the JSON file:
     ...
 }
 ```
-Note that except of the last one all of them has , after (to understand why it is highly recommended to read JSON file format)
+Note that except of the last one all of them has , after (to understand why it is highly recommended to read JSON file format).
 
 #### Calculation Stage
 |Quirk Name|Variables|type|Description|
@@ -317,7 +317,7 @@ Example in the JSON file:
     ...
 }
 ```
-Note that except of the last one all of them has , after (to understand why it is highly recommended to read JSON file format)
+Note that except of the last one all of them has , after (to understand why it is highly recommended to read JSON file format).
 
 
 #### Publishing Stage
@@ -343,7 +343,7 @@ Example in the JSON file:
     ...
 }
 ```
-Note that except of the last one all of them has , after (to understand why it is highly recommended to read JSON file format)
+Note that except of the last one all of them has , after (to understand why it is highly recommended to read JSON file format).
 
 ### Grip File Support
 We as a framework offer the users to convert a GRIP file to JSON file.  
