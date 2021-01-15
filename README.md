@@ -17,6 +17,9 @@ The code is written entirely in Python 3, but also uses a JSON files to get user
     * [Pipeline Creation](#pipeline-creation)
     * [Grip File Support](#grip-file-support)
     * [Camera Calibration](#camera-calibration)
+    * [Streamer](#streamer)
+    * [Remote Tuner](#remote-tuner)
+* [Run The Framework](#run-the-framework)
 * [Credits](#credits)
 * [Contact Info](#contact-info)
 
