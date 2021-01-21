@@ -438,7 +438,7 @@ all you need to do is to enter the location of the JSON file (build in format of
 for an example your computer ip is 10.43.20.10 and your json file name is example.json then the location of the stream is at 10.43.20.10/example and you can watch the feed through your browser.  
 
 To use the streamer in the code, you need to add to the main file (see why on the next topic on [running the framework](#run-the-framework))
-first you need to create an Streamer as an object:
+first, you need to create an Streamer as an object:
 ```python
 from streamer import Streamer
 
@@ -451,19 +451,38 @@ you need to put the stream on a thread to make sure it will not block stuck your
 # Start stream
 Thread(target=Streamer.run).start()
 ```
+
 afterward you need to get a frame (the pre-process or pro-process, an image you would like to stream), at this case we will take a `processed_frame` variable to be the frame and now we just need to stream it:
 ```python
 # Update the streamer with the processed frame
 streamer.update(processed_frame)
 ```
-Note: the `streamer.update(processed_frame)` supose to be in the loop if you want it to make a video stream (you can see an example of the streamer in main in the topic about [running the framework](#run-the-framework)).
+Note: the `streamer.update(processed_frame)` suppose to be in the loop if you want it to make a video stream (you can see an example of the streamer in main in the topic about [running the framework](#run-the-framework)).
 
-
+To learn more about this feature check [streamer class](https://github.com/TheJoker4320/vision-framework/blob/develop/streamer.py).
 ### Remote Tuner
 
-the remote tuner
+The Remote Tuner is another feature our framework contains which allow the user to tune the values in the used json file remotely.  
+all you need to do is run the main.py with the tuner object and excess it through the outline viewer program (this is one of FIRST programs),
+after you have done this you will see the JSON file name as a table name you you will be able to tune the values in it and it will automatically update the JSON file and the pipeline                                                   
 
-TODO: what it the remote tuner, how to use it (include how to create one)
+To use the remote tuner in the code, you need to add to the main file (see why on the next topic on [running the framework](#run-the-framework)), notice you need to add `json_file_path` and `my_pipeline` means you have to create a pipeline and add his JSON file location the class initializer.
+first, you need to create an Remote_Tuner as an object:
+```python
+from remote_tuner import RemoteTuner
+
+# Create a remote tuner
+tuner = RemoteTuner(json_file_path, my_pipeline)
+```
+
+afterward you need to get the pipeline (if value is changing the tuner creates a new pipeline otherwise its the same one), at this case we set the `my_pipeline` variable to be the relevant pipeline:
+```python
+# Update the pipeline (if any value in the tuner changed)
+my_pipeline = tuner.get_pipeline()
+```
+Note: the `my_pipeline = tuner.get_pipeline()` suppose to be in the loop if you want to always be able to update the pipeline (you can see an example of the streamer in main in the topic about [running the framework](#run-the-framework)).
+
+To learn more about this feature check [remote tuner class](https://github.com/TheJoker4320/vision-framework/blob/develop/remote_tuner.py).
 
 ## Run The Framework
 To run the framework all you need to do is run the `main.py` file, but do not forget to update it according to your need.  
