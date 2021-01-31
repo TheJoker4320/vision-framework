@@ -9,6 +9,7 @@ from camera import Camera
 
 from pipeline.pipeline_factory import PipelineFactory
 from networktables import NetworkTables
+from remote_tuner import RemoteTuner
 
 
 def main():
@@ -22,7 +23,7 @@ def main():
     camera = Camera(camera_settings['id'], cv2.CAP_V4L)
     camera.set_camera_settings(camera_settings)
     # tuner = RemoteTuner("examples/example.json", my_pipeline)
-    NetworkTables.initialize(server='10.43.20.69')
+    # NetworkTables.initialize(server='10.43.20.69')
     # frame = cv2.imread('ball.jpg')
     streamer = Streamer("examples/example.json")
     Thread(target=Streamer.run).start()
