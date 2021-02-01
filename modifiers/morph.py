@@ -9,17 +9,20 @@ class Morph(Modifier):
     Returns the modified frame
     """
 
-    def __init__(self, morph_open, morph_close):
+    morph_open: numpy.ndarray
+    morph_close: numpy.ndarray
+
+    def __init__(self, morph_open: list, morph_close: list):
         """
-        :param morph_open: An array for the close method
-        :type morph_open: numpy array
-        :param morph_close:  A numpy array for the open method
-        :type morph_close: numpy array
+        :param morph_open: The size of the kernel for the Opening method
+        :type morph_open: list of 2 odd floats (or 0 to not use it)
+        :param morph_close: The size of the kernel for the Closing method
+        :type morph_close: list of 2 odd floats (or 0 to not use it)
         """
         self.morph_open = numpy.ones(morph_open)
         self.morph_close = numpy.ones(morph_close)
 
-    def modify(self, frame):
+    def modify(self, frame: numpy.ndarray) -> numpy.ndarray:
 
         modified_frame = frame
         empty = numpy.ones((0, 0))

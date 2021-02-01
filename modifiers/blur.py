@@ -1,4 +1,5 @@
 from modifiers.modifier import Modifier
+from numpy import ndarray
 import cv2
 
 
@@ -8,12 +9,14 @@ class Blur(Modifier):
     Returns the modified frame
     """
 
-    def __init__(self, kernel):
+    kernel: tuple
+
+    def __init__(self, kernel: tuple):
         """
         :param kernel: The blur kernel
         :type kernel: tuple
         """
         self.kernel = tuple(kernel)
 
-    def modify(self, frame):
+    def modify(self, frame: ndarray) -> ndarray:
         return cv2.GaussianBlur(frame, self.kernel, 0)
