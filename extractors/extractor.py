@@ -1,4 +1,5 @@
 from abc import ABCMeta, abstractmethod
+from numpy import ndarray
 
 
 class Extractor(object):
@@ -10,11 +11,12 @@ class Extractor(object):
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def extract(self, image):
+    def extract(self, frame: ndarray) -> [ndarray]:
         """
-        :param image: An image to extract contours from
-        :type image: numpy array
-        :return: extracted contours from the image
+        :param frame: An image to extract contours from
+        :type frame: numpy array
+
+        :return: Extracted contours from the image
         :rtype: List<contour>
         """
         pass
