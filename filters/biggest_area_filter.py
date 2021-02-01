@@ -1,4 +1,5 @@
 from filters.filter import Filter
+from numpy import ndarray
 import cv2
 
 
@@ -8,5 +9,5 @@ class BiggestAreaFilter(Filter):
     Returned as a list with one element
     """
 
-    def filter(self, contours):
+    def filter(self, contours: [ndarray]) -> [ndarray]:
         return [max(contours, key=cv2.contourArea)] if contours != [] else contours
