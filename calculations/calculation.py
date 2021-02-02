@@ -1,13 +1,16 @@
 from abc import ABCMeta, abstractmethod
+from numpy import ndarray
 
 
 class Calculation(object):
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def calc(self, contours):
+    def calc(self, contours: [ndarray]) -> dict:
         """
-        An abstract function that gets a contour and returns a dictionary with calculated data
-        WIP
+        :param contours: The relevant contours (the ones that passed the filter and can be used for the calculations)
+        :type contours: List<contour>
+
+        :rtype: dict
         """
         pass
