@@ -1,4 +1,4 @@
 numpy
 pynetworktables
-opencv-python
+opencv-python<=3.4.16.59
 flask
