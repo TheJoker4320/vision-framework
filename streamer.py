@@ -14,7 +14,7 @@ class Streamer(object):
 
     @staticmethod
     def run():
-        Streamer.app.run(host='0.0.0.0', port=80, debug=False, threaded=True)
+        Streamer.app.run(host='0.0.0.0', port=5000, debug=False, threaded=True)
 
     def update(self, original_frame):
         self.original_frame = original_frame
