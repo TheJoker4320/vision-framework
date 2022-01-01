@@ -55,7 +55,7 @@ class RemoteTuner(object):
         else:
             current_dictionary[key] = value
         with open(self.json_file_name, "w") as file_handler:
-            json.dump(self.pipeline_configurations, file_handler, indent=0)
+            json.dump(self.pipeline_configurations, file_handler, indent=2)
         self.pipeline = PipelineFactory.create_pipeline(self.pipeline_configurations)
 
     def get_pipeline(self):
