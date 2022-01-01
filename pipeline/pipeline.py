@@ -44,8 +44,6 @@ class Pipeline(object):
         for extractor in self.extractors:
             contours = contours + extractor.extract(gray_frame)
 
-        print(contours)
-        print(len(contours))
         logging.debug("Modifying stage --------- DONE")
         if not Pipeline.__contain_contour(contours):
             logging.debug("NO CONTOUR FOUND")
@@ -53,7 +51,6 @@ class Pipeline(object):
 
         for filter_object in self.filters:
             contours = filter_object.filter(contours)
-            print(type(filter_object).__name__)
             logging.debug("{} passed {}".format(len(contours), type(filter_object).__name__))
 
         logging.debug("Filtering stage --------- DONE")

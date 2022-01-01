@@ -36,14 +36,12 @@ class RemoteTuner(object):
             table.putValue(key, value)
 
         else:
-            print("________________________________", value, "___________________________________")
             sub_table = table.getSubTable(key)
             sub_table.addEntryListener(self.__listener)
             for sub_item in value.items():
                 self.__recursive_write(sub_item[0], sub_item[1], sub_table)
 
     def __listener(self, table, key, value, is_new):
-        print("hello __ my old friend")
         path = table.path
         path_list = path.split('/')[2:]
         current_dictionary = self.pipeline_configurations
