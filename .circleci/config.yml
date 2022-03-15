@@ -4,7 +4,7 @@ jobs:
     working_directory: ~/code
     
     docker:
-      - image: circleci/python:2.7-stretch
+      - image: circleci/python:3.7-stretch
     
     steps:
       - checkout
@@ -30,7 +30,7 @@ jobs:
           name: Run linting
           command: |
             source vision-framework/bin/activate
-            flake8 ./ --exclude=.git,__pycache__,lib,bin
+            flake8 ./ --exclude=.git,__pycache__,lib,bin --ignore=E501,F403,F401
 
       - store_artifacts:
           path: test-reports
